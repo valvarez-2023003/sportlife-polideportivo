@@ -1,3 +1,7 @@
+dist/*
+build/*
+src/org/sportlife/system/config/Enviroment.java
+
 # Compiled class file
 *.class
 
