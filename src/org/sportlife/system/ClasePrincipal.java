@@ -1,20 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package org.sportlife.system;
 
-/**
- *
- * @author informatica
- */
-public class ClasePrincipal {
+import javafx.application.Application;
+import javafx.stage.Stage;
+import org.sportlife.system.utils.SceneManager;
+import org.sportlife.system.utils.ViewFactory;
 
-    /**
-     * @param args the command line arguments
-     */
+public class ClasePrincipal extends Application {
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        launch(args);
     }
-    
+
+    @Override
+    public void start(Stage stageRoot) {
+        SceneManager.getInstanciaSceneManager().setStagePrincipal(stageRoot);
+
+        ViewFactory viewFactory = new ViewFactory();
+        viewFactory.viewLogin();
+    }
 }
