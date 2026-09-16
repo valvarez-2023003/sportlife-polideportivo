@@ -34,14 +34,14 @@ public class LoginController implements Initializable {
 
     }
 
-@FXML
-public void onLogin(MouseEvent event) {
-    System.out.println("Botón iniciar sesión funcionando");
-}
+    @FXML
+    public void onLogin(MouseEvent event) {
+        System.out.println("Botón iniciar sesión funcionando");
+    }
 
-@FXML
-public void onRegister(MouseEvent event) {
-    ViewFactory viewFactory = new ViewFactory();
-    viewFactory.viewRegister();
-}
+    @FXML
+    public void onRegister(MouseEvent event) {
+        ViewFactory viewFactory = new ViewFactory();
+        viewFactory.viewRegister();
+    }
 }

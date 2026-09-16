@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- ===================================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ===================================================== -->
+
+    <left>
+
+        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="10" left="10" right="8" top="15" />
+            </padding>
+
+
+            <!-- LOGO -->
+
+            <HBox alignment="CENTER_LEFT" spacing="5">
+
+                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image></ImageView>
+
+                <VBox spacing="0" />
+
+            </HBox>
+         <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
+
+
+            <!-- INICIO -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
+
+
+            <!-- RESERVAS -->
+
+            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="RESERVAS" />
+
+
+            <!-- CANCHAS -->
+
+            <Button maxWidth="Infinity" prefHeight="28.0" prefWidth="173.0" styleClass="menu-button" text="CLIENTES" />
+
+
+            <!-- CALENDARIO -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
+         <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
+         <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
+
+
+            <!-- ESPACIO -->
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <!-- CERRAR SESION -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+
+        </VBox>
+
+    </left>
+
+
+    <!-- ===================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <center>
+
+        <VBox spacing="12" styleClass="content">
+
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="15" />
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- ENCABEZADO -->
+            <!-- ================================================= -->
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+
+                <Label styleClass="header-title" text="Panel de Recepcionista" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+
+                <!-- ADMINISTRADOR -->
+
+                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
+
+                    <Label styleClass="user-icon" text="●" />
+
+                    <Label styleClass="user-text" text="GERENTE" />
+
+                </HBox>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- PANEL BLANCO -->
+            <!-- ================================================= -->
+
+            <VBox spacing="10" styleClass="main-panel">
+
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+
+
+                <!-- ================================================= -->
+                <!-- BIENVENIDA -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <Label styleClass="welcome-title" text="Bienvenido, Recepcionista!" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+
+                    <!-- NUEVA RESERVA -->
+
+                    <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- DESCRIPCIÓN -->
+                <!-- ================================================= -->
+
+                <Label styleClass="description" text="Desde aquí puedes gestionar las canchas y reservas del complejo deportivo." />
+
+
+                <!-- ================================================= -->
+                <!-- TÍTULO Y FILTROS -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+
+                    <Label styleClass="section-title" text="Buscar Reservacion por Cliente" />
+               <TextField prefWidth="170.0" promptText="🔎 Buscar Reservacion" />
+
+
+                    <!-- FILTRO DISCIPLINA -->
+
+                    <ComboBox prefWidth="185" promptText="TODAS LAS RESERVACIONES" styleClass="filter" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- TABLA DE CANCHAS -->
+                <!-- ================================================= -->
+
+                <TableView styleClass="sports-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn prefWidth="180" text="CANCHA" />
+
+                        <TableColumn prefWidth="180" text="DISCIPLINA" />
+
+                        <TableColumn prefWidth="150" text="UBICACIÓN" />
+
+                        <TableColumn prefWidth="130" text="ESTADO" />
+
+                        <TableColumn prefWidth="150" text="ACCIONES" />
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

@@ -46,14 +46,14 @@ public class RegisterController implements Initializable {
 
     }
 
-@FXML
-public void onCancel(MouseEvent event) {
-    ViewFactory viewFactory = new ViewFactory();
-    viewFactory.viewLogin();
-}
+    @FXML
+    public void onCancel(MouseEvent event) {
+        ViewFactory viewFactory = new ViewFactory();
+        viewFactory.viewLogin();
+    }
 
-@FXML
-public void onCreateUser(MouseEvent event) {
-    System.out.println("Botón crear cuenta funcionando");
-}
+    @FXML
+    public void onCreateUser(MouseEvent event) {
+        System.out.println("Botón crear cuenta funcionando");
+    }
 }
