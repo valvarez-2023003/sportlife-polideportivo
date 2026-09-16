@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- ===================================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ===================================================== -->
+
+    <left>
+
+        <VBox prefWidth="125" spacing="12" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="10" left="10" right="8" top="15" />
+            </padding>
+
+
+            <!-- LOGO -->
+
+            <HBox alignment="CENTER_LEFT" spacing="5">
+
+                <ImageView fitHeight="52.0" fitWidth="121.0" preserveRatio="true">
+               <image>
+                  <Image url="@../S5%20-%20copia/sportlife-polideportivo/src/org/sportlife/system/resource/images/logo.png" />
+               </image></ImageView>
+
+            </HBox>
+
+
+            <!-- ESPACIO -->
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <!-- INICIO -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
+
+
+            <!-- RESERVAS -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="RESERVAS" />
+
+
+            <!-- CANCHAS -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="CANCHAS" />
+
+
+            <!-- CALENDARIO -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
+
+
+            <!-- ESPACIO -->
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <!-- EDITAR -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="EDITAR" />
+
+
+            <!-- CERRAR SESION -->
+
+            <Button fx:id="btnLogin" maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+
+        </VBox>
+
+    </left>
+
+
+    <!-- ===================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <center>
+
+        <VBox spacing="12" styleClass="content">
+
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="15" />
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- ENCABEZADO -->
+            <!-- ================================================= -->
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+
+                <Label styleClass="header-title" text="Panel de Administración" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+
+                <!-- ADMINISTRADOR -->
+
+                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
+
+                    <Label styleClass="user-icon" text="●" />
+
+                    <Label styleClass="user-text" text="ADMINISTRADOR" />
+
+                </HBox>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- PANEL BLANCO -->
+            <!-- ================================================= -->
+
+            <VBox spacing="10" styleClass="main-panel">
+
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+
+
+                <!-- ================================================= -->
+                <!-- BIENVENIDA -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <Label styleClass="welcome-title" text="Bienvenido, Administrador!" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+
+                    <!-- NUEVA RESERVA -->
+
+                    <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- DESCRIPCIÓN -->
+                <!-- ================================================= -->
+
+                <Label styleClass="description" text="Desde aquí puedes gestionar las canchas y reservas del complejo deportivo." />
+
+
+                <!-- ================================================= -->
+                <!-- TARJETAS DE INFORMACIÓN -->
+                <!-- ================================================= -->
+
+                <GridPane hgap="40" vgap="5">
+
+                    <columnConstraints>
+
+                        <ColumnConstraints percentWidth="25" />
+
+                        <ColumnConstraints percentWidth="25" />
+
+                        <ColumnConstraints percentWidth="25" />
+
+                        <ColumnConstraints percentWidth="25" />
+
+                    </columnConstraints>
+
+
+                    <!-- CANCHAS DISPONIBLES -->
+
+                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="0">
+
+                        <Label styleClass="stat-icon" text="⚽" />
+
+                        <Label text="CANCHAS DISPONIBLES" />
+
+                    </HBox>
+
+
+                    <!-- CLIENTES REGISTRADOS -->
+
+                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="1">
+
+                        <Label styleClass="stat-icon" text="♙" />
+
+                        <Label styleClass="stat-text" text="CLIENTES REGISTRADOS" />
+
+                    </HBox>
+
+
+                    <!-- RESERVAS ESTE MES -->
+
+                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="3" />
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+
+                </GridPane>
+
+
+                <!-- ================================================= -->
+                <!-- TÍTULO Y FILTROS -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT" spacing="10">
+
+                    <Label styleClass="section-title" text="CANCHAS DISPONIBLES" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+
+                    <!-- FILTRO UBICACIÓN -->
+
+                    <ComboBox prefWidth="185" promptText="TODAS LAS CANCHAS" styleClass="filter" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- TABLA DE CANCHAS -->
+                <!-- ================================================= -->
+
+                <TableView styleClass="sports-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn prefWidth="180" text="CANCHA" />
+
+                        <TableColumn prefWidth="180" text="DISCIPLINA" />
+
+                        <TableColumn prefWidth="150" text="UBICACIÓN" />
+
+                        <TableColumn prefWidth="130" text="ESTADO" />
+
+                        <TableColumn prefWidth="150" text="ACCIONES" />
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

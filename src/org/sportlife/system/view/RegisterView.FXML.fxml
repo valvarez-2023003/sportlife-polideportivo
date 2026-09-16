@@ -20,7 +20,7 @@
             <ImageView fitHeight="581.0" fitWidth="451.0" preserveRatio="false">
 
                 <image>
-                    <Image url="@../../Diseño%20sin%20título.jpg" />
+                    <Image url="@../S5%20-%20copia/sportlife-polideportivo/src/org/sportlife/system/resource/images/fondoregister.jpg" />
                 </image>
 
             </ImageView>

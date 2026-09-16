@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutY="-7.0" prefHeight="528.0" prefWidth="779.0">
          <children>
@@ -19,7 +19,7 @@
                <children>
                   <ImageView fitHeight="535.0" fitWidth="729.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../fondo1.png" />
+                        <Image url="@../../../fondo1.png" />
                      </image>
                   </ImageView>
                </children>
@@ -32,10 +32,10 @@
                      </padding>
                   </Label>
                   <Label prefHeight="33.0" prefWidth="62.0" />
-                  <TextField fx:id="txtUserName" promptText="UserName" />
-                  <PasswordField fx:id="pwdPassword" promptText="Password" />
-                  <Button fx:id="btnLogIn" mnemonicParsing="false" onMouseClicked="#onLogin" text="Iniciar Sesion" />
-                  <Button fx:id="btnCreatOnAccount" mnemonicParsing="false" onMouseClicked="#onRegister" text="Crear cuenta" />
+                  <TextField />
+                  <PasswordField />
+                  <Button mnemonicParsing="false" text="Iniciar Sesion" />
+                  <Button mnemonicParsing="false" text="Crear cuenta" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
