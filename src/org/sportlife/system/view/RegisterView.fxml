@@ -20,7 +20,8 @@
             <ImageView fitHeight="581.0" fitWidth="451.0" preserveRatio="false">
 
                 <image>
-                    <Image url="@../S5%20-%20copia/sportlife-polideportivo/src/org/sportlife/system/resource/images/fondoregister.jpg" />
+                    <Image url="@../resource/images/fondoregister.jpg" />
+
                 </image>
 
             </ImageView>
@@ -76,7 +77,7 @@
 
 
             <!-- BOTON CREAR CUENTA -->
-            <Button fx:id="btnCreateAccount" maxWidth="Infinity" onAction="#createAccount" onMouseClicked="#onCreateUser" styleClass="create-button" text="Create Account" />
+            <Button fx:id="btnCreateAccount" maxWidth="Infinity" onMouseClicked="#onCreateUser" styleClass="create-button" text="Create Account" />
 
 
             <!-- LINEA OR -->
@@ -84,7 +85,7 @@
 
 
             <!-- LOGIN -->
-            <Button fx:id="btnLogin" maxWidth="Infinity" onAction="#login" onMouseClicked="#onCancel" styleClass="login-button" text="Log in" />
+            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#onCancel" styleClass="login-button" text="Log in" />
 
         </VBox>
 
