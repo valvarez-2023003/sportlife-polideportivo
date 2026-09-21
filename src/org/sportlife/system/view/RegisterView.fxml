@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RegisterController">
+
+    <!-- PARTE IZQUIERDA -->
+    <left>
+        <StackPane prefWidth="450">
+
+            <ImageView fitHeight="581.0" fitWidth="451.0" preserveRatio="false">
+
+                <image>
+                    <Image url="@../resource/images/fondoregister.jpg" />
+
+                </image>
+
+            </ImageView>
+
+        </StackPane>
+    </left>
+
+
+    <!-- PARTE DERECHA -->
+    <center>
+
+        <VBox alignment="TOP_LEFT" prefHeight="581.0" prefWidth="543.0" spacing="8">
+
+            <padding>
+                <Insets bottom="25" left="55" right="55" top="25" />
+            </padding>
+
+
+            <!-- TITULO -->
+            <Label styleClass="title" text="Sign up" />
+
+
+            <!-- NOMBRE -->
+            <Label styleClass="field-label" text="Full Name" />
+
+            <TextField fx:id="txtFullName" promptText="Daniel Gallego" styleClass="input" />
+         <Label text="UserName" />
+         <TextField fx:id="txtUserName" promptText="dGallego" />
+
+
+            <!-- EMAIL -->
+            <Label styleClass="field-label" text="Email Address" />
+
+            <TextField fx:id="txtEmail" promptText="hello@reallygreatsite.com" />
+         <Label text="Number Phone" />
+         <TextField fx:id="txtNumberPhone" promptText="+502 5550-1234" />
+
+
+            <!-- PASSWORD -->
+            <Label styleClass="field-label" text="Password" />
+
+            <PasswordField fx:id="pwdPassword" promptText="••••••••••" />
+
+
+            <!-- CONFIRM PASSWORD -->
+            <Label styleClass="field-label" text="Confirm Password" />
+
+            <PasswordField fx:id="pwdConfirmPassword" promptText="••••••••••" />
+
+
+            <!-- ESPACIO -->
+            <Label text="" />
+
+
+            <!-- BOTON CREAR CUENTA -->
+            <Button fx:id="btnCreateAccount" maxWidth="Infinity" onMouseClicked="#onCreateUser" styleClass="create-button" text="Create Account" />
+
+
+            <!-- LINEA OR -->
+            <Label alignment="CENTER" maxWidth="Infinity" styleClass="or-label" text="─────  Or  ─────" />
+
+
+            <!-- LOGIN -->
+            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#onCancel" styleClass="login-button" text="Log in" />
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

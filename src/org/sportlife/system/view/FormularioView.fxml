@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="500.0" prefWidth="125.0" spacing="12.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image>
+            </ImageView>
+            <Region prefHeight="386.0" prefWidth="169.0" />
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="⇥  CERRAR SESIÓN" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="8.0" top="15.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="500.0" prefWidth="825.0" spacing="12.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="35.0" prefWidth="781.0">
+               <children>
+                  <Label text="¡Reserva tu cancha en menos de 5 minutos" />
+                  <Region prefHeight="37.0" prefWidth="200.0" />
+                  <Label text="●" />
+                  <Label text="USER" />
+               </children>
+            </HBox>
+            <HBox prefHeight="10.0" prefWidth="733.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="306.0" text="Bienvenido, Sera un gusto atenderte!">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="398.0" prefWidth="733.0">
+               <children>
+                  <AnchorPane prefHeight="395.0" prefWidth="499.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="395.0" prefWidth="445.0" spacing="12.0">
+                           <children>
+                              <HBox alignment="TOP_CENTER" prefHeight="31.0" prefWidth="499.0" spacing="12.0">
+                                 <children>
+                                    <Label alignment="TOP_CENTER" text="LLena el formulario y renta tu cancha un ratito" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="10.0" right="20.0" top="15.0" />
+                                 </padding>
+                              </HBox>
+                              <ComboBox prefHeight="25.0" prefWidth="162.0" promptText="Selecciona deporte ↓" />
+                              <Label text="Selecciona una de las canchas disponibles" />
+                              <ComboBox prefHeight="25.0" prefWidth="450.0" promptText="Seleccione la cancha dependiendo del deporte seleccionado anteriormente" />
+                              <Label prefHeight="31.0" prefWidth="110.0" text="fecha de reserva" />
+                              <DatePicker />
+                           </children>
+                           <padding>
+                              <Insets bottom="15.0" left="10.0" right="20.0" top="15.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="12.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="417.0" prefWidth="326.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="417.0" prefWidth="311.0" spacing="12.0">
+                           <children>
+                              <HBox alignment="TOP_CENTER" prefHeight="21.0" prefWidth="311.0">
+                                 <children>
+                                    <Label alignment="TOP_CENTER" text="Horario de inicio" />
+                                 </children>
+                              </HBox>
+                              <Spinner />
+                              <Label text="Horario de Finalizacion" />
+                              <Spinner />
+                              <Label text="Horas totales" />
+                              <Label text="Horas que reservo" />
+                              <Label text="Total a pagar" />
+                              <Button mnemonicParsing="false" text="Confirmar Reserrva" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
