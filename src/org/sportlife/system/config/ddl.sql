@@ -28,36 +28,11 @@ BEGIN
 END $$
 DELIMITER ;
 
--- CORREGIDO: Se agregó el DELIMITER $$ aquí
 DELIMITER $$
 CREATE PROCEDURE sp_get_all_users()
 BEGIN
-    SELECT id_user, name, lastname, email, user, role 
+    SELECT id_user, name, lastname, email, user, password, role 
     FROM Users;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE sp_find_user_by_user_or_email(
-    IN user_or_email_p VARCHAR(50)
-)
-BEGIN
-    SELECT id_user, name, lastname, email, user, password, role
-    FROM Users
-    WHERE user = user_or_email_p OR email = user_or_email_p;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE sp_login(
-    IN user_or_email_p VARCHAR(50), 
-    IN password_p VARCHAR(35)
-)
-BEGIN
-    SELECT id_user, name, lastname, email, user, password, role
-    FROM Users
-    WHERE (user = user_or_email_p OR email = user_or_email_p)
-      AND password = password_p;
 END $$
 DELIMITER ;
 
@@ -73,12 +48,8 @@ CREATE PROCEDURE sp_update_users(
 )
 BEGIN
     UPDATE Users
-    SET name = name_p,
-        lastname = lastname_p,
-        email = email_p,
-        user = user_p,
-        password = password_p,
-        role = role_p
+    SET name = name_p, lastname = lastname_p, email = email_p,
+        user = user_p, password = password_p, role = role_p
     WHERE id_user = id_user_p;
 END $$
 DELIMITER ;
@@ -88,13 +59,35 @@ CREATE PROCEDURE sp_delete_users(
     IN id_user_p VARCHAR(36)
 )
 BEGIN
-    DELETE FROM Users
-    WHERE id_user = id_user_p;
+    DELETE FROM Users WHERE id_user = id_user_p;
 END $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE sp_check_user_exists_strict(
+    IN user_or_email_p VARCHAR(50)
+)
+BEGIN
+    SELECT id_user, name, lastname, email, user, role
+    FROM Users
+    WHERE BINARY user = user_or_email_p OR BINARY email = user_or_email_p;
+END $$
+DELIMITER ;
 
-CALL sp_create_users("Gerente","Gerente_principal","gerente_sportlife@sport.com","Gerente_1","12345678","Gerente");
-CALL sp_create_users("Admin", "Principal", "admin_sportlife@sport.com", "Admin_1", "admin1234", "Administrador");
-CALL sp_create_users("Recepcionista_Maria", "Perez", "recepcion_sportlife@sport.com", "Recepcion_1", "recep1234", "Recepcionista");
+DELIMITER $$
+CREATE PROCEDURE sp_verify_user_password(
+    IN user_or_email_p VARCHAR(50),
+    IN password_p VARCHAR(35)
+)
+BEGIN
+    SELECT id_user, name, lastname, email, user, role
+    FROM Users
+    WHERE (BINARY user = user_or_email_p OR BINARY email = user_or_email_p)
+      AND BINARY password = password_p;
+END $$
+DELIMITER ;
+
+CALL sp_create_users("Cristofer","Ramos","cristoferramos@sportlife.gerencia.com","GerenteCR","@gerente#1","Gerente");
+CALL sp_create_users("Victor", "Alvarez", "victoralvarez@sportlife.administracion.com", "AdministradorVA", "@administrador#1", "Administrador");
+CALL sp_create_users("Pablo", "Rosales", "pablorosales@sportlife.recepcion.com", "RecepcionistaPR", "@recepcionista#1", "Recepcionista");
 CALL sp_get_all_users();

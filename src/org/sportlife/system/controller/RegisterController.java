@@ -12,48 +12,35 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.MouseEvent;
 import org.sportlife.system.utils.ViewFactory;
 
 public class RegisterController implements Initializable {
+    @FXML private Button btnCreateAccount;
+    @FXML private Button btnLogin;
+    @FXML private PasswordField pwdConfirmPassword;
+    @FXML private PasswordField pwdPassword;
+    @FXML private TextField txtEmail;
+    @FXML private TextField txtFullName;
+    @FXML private TextField txtNumberPhone;
+    @FXML private TextField txtUserName;
 
-    @FXML
-    private Button btnCreateAccount;
+    private ViewFactory viewFactory;
 
-    @FXML
-    private Button btnLogin;
-
-    @FXML
-    private PasswordField pwdConfirmPassword;
-
-    @FXML
-    private PasswordField pwdPassword;
-
-    @FXML
-    private TextField txtEmail;
-
-    @FXML
-    private TextField txtFullName;
-
-    @FXML
-    private TextField txtNumberPhone;
-
-    @FXML
-    private TextField txtUserName;
+    public RegisterController(){
+        this.viewFactory = new ViewFactory();
+    }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(URL url, ResourceBundle rb){
     }
 
     @FXML
-    public void onCancel(MouseEvent event) {
-        ViewFactory viewFactory = new ViewFactory();
+    public void onCancel(MouseEvent event){
         viewFactory.viewLogin();
     }
 
     @FXML
-    public void onCreateUser(MouseEvent event) {
-        System.out.println("Botón crear cuenta funcionando");
+    public void onCreateUser(MouseEvent event){
+        System.out.println("Botón crear cuenta funcionando - Lógica pendiente");
     }
 }

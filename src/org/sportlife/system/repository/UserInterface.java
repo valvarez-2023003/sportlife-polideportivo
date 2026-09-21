@@ -4,10 +4,14 @@
  */
 package org.sportlife.system.repository;
 
+import org.sportlife.system.model.User;
+
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
-public class a {
-    
+
+public interface UserInterface {
+    User checkUserExistsStrict(String usernameOrEmail);
+    User verifyUserPassword(String usernameOrEmail, String password);
 }

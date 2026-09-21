@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.LoginController">
    <children>
       <HBox layoutY="-7.0" prefHeight="528.0" prefWidth="779.0">
          <children>
@@ -32,7 +32,7 @@
                      </padding>
                   </Label>
                   <Label prefHeight="33.0" prefWidth="62.0" />
-                  <TextField fx:id="txtUserName" promptText="UserName" />
+                  <TextField fx:id="txtUserName" promptText="UserName on Email" />
                   <PasswordField fx:id="pwdPassword" promptText="Password" />
                   <Button fx:id="btnLogIn" mnemonicParsing="false" onMouseClicked="#onLogin" text="Iniciar Sesion" />
                   <Button fx:id="btnCreatOnAccount" mnemonicParsing="false" onMouseClicked="#onRegister" text="Crear cuenta" />

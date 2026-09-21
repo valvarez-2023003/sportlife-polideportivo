@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.FormularioController">
    <left>
       <VBox prefHeight="500.0" prefWidth="125.0" spacing="12.0" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +25,7 @@
                </image>
             </ImageView>
             <Region prefHeight="386.0" prefWidth="169.0" />
-            <Button alignment="TOP_CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="⇥  CERRAR SESIÓN" />
+            <Button fx:id="btnLogin" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#returnToLogin" prefHeight="25.0" prefWidth="156.0" text="⇥  CERRAR SESIÓN" />
          </children>
          <opaqueInsets>
             <Insets />

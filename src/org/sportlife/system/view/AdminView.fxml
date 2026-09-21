@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.AdminController">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
@@ -80,7 +80,7 @@
 
             <!-- CERRAR SESION -->
 
-            <Button fx:id="btnLogin" maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#returnToLogin" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
 
         </VBox>
 
