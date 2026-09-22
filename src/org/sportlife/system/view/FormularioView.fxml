@@ -8,113 +8,107 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.FormularioController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="950.0" stylesheets="@../resource/styles/FormularioStyle.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.FormularioController">
    <left>
-      <VBox prefHeight="500.0" prefWidth="125.0" spacing="12.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="500.0" prefWidth="125.0" spacing="12.0" style="-fx-background-color: #181818;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../logo.png" />
+                  <Image url="@../resource/images/logo.png" />
                </image>
             </ImageView>
             <Region prefHeight="386.0" prefWidth="169.0" />
-            <Button fx:id="btnLogin" alignment="TOP_CENTER" mnemonicParsing="false" onMouseClicked="#returnToLogin" prefHeight="25.0" prefWidth="156.0" text="⇥  CERRAR SESIÓN" />
+            <Button fx:id="btnLogin" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#returnToLogin" prefHeight="25.0" prefWidth="156.0" styleClass="btn-logout" text="⇥  CERRAR SESIÓN" />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="8.0" top="15.0" />
          </padding>
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="500.0" prefWidth="825.0" spacing="12.0" BorderPane.alignment="CENTER">
+      <!-- CONTENEDOR GENERAL DEL CENTRO (Fondo Oscuro) -->
+      <VBox prefHeight="500.0" prefWidth="825.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="35.0" prefWidth="781.0">
+            
+            <!-- 1. BARRA SUPERIOR (Fuera de la tarjeta blanca, sobre el fondo negro) -->
+            <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="781.0">
                <children>
-                  <Label text="¡Reserva tu cancha en menos de 5 minutos" />
-                  <Region prefHeight="37.0" prefWidth="200.0" />
-                  <Label text="●" />
-                  <Label text="USER" />
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 12px;" text="¡Reserva tu cancha en menos de 5 minutos!" textFill="WHITE" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="● " textFill="#2ECC71" />
+                  <Label style="-fx-font-weight: bold; -fx-font-size: 11px;" text="USER" textFill="WHITE" />
                </children>
             </HBox>
-            <HBox prefHeight="10.0" prefWidth="733.0">
+
+            <!-- 2. TARJETA BLANCA PRINCIPAL (Aquí es donde se pinta el rectángulo blanco con esquinas redondeadas) -->
+            <VBox prefHeight="430.0" prefWidth="781.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 16px; -fx-border-radius: 16px;" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+               </padding>
                <children>
-                  <Label prefHeight="47.0" prefWidth="306.0" text="Bienvenido, Sera un gusto atenderte!">
+                  
+                  <!-- TÍTULO DE BIENVENIDA -->
+                  <Label prefHeight="30.0" prefWidth="400.0" text="Bienvenido, ¡Será un gusto atenderte!">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="398.0" prefWidth="733.0">
-               <children>
-                  <AnchorPane prefHeight="395.0" prefWidth="499.0">
+
+                  <!-- CUERPO DEL FORMULARIO EN DOS COLUMNAS -->
+                  <HBox prefHeight="350.0" prefWidth="750.0" spacing="20.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="395.0" prefWidth="445.0" spacing="12.0">
+                        
+                        <!-- COLUMNA IZQUIERDA -->
+                        <VBox alignment="TOP_LEFT" prefHeight="330.0" prefWidth="440.0" spacing="10.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <HBox alignment="TOP_CENTER" prefHeight="31.0" prefWidth="499.0" spacing="12.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" text="LLena el formulario y renta tu cancha un ratito" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="15.0" left="10.0" right="20.0" top="15.0" />
-                                 </padding>
-                              </HBox>
-                              <ComboBox prefHeight="25.0" prefWidth="162.0" promptText="Selecciona deporte ↓" />
-                              <Label text="Selecciona una de las canchas disponibles" />
-                              <ComboBox prefHeight="25.0" prefWidth="450.0" promptText="Seleccione la cancha dependiendo del deporte seleccionado anteriormente" />
-                              <Label prefHeight="31.0" prefWidth="110.0" text="fecha de reserva" />
-                              <DatePicker />
+                              <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="350.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="LLENA EL FORMULARIO Y RENTA TU CANCHA UN RATITO" />
+                              <ComboBox fx:id="cmbSport" prefHeight="35.0" prefWidth="280.0" promptText="Selecciona deporte" />
+                              
+                              <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="350.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="SELECCIONA UNA DE LAS CANCHAS DISPONIBLES" />
+                              <ComboBox fx:id="cmbCourt" prefHeight="35.0" prefWidth="420.0" promptText="Seleccione la cancha dependiendo del deporte" />
+                              
+                              <Label prefHeight="20.0" prefWidth="120.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="FECHA DE RESERVA" />
+                              <DatePicker fx:id="dpReservationDate" prefHeight="35.0" prefWidth="280.0" />
                            </children>
-                           <padding>
-                              <Insets bottom="15.0" left="10.0" right="20.0" top="15.0" />
-                           </padding>
                         </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" top="12.0" />
-                     </padding>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="417.0" prefWidth="326.0">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="417.0" prefWidth="311.0" spacing="12.0">
+
+                        <!-- COLUMNA DERECHA -->
+                        <VBox alignment="TOP_CENTER" prefHeight="330.0" prefWidth="280.0" spacing="8.0">
                            <children>
-                              <HBox alignment="TOP_CENTER" prefHeight="21.0" prefWidth="311.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" text="Horario de inicio" />
-                                 </children>
-                              </HBox>
-                              <Spinner />
-                              <Label text="Horario de Finalizacion" />
-                              <Spinner />
-                              <Label text="Horas totales" />
-                              <Label text="Horas que reservo" />
-                              <Label text="Total a pagar" />
-                              <Button mnemonicParsing="false" text="Confirmar Reserrva" />
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="240.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Horario de inicio" />
+                              <Spinner fx:id="spnStartTime" prefHeight="32.0" prefWidth="250.0" />
+                              
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="240.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Horario de Finalizacion" />
+                              <Spinner fx:id="spnEndTime" prefHeight="32.0" prefWidth="250.0" />
+                              
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="240.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Horas totales" />
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #F3F4F6; -fx-background-radius: 5px; -fx-font-weight: bold;" text="2 Horas" />
+                              
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="240.0" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Total a pagar" />
+                              <Label alignment="CENTER" prefHeight="32.0" prefWidth="250.0" style="-fx-background-color: #ECFDF5; -fx-background-radius: 5px; -fx-font-weight: bold; -fx-text-fill: #065F46; -fx-font-size: 14px;" text="Q 0.00" />
+                              
+                              <Button fx:id="btnConfirmReservation" mnemonicParsing="false" prefHeight="38.0" prefWidth="250.0" style="-fx-background-color: #8CC63F; -fx-text-fill: #FFFFFF; -fx-font-weight: bold; -fx-background-radius: 6px;" text="Confirmar Reserva" />
                            </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="12.0" />
-                           </padding>
                         </VBox>
+
                      </children>
-                  </AnchorPane>
+                  </HBox>
+
                </children>
-            </HBox>
+            </VBox>
+
          </children>
          <padding>
-            <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
          </padding>
       </VBox>
    </center>

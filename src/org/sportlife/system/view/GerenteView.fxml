@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.GerenteController">
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" stylesheets="@../resource/styles/GerenteStyles.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.GerenteController">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
@@ -22,7 +22,7 @@
 
     <left>
 
-        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
+        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar" stylesheets="@../resource/styles/GerenteStyles.css">
 
             <padding>
                 <Insets bottom="10" left="10" right="8" top="15" />
@@ -34,7 +34,7 @@
 
                 <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
                     <image>
-                        <Image url="@../../logo.png" />
+                        <Image url="@../resource/images/logo.png" />
                     </image>
                 </ImageView>
 
@@ -42,27 +42,27 @@
 
             </HBox>
 
-            <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
+            <Button fx:id="btnHome" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="INICIO" textAlignment="CENTER" />
 
             <!-- INICIO -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button-selected" text="Gestión de personal " />
+            <Button fx:id="btnStaffManagement" maxWidth="Infinity" styleClass="menu-button-selected" text="Gestión de personal " />
 
             <!-- RESERVAS -->
 
-            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="programas y eventos" />
+            <Button fx:id="btnProgramsEvents" maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="programas y eventos" />
 
             <!-- CANCHAS -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button" text="Calendario" />
+            <Button fx:id="btnCalendar" maxWidth="Infinity" prefHeight="26.0" prefWidth="173.0" styleClass="menu-button" text="Calendario" />
 
             <!-- CALENDARIO -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button" text="Torneos activos" />
+            <Button fx:id="btnActiveTournaments" maxWidth="Infinity" prefHeight="32.0" prefWidth="173.0" styleClass="menu-button" text="Torneos activos" />
 
-            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
+            <Button fx:id="btnTechSupport" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
 
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
+            <Button fx:id="btnInventory" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="173.0" text="Inventario" textAlignment="CENTER" />
 
             <!-- ESPACIO -->
 
@@ -130,10 +130,6 @@
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <!-- NUEVA RESERVA -->
-
-                    <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
-
                 </HBox>
 
                 <Label text="proximos proyectos" />
@@ -152,11 +148,11 @@
 
                     <Label styleClass="section-title" text="CANCHAS DISPONIBLES" />
 
-                    <TextField prefWidth="170.0" promptText="🔎 DISCIPLINA O UBICACION" />
+                    <TextField fx:id="txtSearchCode" prefWidth="170.0" promptText="🔎 DISCIPLINA O UBICACION" />
 
                     <!-- FILTRO DISCIPLINA -->
 
-                    <ComboBox prefWidth="185" promptText="TODAS LAS CANCHAS" styleClass="filter" />
+                    <ComboBox fx:id="cmbCourtFilter" prefWidth="185" promptText="TODAS LAS CANCHAS" styleClass="filter" />
 
                 </HBox>
 
@@ -164,19 +160,19 @@
                 <!-- TABLA DE CANCHAS -->
                 <!-- ================================================= -->
 
-                <TableView styleClass="sports-table" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tblCourts" styleClass="sports-table" VBox.vgrow="ALWAYS">
 
                     <columns>
 
-                        <TableColumn prefWidth="180" text="CANCHA" />
+                        <TableColumn prefWidth="107.0" text="CANCHA" />
 
-                        <TableColumn prefWidth="180" text="DISCIPLINA" />
+                        <TableColumn prefWidth="134.0" text="DISCIPLINA" />
 
-                        <TableColumn prefWidth="150" text="UBICACIÓN" />
+                        <TableColumn prefWidth="144.0" text="UBICACIÓN" />
 
-                        <TableColumn prefWidth="130" text="ESTADO" />
+                        <TableColumn prefWidth="165.0" text="ESTADO" />
 
-                        <TableColumn prefWidth="150" text="ACCIONES" />
+                        <TableColumn prefWidth="240.0" text="ACCIONES" />
 
                     </columns>
 
