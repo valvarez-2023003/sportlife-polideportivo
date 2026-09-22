@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- ===================================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ===================================================== -->
+
+    <left>
+
+        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="10" left="10" right="8" top="15" />
+            </padding>
+
+
+            <!-- LOGO -->
+
+            <HBox alignment="CENTER_LEFT" spacing="5">
+
+                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image></ImageView>
+
+                <VBox spacing="0" />
+
+            </HBox>
+         <Region prefHeight="61.0" prefWidth="173.0" />
+         <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="173.0" text="AGREGAR NUEVA CANCHA" />
+         <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="173.0" text="ELIMINAR" />
+
+
+            <!-- RESERVAS -->
+
+            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="EDITAR" />
+
+
+            <!-- ESPACIO -->
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <!-- CERRAR SESION -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+
+        </VBox>
+
+    </left>
+
+
+    <!-- ===================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <center>
+
+        <VBox spacing="12" styleClass="content">
+
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="15" />
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- ENCABEZADO -->
+            <!-- ================================================= -->
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+
+                <Label styleClass="header-title" text="Gestión de Gerencía" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+
+                <!-- ADMINISTRADOR -->
+
+                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
+
+                    <Label styleClass="user-icon" text="●" />
+
+                    <Label styleClass="user-text" text="Administrador" />
+
+                </HBox>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- PANEL BLANCO -->
+            <!-- ================================================= -->
+
+            <VBox prefHeight="470.0" prefWidth="729.0" spacing="10" styleClass="main-panel">
+
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+
+
+                <!-- ================================================= -->
+                <!-- BIENVENIDA -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <Label styleClass="welcome-title" text="Gestión de Canchas" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- DESCRIPCIÓN -->
+                <!-- ================================================= -->
+
+                <Label styleClass="description" />
+            <GridPane prefHeight="80.0" prefWidth="703.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="140.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="215.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="36.0" minHeight="9.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="27.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="FILTRAR CANCHAS" />
+                  <Label text="DISCIPLINAS" GridPane.columnIndex="1" />
+                  <ComboBox prefWidth="150.0" promptText="FILTRAR" GridPane.rowIndex="1" />
+                  <ComboBox prefWidth="150.0" promptText="FILTRAR" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+
+
+                <!-- ================================================= -->
+                <!-- TÍTULO Y FILTROS -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT" spacing="10" />
+
+
+                <!-- ================================================= -->
+                <!-- TABLA DE CANCHAS -->
+                <!-- ================================================= -->
+
+                <TableView prefHeight="291.0" prefWidth="583.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn prefWidth="91.0" text="ID CANCHA" />
+
+                        <TableColumn prefWidth="120.0" text="NOMBRE" />
+
+                        <TableColumn prefWidth="158.0" text="DISCIPLINA" />
+
+                        <TableColumn prefWidth="99.0" text="ESTADO" />
+                  <TableColumn prefWidth="247.0" text="DESCRIPCION" />
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>

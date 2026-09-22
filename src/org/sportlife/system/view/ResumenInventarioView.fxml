@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- ===================================================== -->
+    <!-- MENU LATERAL -->
+    <!-- ===================================================== -->
+
+    <left>
+
+        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="10" left="10" right="8" top="15" />
+            </padding>
+
+
+            <!-- LOGO -->
+
+            <HBox alignment="CENTER_LEFT" spacing="5">
+
+                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
+               <image>
+                  <Image url="@../../logo.png" />
+               </image></ImageView>
+
+                <VBox spacing="0" />
+
+            </HBox>
+         <Region prefHeight="61.0" prefWidth="173.0" />
+         <Button mnemonicParsing="false" text="AGREGAR NUEVO ARTICULO" />
+         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="171.0" text="EDITAR ESTADO  ARTICULO" />
+
+
+            <!-- ESPACIO -->
+
+            <Region VBox.vgrow="ALWAYS" />
+
+
+            <!-- CERRAR SESION -->
+
+            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+
+        </VBox>
+
+    </left>
+
+
+    <!-- ===================================================== -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ===================================================== -->
+
+    <center>
+
+        <VBox spacing="12" styleClass="content">
+
+            <padding>
+                <Insets bottom="10" left="15" right="15" top="15" />
+            </padding>
+
+
+            <!-- ================================================= -->
+            <!-- ENCABEZADO -->
+            <!-- ================================================= -->
+
+            <HBox alignment="CENTER_LEFT" spacing="10">
+
+                <Label styleClass="header-title" text="Gestión de Inventario" />
+
+                <Region HBox.hgrow="ALWAYS" />
+
+
+                <!-- ADMINISTRADOR -->
+
+                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
+
+                    <Label styleClass="user-icon" text="●" />
+
+                    <Label styleClass="user-text" text="Gerente" />
+
+                </HBox>
+
+            </HBox>
+
+
+            <!-- ================================================= -->
+            <!-- PANEL BLANCO -->
+            <!-- ================================================= -->
+
+            <VBox prefHeight="470.0" prefWidth="729.0" spacing="10" styleClass="main-panel">
+
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+
+
+                <!-- ================================================= -->
+                <!-- BIENVENIDA -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <Label styleClass="welcome-title" text="Resumen De Inventario" />
+
+                    <Region HBox.hgrow="ALWAYS" />
+
+                </HBox>
+
+
+                <!-- ================================================= -->
+                <!-- DESCRIPCIÓN -->
+                <!-- ================================================= -->
+
+                <Label styleClass="description" text="Supervisa el estado de los tikets y la carga del equipo" />
+            <GridPane prefHeight="36.0" prefWidth="700.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="FILTRAR INVENTARIO" />
+                  <Label text="CATEGORIA" GridPane.columnIndex="2" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox prefWidth="150.0" GridPane.columnIndex="3" />
+               </children>
+            </GridPane>
+
+
+                <!-- ================================================= -->
+                <!-- TÍTULO Y FILTROS -->
+                <!-- ================================================= -->
+
+                <HBox alignment="CENTER_LEFT" spacing="10" />
+
+
+                <!-- ================================================= -->
+                <!-- TABLA DE CANCHAS -->
+                <!-- ================================================= -->
+
+                <TableView prefHeight="291.0" prefWidth="583.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
+
+                    <columns>
+
+                        <TableColumn prefWidth="44.0" text="SKU" />
+
+                        <TableColumn prefWidth="176.0" text="ARTICULO" />
+
+                        <TableColumn prefWidth="119.0" text="UBICACION" />
+
+                        <TableColumn prefWidth="169.0" text="CANTIDAD DISPONIBLE" />
+                  <TableColumn prefWidth="87.0" text="ESTADO" />
+                  <TableColumn prefWidth="113.0" text="FECHA" />
+
+                    </columns>
+
+                </TableView>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+</BorderPane>
