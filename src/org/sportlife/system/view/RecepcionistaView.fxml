@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RecepcionistaController">
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" stylesheets="@../resource/styles/RecepcionistaStyle.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RecepcionistaController">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
@@ -34,35 +34,33 @@
 
                 <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
                     <image>
-                        <Image url="@../../logo.png" />
+                        <Image url="@../resource/images/logo.png" />
                     </image>
                 </ImageView>
 
                 <VBox spacing="0" />
 
             </HBox>
-
-            <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
+         <Region prefHeight="82.0" prefWidth="173.0" />
 
             <!-- INICIO -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
+            <Button fx:id="btnHome" maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
 
             <!-- RESERVAS -->
 
-            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="RESERVAS" />
+            <Button fx:id="btnReservations" maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="RESERVAS" />
 
             <!-- CANCHAS -->
 
-            <Button maxWidth="Infinity" prefHeight="28.0" prefWidth="173.0" styleClass="menu-button" text="CLIENTES" />
+            <Button fx:id="btnClients" maxWidth="Infinity" prefHeight="28.0" prefWidth="173.0" styleClass="menu-button" text="CLIENTES" />
 
             <!-- CALENDARIO -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
+            <Button fx:id="btnCalendar" maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
 
-            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
-
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
+            <Button fx:id="btnSupportInbox" mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
+         <Region prefHeight="103.0" prefWidth="173.0" />
 
             <!-- ESPACIO -->
 
@@ -130,10 +128,6 @@
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <!-- NUEVA RESERVA -->
-
-                    <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
-
                 </HBox>
 
                 <!-- ================================================= -->
@@ -150,11 +144,11 @@
 
                     <Label styleClass="section-title" text="Buscar Reservacion por Cliente" />
 
-                    <TextField prefWidth="170.0" promptText="🔎 Buscar Reservacion" />
+                    <TextField fx:id="txtSearchReservation" prefWidth="170.0" promptText="🔎 Buscar Reservacion" />
 
                     <!-- FILTRO DISCIPLINA -->
 
-                    <ComboBox prefWidth="185" promptText="TODAS LAS RESERVACIONES" styleClass="filter" />
+                    <ComboBox fx:id="cmbReservationFilter" prefWidth="185" promptText="TODAS LAS RESERVACIONES" styleClass="filter" />
 
                 </HBox>
 
@@ -162,19 +156,18 @@
                 <!-- TABLA DE CANCHAS -->
                 <!-- ================================================= -->
 
-                <TableView styleClass="sports-table" VBox.vgrow="ALWAYS">
+                <TableView prefHeight="461.0" prefWidth="688.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
 
                     <columns>
 
-                        <TableColumn prefWidth="180" text="CANCHA" />
+                        <TableColumn prefWidth="133.0" text="CLIENTE" />
 
-                        <TableColumn prefWidth="180" text="DISCIPLINA" />
+                        <TableColumn prefWidth="157.0" text="NUM RESERVACION" />
 
-                        <TableColumn prefWidth="150" text="UBICACIÓN" />
+                        <TableColumn prefWidth="124.0" text="CANCHA" />
 
-                        <TableColumn prefWidth="130" text="ESTADO" />
-
-                        <TableColumn prefWidth="150" text="ACCIONES" />
+                        <TableColumn minWidth="0.0" prefWidth="144.0" text="DISCIPLINA" />
+                  <TableColumn prefWidth="150.0" text="TOTAL DE HORAS" />
 
                     </columns>
 

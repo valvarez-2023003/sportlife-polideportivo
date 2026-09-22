@@ -1,0 +1,211 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 sept 2026, 10:29:39
+    Author     : informatica
+*/
+
+/* ==========================================================================
+   1. FONDO GENERAL Y CONTENEDOR PRINCIPAL
+   ========================================================================== */
+
+.root, .admin-root {
+    -fx-background-color: #0E0F11;
+}
+
+/* Header Título (Panel de Recepción) */
+.header-title {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Badge Usuario Gerente/Recepcionista */
+.user-box {
+    -fx-background-color: #000000;
+    -fx-background-radius: 20px;
+    -fx-padding: 4 12 4 12;
+}
+
+.user-icon {
+    -fx-text-fill: #58B32B;
+    -fx-font-size: 14px;
+}
+
+.user-text {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+}
+
+/* ==========================================================================
+   2. MENÚ LATERAL Y BOTONES DE NAVEGACIÓN
+   ========================================================================== */
+
+.sidebar {
+    -fx-background-color: transparent;
+}
+
+/* Botón Activo Verde (INICIO) */
+.menu-button-selected, #btnHome {
+    -fx-background-color: #58B32B;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: transparent;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.menu-button-selected:hover, #btnHome:hover {
+    -fx-background-color: #499923;
+}
+
+/* Botones Secundarios del Menú (Negros con Borde Verde) */
+.menu-button,
+#btnReservations,
+#btnClients,
+#btnCalendar,
+#btnSupportInbox,
+#btnInventory,
+#btnLogin {
+    -fx-background-color: #000000;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+    -fx-wrap-text: true;
+}
+
+.menu-button:hover,
+#btnReservations:hover,
+#btnClients:hover,
+#btnCalendar:hover,
+#btnSupportInbox:hover,
+#btnInventory:hover,
+#btnLogin:hover {
+    -fx-background-color: #1A2E05;
+}
+
+/* ==========================================================================
+   3. PANEL CENTRAL BLANCO Y BUSCADORES
+   ========================================================================== */
+
+.main-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+}
+
+.welcome-title {
+    -fx-font-family: "Courier New", monospace, sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.description {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+.section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #000000;
+}
+
+/* Botón Nueva Reserva */
+.new-reservation-button, #btnNewReservation {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #444444;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-cursor: hand;
+}
+
+/* Caja de Texto (Búsqueda) */
+#txtSearchReservation, .text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-font-size: 10px;
+    -fx-padding: 4 10 4 10;
+}
+
+/* ComboBox Filtro */
+.filter, #cmbReservationFilter, .combo-box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.filter .label, #cmbReservationFilter .label, .combo-box .label {
+    -fx-text-fill: #444444;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   4. TABLA DE RESERVAS (FILAS CÁPSULA REDONDEADAS)
+   ========================================================================== */
+
+.sports-table, #tblReservations {
+    -fx-background-color: transparent;
+    -fx-base: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+}
+
+.sports-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.sports-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 4 0 4 0;
+}
+
+.sports-table .column-header .label {
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-alignment: CENTER;
+}
+
+/* Cápsulas de las filas de la tabla */
+.sports-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-background-insets: 3 0 3 0;
+    -fx-border-insets: 3 0 3 0;
+    -fx-padding: 2 5 2 5;
+}
+
+.sports-table .table-cell {
+    -fx-border-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-alignment: CENTER;
+}
