@@ -10,6 +10,10 @@ public class ConexionDB {
     private Connection connection;
 
     private ConexionDB() {
+        conectar();
+    }
+
+    private void conectar() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
@@ -36,6 +40,14 @@ public class ConexionDB {
     }
 
     public Connection getConnection() {
+        try {
+            // Si la conexión es nula o ya fue cerrada por un try-with-resources, la recreamos
+            if (connection == null || connection.isClosed()) {
+                conectar();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al verificar el estado de la conexión: " + e.getMessage());
+        }
         return connection;
     }
 
