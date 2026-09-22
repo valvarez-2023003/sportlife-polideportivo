@@ -28,48 +28,45 @@
                 <Insets bottom="10" left="10" right="8" top="15" />
             </padding>
 
-
             <!-- LOGO -->
 
             <HBox alignment="CENTER_LEFT" spacing="5">
 
                 <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../logo.png" />
-               </image></ImageView>
+                    <image>
+                        <Image url="@../../logo.png" />
+                    </image>
+                </ImageView>
 
                 <VBox spacing="0" />
 
             </HBox>
-         <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
 
+            <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
 
             <!-- INICIO -->
 
             <Button maxWidth="Infinity" styleClass="menu-button-selected" text="Gestión de personal " />
 
-
             <!-- RESERVAS -->
 
             <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="programas y eventos" />
-
 
             <!-- CANCHAS -->
 
             <Button maxWidth="Infinity" styleClass="menu-button" text="Calendario" />
 
-
             <!-- CALENDARIO -->
 
             <Button maxWidth="Infinity" styleClass="menu-button" text="Torneos activos" />
-         <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
-         <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
 
+            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
+
+            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
 
             <!-- ESPACIO -->
 
             <Region VBox.vgrow="ALWAYS" />
-
 
             <!-- CERRAR SESION -->
 
@@ -78,7 +75,6 @@
         </VBox>
 
     </left>
-
 
     <!-- ===================================================== -->
     <!-- CONTENIDO PRINCIPAL -->
@@ -92,7 +88,6 @@
                 <Insets bottom="10" left="15" right="15" top="15" />
             </padding>
 
-
             <!-- ================================================= -->
             <!-- ENCABEZADO -->
             <!-- ================================================= -->
@@ -102,7 +97,6 @@
                 <Label styleClass="header-title" text="Panel de Gerente" />
 
                 <Region HBox.hgrow="ALWAYS" />
-
 
                 <!-- ADMINISTRADOR -->
 
@@ -116,7 +110,6 @@
 
             </HBox>
 
-
             <!-- ================================================= -->
             <!-- PANEL BLANCO -->
             <!-- ================================================= -->
@@ -126,7 +119,6 @@
                 <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
-
 
                 <!-- ================================================= -->
                 <!-- BIENVENIDA -->
@@ -138,21 +130,19 @@
 
                     <Region HBox.hgrow="ALWAYS" />
 
-
                     <!-- NUEVA RESERVA -->
 
                     <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
 
                 </HBox>
-            <Label text="proximos proyectos" />
 
+                <Label text="proximos proyectos" />
 
                 <!-- ================================================= -->
                 <!-- DESCRIPCIÓN -->
                 <!-- ================================================= -->
 
                 <Label styleClass="description" text="Desde aquí puedes gestionar las canchas y reservas del complejo deportivo." />
-
 
                 <!-- ================================================= -->
                 <!-- TÍTULO Y FILTROS -->
@@ -161,15 +151,14 @@
                 <HBox alignment="CENTER_LEFT" spacing="10">
 
                     <Label styleClass="section-title" text="CANCHAS DISPONIBLES" />
-               <TextField prefWidth="170.0" promptText="🔎 DISCIPLINA O UBICACION" />
 
+                    <TextField prefWidth="170.0" promptText="🔎 DISCIPLINA O UBICACION" />
 
                     <!-- FILTRO DISCIPLINA -->
 
                     <ComboBox prefWidth="185" promptText="TODAS LAS CANCHAS" styleClass="filter" />
 
                 </HBox>
-
 
                 <!-- ================================================= -->
                 <!-- TABLA DE CANCHAS -->

@@ -21,6 +21,7 @@
 
                 <image>
                     <Image url="@../resource/images/fondoregister.jpg" />
+
                 </image>
 
             </ImageView>

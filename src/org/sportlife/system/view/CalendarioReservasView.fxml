@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,11 +9,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RecepcionistaController">
+<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
@@ -28,53 +30,36 @@
                 <Insets bottom="10" left="10" right="8" top="15" />
             </padding>
 
+
             <!-- LOGO -->
 
             <HBox alignment="CENTER_LEFT" spacing="5">
 
                 <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
-                    <image>
-                        <Image url="@../../logo.png" />
-                    </image>
-                </ImageView>
+               <image>
+                  <Image url="@../../logo.png" />
+               </image></ImageView>
 
                 <VBox spacing="0" />
 
             </HBox>
+         <Region prefHeight="61.0" prefWidth="173.0" />
 
-            <Button alignment="CENTER" mnemonicParsing="false" text="INICIO" textAlignment="CENTER" />
-
-            <!-- INICIO -->
-
-            <Button maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
-
-            <!-- RESERVAS -->
-
-            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="RESERVAS" />
-
-            <!-- CANCHAS -->
-
-            <Button maxWidth="Infinity" prefHeight="28.0" prefWidth="173.0" styleClass="menu-button" text="CLIENTES" />
-
-            <!-- CALENDARIO -->
-
-            <Button maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
-
-            <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="173.0" text="bandeja de soporte tecnico" />
-
-            <Button contentDisplay="CENTER" mnemonicParsing="false" text="Inventario" textAlignment="CENTER" />
 
             <!-- ESPACIO -->
 
             <Region VBox.vgrow="ALWAYS" />
+         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="EDITAR" />
+
 
             <!-- CERRAR SESION -->
 
-            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#returnToLogin" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
 
         </VBox>
 
     </left>
+
 
     <!-- ===================================================== -->
     <!-- CONTENIDO PRINCIPAL -->
@@ -88,15 +73,17 @@
                 <Insets bottom="10" left="15" right="15" top="15" />
             </padding>
 
+
             <!-- ================================================= -->
             <!-- ENCABEZADO -->
             <!-- ================================================= -->
 
             <HBox alignment="CENTER_LEFT" spacing="10">
 
-                <Label styleClass="header-title" text="Panel de Recepcionista" />
+                <Label styleClass="header-title" text="Calendario" />
 
                 <Region HBox.hgrow="ALWAYS" />
+
 
                 <!-- ADMINISTRADOR -->
 
@@ -104,11 +91,12 @@
 
                     <Label styleClass="user-icon" text="●" />
 
-                    <Label styleClass="user-text" text="GERENTE" />
+                    <Label styleClass="user-text" text="Administrador" />
 
                 </HBox>
 
             </HBox>
+
 
             <!-- ================================================= -->
             <!-- PANEL BLANCO -->
@@ -120,61 +108,63 @@
                     <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
 
+
                 <!-- ================================================= -->
                 <!-- BIENVENIDA -->
                 <!-- ================================================= -->
 
                 <HBox alignment="CENTER_LEFT">
 
-                    <Label styleClass="welcome-title" text="Bienvenido, Recepcionista!" />
+                    <Label styleClass="welcome-title" text="Calendario de reservas" />
 
                     <Region HBox.hgrow="ALWAYS" />
 
-                    <!-- NUEVA RESERVA -->
-
-                    <Button styleClass="new-reservation-button" text="＋  NUEVA RESERVA" />
-
                 </HBox>
+            <Region prefHeight="92.0" prefWidth="709.0" />
+            <GridPane prefHeight="35.0" prefWidth="685.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="BUSCAR POR CLIENTE" />
+                  <Label text="CANCHA" GridPane.columnIndex="2" />
+                  <TextField GridPane.columnIndex="1" />
+                  <TextField GridPane.columnIndex="3" />
+               </children>
+            </GridPane>
+            <Region prefHeight="118.0" prefWidth="709.0" />
 
-                <!-- ================================================= -->
-                <!-- DESCRIPCIÓN -->
-                <!-- ================================================= -->
-
-                <Label styleClass="description" text="Desde aquí puedes gestionar las canchas y reservas del complejo deportivo." />
 
                 <!-- ================================================= -->
                 <!-- TÍTULO Y FILTROS -->
                 <!-- ================================================= -->
 
-                <HBox alignment="CENTER_LEFT" spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10" />
 
-                    <Label styleClass="section-title" text="Buscar Reservacion por Cliente" />
-
-                    <TextField prefWidth="170.0" promptText="🔎 Buscar Reservacion" />
-
-                    <!-- FILTRO DISCIPLINA -->
-
-                    <ComboBox prefWidth="185" promptText="TODAS LAS RESERVACIONES" styleClass="filter" />
-
-                </HBox>
 
                 <!-- ================================================= -->
                 <!-- TABLA DE CANCHAS -->
                 <!-- ================================================= -->
 
-                <TableView styleClass="sports-table" VBox.vgrow="ALWAYS">
+                <TableView prefHeight="345.0" prefWidth="709.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
 
                     <columns>
 
-                        <TableColumn prefWidth="180" text="CANCHA" />
+                        <TableColumn prefWidth="70.0" text="HORA" />
 
-                        <TableColumn prefWidth="180" text="DISCIPLINA" />
+                        <TableColumn prefWidth="132.0" text="LUNES" />
 
-                        <TableColumn prefWidth="150" text="UBICACIÓN" />
+                        <TableColumn prefWidth="118.0" text="MARTES" />
 
-                        <TableColumn prefWidth="130" text="ESTADO" />
-
-                        <TableColumn prefWidth="150" text="ACCIONES" />
+                        <TableColumn prefWidth="114.0" text="MIERCOLES" />
+                  <TableColumn prefWidth="128.0" text="JUEVES" />
+                  <TableColumn prefWidth="146.0" text="VIERNES" />
 
                     </columns>
 
