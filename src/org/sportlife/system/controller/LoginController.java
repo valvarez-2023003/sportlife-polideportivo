@@ -53,17 +53,13 @@ public class LoginController implements Initializable {
         String password = pwdPassword.getText().trim();
 
         if(validations.emptyText(usernameOrEmail) || validations.emptyText(password)){
-            alertInfo.viewAlert("WARNING", "Campos Vacíos", "Error de Validación", "Por favor, ingrese su usuario/correo y contraseña.");
+            alertInfo.viewAlert("ERROR", "Campos Vacíos", "Error de Validación", "Por favor, ingrese su nombre de usuario o correo y contraseña.");
             return;
         }
 
         AuthResponse response = userService.authenticate(usernameOrEmail, password);
 
-        switch(response.getStatus()){
-            case CREDENTIALS_EMPTY:
-                alertInfo.viewAlert("WARNING", "Campos Vacíos", "Error de Validación", "Por favor, ingrese su usuario/correo y contraseña.");
-                break;
-                
+        switch(response.getStatus()){ 
             case USER_NOT_FOUND:
                 alertInfo.viewAlert("ERROR", "Usuario No Encontrado", "Error de Autenticación", "El nombre de usuario o correo no existe en el sistema.");
                 txtUserName.requestFocus();

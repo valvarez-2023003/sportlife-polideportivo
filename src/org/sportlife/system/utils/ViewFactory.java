@@ -45,7 +45,7 @@ public class ViewFactory {
                 case "register", "registerview" ->{
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("REGISTRO - SPORTLIFE");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
-                    scene = loadFileFXML("RegisterView.fxml", 950, 581);
+                    scene = loadFileFXML("RegisterView.fxml", 950, 600);
                 }
                 case "gerente" ->{
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("SPORTLIFE - PANEL GERENTE");
@@ -65,7 +65,7 @@ public class ViewFactory {
                 case "user", "formulario" ->{
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("SPORTLIFE - FORMULARIO CLIENTE");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
-                    scene = loadFileFXML("FormularioView.fxml", 800, 500);
+                    scene = loadFileFXML("FormularioView.fxml", 1000, 500);
                 }
                 default ->{
                     scene = loadFileFXML("LoginView.fxml", 779, 528);

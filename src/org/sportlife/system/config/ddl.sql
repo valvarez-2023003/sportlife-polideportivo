@@ -1048,10 +1048,11 @@ CALL sp_crear_soporte(
     'Al intentar registrar una reserva aparece un mensaje de error.'
 );
 
-CALL sp_get_calendario_reservas();
 CALL sp_get_administrative_staff();
 CALL sp_get_registered_customers();
 CALL sp_get_all_users();
+
+CALL sp_get_calendario_reservas();
 CALL sp_get_available_canchas();
 CALL sp_get_all_reservas();
 CALL sp_get_inventario();

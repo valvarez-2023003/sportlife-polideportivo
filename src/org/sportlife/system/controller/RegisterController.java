@@ -73,17 +73,17 @@ public class RegisterController implements Initializable {
         }
 
         if(!validations.validateLengthText(userName, 25)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre de usuario no aceptable, excedió la cantidad de caracteres.");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre de usuario excedió la cantidad de caracteres (Max.25).");
             return;
         }
         
         if(!validations.validateLengthText(name, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre excedió en caracteres, no aceptado.");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre excedió la cantidad de caracteres (Max.50).");
             return;
         }
         
         if(!validations.validateLengthText(lastName, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Apellido excedió en caracteres, no aceptado.");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Apellido excedió la cantidad de caracteres (Max.50).");
             return;
         }
 
@@ -93,7 +93,7 @@ public class RegisterController implements Initializable {
         }
         
         if(!validations.validateLengthText(phone, 10)){
-           alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Número de teléfono excedió en caracteres, no aceptado.");
+           alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Número de teléfono excedió la cantidad de caracteres (Max.10).");
            return;
         }
         
@@ -115,7 +115,7 @@ public class RegisterController implements Initializable {
         UserStatus status = userService.registerCustomer(newCustomer);
 
         if(status == UserStatus.USER_CREATED){
-            alertInfo.viewAlert("INFO", "Registro Exitoso", "Éxito", "El usuario ha sido registrado correctamente. Ahora puede iniciar sesión.");
+            alertInfo.viewAlert("INFO", "Registro Exitoso", "Éxito", "El usuario ha sido registrado correctamente.");
             viewFactory.viewLogin(); // Redirige al login
         } else {
             alertInfo.viewAlert("ERROR", "Error de Registro", "Error de Base de Datos", "No se pudo registrar el usuario. Intente nuevamente o contacte al administrador.");
