@@ -34,6 +34,27 @@ public class UserRepository implements UserInterface {
         String sql = "{CALL sp_verify_user_password(?, ?)}";
         return executeQuery(sql, usernameOrEmail, password);
     }
+    
+    @Override
+    public boolean registerCustomer(User user){
+        String sql = "{CALL sp_register_customer(?, ?, ?, ?, ?, ?)}";
+        try(Connection conn = conexionDB.getConnection();
+             CallableStatement callableStatement = conn.prepareCall(sql)){
+            
+            callableStatement.setString(1, user.getName());
+            callableStatement.setString(2, user.getLastname());
+            callableStatement.setString(3, user.getEmail());
+            callableStatement.setString(4, user.getUser());
+            callableStatement.setString(5, user.getPassword());
+            callableStatement.setString(6, user.getPhone()); // Teléfono
+            
+            callableStatement.execute();
+            return true;
+        }catch (SQLException e){
+            System.err.println("Error al registrar cliente en UserRepository: " + e.getMessage());
+            return false;
+        }
+    }
 
     // Método auxiliar para evitar repetir código de JDBC
     private User executeQuery(String sql, String param1, String param2){

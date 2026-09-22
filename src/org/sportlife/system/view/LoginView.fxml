@@ -26,14 +26,14 @@
             </VBox>
             <VBox alignment="CENTER" layoutY="54.0" prefHeight="535.0" prefWidth="430.0" spacing="8.0">
                <children>
-                  <Label layoutY="54.0" prefHeight="53.0" prefWidth="135.0" text="Log in SPORTLIFE">
+                  <Label layoutY="54.0" prefHeight="57.0" prefWidth="190.0" text="Iniciar Sesión en SPORTLIFE" VBox.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </Label>
                   <Label prefHeight="33.0" prefWidth="62.0" />
-                  <TextField fx:id="txtUserName" promptText="UserName on Email" />
-                  <PasswordField fx:id="pwdPassword" promptText="Password" />
+                  <TextField fx:id="txtUserName" promptText="Nombre de Usuario o Correo" />
+                  <PasswordField fx:id="pwdPassword" promptText="Contraseña" />
                   <Button fx:id="btnLogIn" mnemonicParsing="false" onMouseClicked="#onLogin" text="Iniciar Sesion" />
                   <Button fx:id="btnCreatOnAccount" mnemonicParsing="false" onMouseClicked="#onRegister" text="Crear cuenta" />
                </children>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RegisterController">
+<BorderPane prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RegisterController">
 
     <!-- PARTE IZQUIERDA -->
     <left>
@@ -40,33 +40,35 @@
 
 
             <!-- TITULO -->
-            <Label styleClass="title" text="Sign up" />
-
-
-            <!-- NOMBRE -->
-            <Label styleClass="field-label" text="Full Name" />
-
-            <TextField fx:id="txtFullName" promptText="Daniel Gallego" styleClass="input" />
-         <Label text="UserName" />
+            <Label styleClass="title" text="Registrarse" />
+         <Label text="Nombre de Usuario" />
          <TextField fx:id="txtUserName" promptText="dGallego" />
 
 
+            <!-- NOMBRE -->
+            <Label styleClass="field-label" text="Nombres" />
+
+            <TextField fx:id="txtName" promptText="Daniel Gallego" styleClass="input" />
+         <Label text="Apellidos" />
+         <TextField fx:id="txtLastName" layoutX="65.0" layoutY="85.0" promptText="Daniel Gallego" styleClass="input" />
+
+
             <!-- EMAIL -->
-            <Label styleClass="field-label" text="Email Address" />
+            <Label styleClass="field-label" text="Correo" />
 
             <TextField fx:id="txtEmail" promptText="hello@reallygreatsite.com" />
-         <Label text="Number Phone" />
+         <Label text="Número de Teléfono" />
          <TextField fx:id="txtNumberPhone" promptText="+502 5550-1234" />
 
 
             <!-- PASSWORD -->
-            <Label styleClass="field-label" text="Password" />
+            <Label styleClass="field-label" text="Contraseña" />
 
             <PasswordField fx:id="pwdPassword" promptText="••••••••••" />
 
 
             <!-- CONFIRM PASSWORD -->
-            <Label styleClass="field-label" text="Confirm Password" />
+            <Label styleClass="field-label" text="Confirmar Contraseña" />
 
             <PasswordField fx:id="pwdConfirmPassword" promptText="••••••••••" />
 
@@ -76,7 +78,7 @@
 
 
             <!-- BOTON CREAR CUENTA -->
-            <Button fx:id="btnCreateAccount" maxWidth="Infinity" onMouseClicked="#onCreateUser" styleClass="create-button" text="Create Account" />
+            <Button fx:id="btnCreateAccount" maxWidth="Infinity" onMouseClicked="#onCreateUser" styleClass="create-button" text="Crear Usuario" />
 
 
             <!-- LINEA OR -->
@@ -84,7 +86,7 @@
 
 
             <!-- LOGIN -->
-            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#onCancel" styleClass="login-button" text="Log in" />
+            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#onCancel" styleClass="login-button" text="Ir al Login" />
 
         </VBox>
 

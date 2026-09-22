@@ -14,4 +14,5 @@ import org.sportlife.system.model.User;
 public interface UserInterface {
     User checkUserExistsStrict(String usernameOrEmail);
     User verifyUserPassword(String usernameOrEmail, String password);
+    boolean registerCustomer(User user);
 }

@@ -42,9 +42,18 @@ public class UserService {
                 return new AuthResponse(UserStatus.INVALID_PASSWORD, null);
             }
             
-        }catch (Exception e){
+        }catch(Exception e){
             e.printStackTrace();
             return new AuthResponse(UserStatus.ERROR_LOGIN, null);
+        }
+    }
+    public UserStatus registerCustomer(User user){
+        try{
+            boolean success = userRepository.registerCustomer(user);
+            return success ? UserStatus.USER_CREATED : UserStatus.ERROR_USER_CREATE;
+        }catch (Exception e){
+            e.printStackTrace();
+            return UserStatus.ERROR_USER_CREATE;
         }
     }
 }

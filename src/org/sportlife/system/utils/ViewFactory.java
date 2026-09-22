@@ -78,10 +78,10 @@ public class ViewFactory {
             System.err.println("Error al cargar la escena: " + nameFXML);
         }
     }
-    public void viewLogin() { 
+    public void viewLogin(){ 
         loadScene("login"); 
     }
-    public void viewRegister() { 
+    public void viewRegister(){ 
         loadScene("register"); 
     }
 }

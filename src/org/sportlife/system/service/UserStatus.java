@@ -14,5 +14,7 @@ public enum UserStatus {
     USER_NOT_FOUND,         // El usuario o correo no existe
     INVALID_PASSWORD,       // La contraseña es incorrecta
     CREDENTIALS_EMPTY,      // Campos vacíos
-    ERROR_LOGIN             // Error de conexión con la base de datos
+    ERROR_LOGIN,            // Error de conexión con la base de datos
+    USER_CREATED,
+    ERROR_USER_CREATE
 }

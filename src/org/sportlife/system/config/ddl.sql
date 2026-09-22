@@ -9,6 +9,7 @@ CREATE TABLE Users(
     user VARCHAR(25) NOT NULL,
     password VARCHAR(35) NOT NULL,
     role VARCHAR(20) NOT NULL DEFAULT 'User',
+    phone VARCHAR(10) NULL,
     id_user VARCHAR(36) NOT NULL,
     CONSTRAINT pk_users PRIMARY KEY (id_user)
 );
@@ -23,43 +24,49 @@ CREATE PROCEDURE sp_create_users(
     IN role_p VARCHAR(20)
 )
 BEGIN
-    INSERT INTO Users(name, lastname, email, user, password, role, id_user)
-    VALUES (name_p, lastname_p, email_p, user_p, password_p, role_p, UUID());
+    INSERT INTO Users(name, lastname, email, user, password, role, phone, id_user)
+    VALUES (name_p, lastname_p, email_p, user_p, password_p, role_p, NULL, UUID());
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_register_customer(
+    IN name_p VARCHAR(50),
+    IN lastname_p VARCHAR(50),
+    IN email_p VARCHAR(50),
+    IN user_p VARCHAR(25),
+    IN password_p VARCHAR(35),
+    IN phone_p VARCHAR(10)
+)
+BEGIN
+    INSERT INTO Users(name, lastname, email, user, password, role, phone, id_user)
+    VALUES (name_p, lastname_p, email_p, user_p, password_p, 'User', phone_p, UUID());
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_get_administrative_staff()
+BEGIN
+    SELECT id_user, name, lastname, email, user, password, role 
+    FROM Users
+    WHERE role IN ('Gerente', 'Administrador', 'Recepcionista');
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE sp_get_registered_customers()
+BEGIN
+    SELECT id_user, name, lastname, email, user, password, phone, role 
+    FROM Users
+    WHERE role = 'User';
 END $$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE sp_get_all_users()
 BEGIN
-    SELECT id_user, name, lastname, email, user, password, role 
+    SELECT id_user, name, lastname, email, user, password, phone, role 
     FROM Users;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE sp_update_users(
-    IN id_user_p VARCHAR(36),
-    IN name_p VARCHAR(50),
-    IN lastname_p VARCHAR(50),
-    IN email_p VARCHAR(50),
-    IN user_p VARCHAR(25),
-    IN password_p VARCHAR(35),
-    IN role_p VARCHAR(20)
-)
-BEGIN
-    UPDATE Users
-    SET name = name_p, lastname = lastname_p, email = email_p,
-        user = user_p, password = password_p, role = role_p
-    WHERE id_user = id_user_p;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-CREATE PROCEDURE sp_delete_users(
-    IN id_user_p VARCHAR(36)
-)
-BEGIN
-    DELETE FROM Users WHERE id_user = id_user_p;
 END $$
 DELIMITER ;
 
@@ -87,7 +94,15 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL sp_create_users("Cristofer","Ramos","cristoferramos@sportlife.gerencia.com","GerenteCR","@gerente#1","Gerente");
+CALL sp_create_users("Cristofer", "Ramos", "cristoferramos@sportlife.gerencia.com", "GerenteCR", "@gerente#1", "Gerente");
 CALL sp_create_users("Victor", "Alvarez", "victoralvarez@sportlife.administracion.com", "AdministradorVA", "@administrador#1", "Administrador");
 CALL sp_create_users("Pablo", "Rosales", "pablorosales@sportlife.recepcion.com", "RecepcionistaPR", "@recepcionista#1", "Recepcionista");
+
+CALL sp_register_customer("Kenneth", "Velasquez", "kenneth_12@gmail.com", "KVBryan", "@usuario#1", "55501234");
+CALL sp_register_customer("Joaquin", "Garcia", "joaquin_8@gmail.com", "JGabriel", "@usuario#2", "44332211");
+
+CALL sp_get_administrative_staff();
+
+CALL sp_get_registered_customers();
+
 CALL sp_get_all_users();

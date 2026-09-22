@@ -17,7 +17,7 @@ import org.sportlife.system.utils.ViewFactory;
  */
 
 public class AdminController implements Initializable {
-     private final ViewFactory viewFactory;
+    private final ViewFactory viewFactory;
 
     public AdminController(){
         this.viewFactory = new ViewFactory();
