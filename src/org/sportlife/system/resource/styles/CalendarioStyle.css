@@ -1,0 +1,213 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22/09/2026, 14:50:57
+    Author     : HP
+*/
+
+/* =========================================================
+   ESTILOS GENERALES Y ESTRUCTURA BASE
+   ========================================================= */
+
+.root-pane {
+    -fx-background-color: #111111;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.content-area {
+    -fx-background-color: #111111;
+}
+
+/* =========================================================
+   BARRA LATERAL (SIDEBAR)
+   ========================================================= */
+
+.sidebar {
+    -fx-background-color: #141414;
+    -fx-border-color: transparent #222222 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.logo-container {
+    -fx-padding: 0 0 10 0;
+}
+
+/* Botones laterales desactivados / normales */
+.btn-sidebar {
+    -fx-background-color: #1A1A1A;
+    -fx-text-fill: #E0E0E0;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+    -fx-padding: 10 12;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.btn-sidebar:hover {
+    -fx-background-color: #2A2A2A;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #444444;
+}
+
+/* Botón activo (Como "AGREGAR" en la imagen) */
+.btn-sidebar-active {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: #111111;
+    -fx-border-color: #E0E0E0;
+}
+
+.btn-sidebar-active:hover {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+
+/* Botón de Cerrar Sesión */
+.btn-logout {
+    -fx-background-color: #1A0D0E;
+    -fx-text-fill: #E53935;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-border-color: #4A151B;
+    -fx-border-width: 1px;
+    -fx-padding: 10 12;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #2C1215;
+    -fx-text-fill: #FF5252;
+    -fx-border-color: #6B1D25;
+}
+
+/* =========================================================
+   CABECERA SUPERIOR
+   ========================================================= */
+
+.header-title {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+}
+
+.user-badge {
+    -fx-padding: 0;
+}
+
+.user-badge-dot {
+    -fx-font-size: 8px;
+    -fx-text-fill: #2E7D32; /* Punto verde indicador */
+}
+
+.user-badge-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+/* =========================================================
+   TARJETA BLANCA PRINCIPAL
+   ========================================================= */
+
+.main-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+}
+
+.card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #222222;
+}
+
+.card-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #666666;
+}
+
+/* =========================================================
+   FORMULARIO Y INPUTS
+   ========================================================= */
+
+.input-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+}
+
+.input-field {
+    -fx-background-color: #F8F9FA;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 6 10;
+    -fx-font-size: 12px;
+    -fx-text-fill: #333333;
+    -fx-prompt-text-fill: #B0B0B0;
+}
+
+.input-field:focused {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #80BDFF;
+}
+
+/* =========================================================
+   TABLA DE DATOS
+   ========================================================= */
+
+.custom-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+/* Contenedor del encabezado */
+.custom-table .column-header-background {
+    -fx-background-color: #EAEAEA;
+    -fx-background-radius: 4px 4px 0 0;
+}
+
+.custom-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #D6D6D6 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 8 5;
+}
+
+.custom-table .column-header .label {
+    -fx-text-fill: #222222;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+/* Celdas de la tabla */
+.custom-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F0F0F0 transparent;
+}
+
+.custom-table .table-row-cell:odd {
+    -fx-background-color: #FAFAFA;
+}
+
+.custom-table .table-cell {
+    -fx-text-fill: #333333;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER;
+}
+
+/* Texto cuando la tabla no tiene datos */
+.custom-table .placeholder .label {
+    -fx-text-fill: #666666;
+    -fx-font-size: 12px;
+}

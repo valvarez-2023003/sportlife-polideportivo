@@ -16,47 +16,33 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="pnlRoot" prefHeight="580.0" prefWidth="980.0" styleClass="admin-root" stylesheets="@../resource/styles/InventarioStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
     <!-- ===================================================== -->
 
     <left>
-
-        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
-
+        <VBox fx:id="pnlSidebar" prefWidth="200.0" spacing="15.0" styleClass="sidebar">
             <padding>
-                <Insets bottom="10" left="10" right="8" top="15" />
+                <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
             </padding>
 
-
             <!-- LOGO -->
-
-            <HBox alignment="CENTER_LEFT" spacing="5">
-
-                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../logo.png" />
-               </image></ImageView>
-
-                <VBox spacing="0" />
-
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <ImageView fx:id="imgLogo" fitHeight="45.0" fitWidth="150.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../resource/images/logo.png" />
+                    </image>
+                </ImageView>
             </HBox>
-         <Region prefHeight="61.0" prefWidth="173.0" />
 
-
-            <!-- ESPACIO -->
-
+            <!-- ESPACIO FLEXIBLE -->
             <Region VBox.vgrow="ALWAYS" />
 
-
             <!-- CERRAR SESION -->
-
-            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
-
+            <Button fx:id="btnLogout" onMouseClicked="#onLogout" maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
         </VBox>
-
     </left>
 
 
@@ -65,119 +51,82 @@
     <!-- ===================================================== -->
 
     <center>
-
-        <VBox spacing="12" styleClass="content">
-
+        <VBox fx:id="pnlContent" spacing="15.0" styleClass="content">
             <padding>
-                <Insets bottom="10" left="15" right="15" top="15" />
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
             </padding>
-
 
             <!-- ================================================= -->
             <!-- ENCABEZADO -->
             <!-- ================================================= -->
 
-            <HBox alignment="CENTER_LEFT" spacing="10">
-
-                <Label styleClass="header-title" text="Gestión de Inventario" />
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label fx:id="lblHeaderTitle" styleClass="header-title" text="Gestión de Inventario" />
 
                 <Region HBox.hgrow="ALWAYS" />
 
-
-                <!-- ADMINISTRADOR -->
-
-                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
-
-                    <Label styleClass="user-icon" text="●" />
-
-                    <Label styleClass="user-text" text="Gerente" />
-
+                <!-- USUARIO / GERENTE -->
+                <HBox alignment="CENTER" spacing="8.0" styleClass="user-box">
+                    <Label fx:id="lblUserIcon" styleClass="user-icon" text="●" />
+                    <Label fx:id="lblUserRole" styleClass="user-text" text="GERENTE" />
                 </HBox>
-
             </HBox>
 
 
             <!-- ================================================= -->
-            <!-- PANEL BLANCO -->
+            <!-- PANEL BLANCO PRINCIPAL -->
             <!-- ================================================= -->
 
-            <VBox prefHeight="470.0" prefWidth="729.0" spacing="10" styleClass="main-panel">
-
+            <VBox fx:id="pnlMain" spacing="12.0" styleClass="main-panel" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
+                    <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
                 </padding>
 
-
-                <!-- ================================================= -->
-                <!-- BIENVENIDA -->
-                <!-- ================================================= -->
-
+                <!-- BIENVENIDA / TITULO -->
                 <HBox alignment="CENTER_LEFT">
-
-                    <Label styleClass="welcome-title" text="Resumen De Inventario" />
-
-                    <Region HBox.hgrow="ALWAYS" />
-
+                    <Label fx:id="lblWelcomeTitle" styleClass="welcome-title" text="Resumen De Inventario" />
                 </HBox>
 
+                <!-- DESCRIPCION -->
+                <Label fx:id="lblDescription" styleClass="description" text="SUPERVISA EL ESTADO DE LOS TIKETS Y LA CARGA DEL EQUIPO" />
 
-                <!-- ================================================= -->
-                <!-- DESCRIPCIÓN -->
-                <!-- ================================================= -->
+                <!-- FILTROS Y CONTROLES CON ESTILOS ASIGNADOS -->
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="130.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="120.0" />
+                        <ColumnConstraints hgrow="NEVER" minWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="120.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="35.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="lblFilterInventory" styleClass="filter-label" text="FILTRAR INVENTARIO" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="cmbInventoryFilter" maxWidth="Infinity" styleClass="custom-combo" GridPane.columnIndex="1" />
+                        <Label fx:id="lblCategory" styleClass="filter-label" text="CATEGORIA" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="cmbCategoryFilter" maxWidth="Infinity" styleClass="custom-combo" GridPane.columnIndex="3" />
+                    </children>
+                </GridPane>
 
-                <Label styleClass="description" text="Supervisa el estado de los tikets y la carga del equipo" />
-            <GridPane prefHeight="36.0" prefWidth="700.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="FILTRAR INVENTARIO" />
-                  <Label text="CATEGORIA" GridPane.columnIndex="2" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-                  <ComboBox prefWidth="150.0" GridPane.columnIndex="3" />
-               </children>
-            </GridPane>
-
-
-                <!-- ================================================= -->
-                <!-- TÍTULO Y FILTROS -->
-                <!-- ================================================= -->
-
-                <HBox alignment="CENTER_LEFT" spacing="10" />
-
-
-                <!-- ================================================= -->
-                <!-- TABLA DE CANCHAS -->
-                <!-- ================================================= -->
-
-                <TableView prefHeight="291.0" prefWidth="583.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
-
+                <!-- TABLA DE INVENTARIO -->
+                <TableView fx:id="tblInventory" styleClass="sports-table" VBox.vgrow="ALWAYS">
                     <columns>
-
-                        <TableColumn prefWidth="44.0" text="SKU" />
-
-                        <TableColumn prefWidth="176.0" text="ARTICULO" />
-
-                        <TableColumn prefWidth="119.0" text="UBICACION" />
-
-                        <TableColumn prefWidth="169.0" text="CANTIDAD DISPONIBLE" />
-                  <TableColumn prefWidth="87.0" text="ESTADO" />
-                  <TableColumn prefWidth="113.0" text="FECHA" />
-
+                        <TableColumn fx:id="colSku" prefWidth="80.0" text="SKU" />
+                        <TableColumn fx:id="colArticle" prefWidth="140.0" text="ARTÍCULO" />
+                        <TableColumn fx:id="colCategory" prefWidth="120.0" text="CATEGORÍA" />
+                        <TableColumn fx:id="colLocation" prefWidth="120.0" text="UBICACIÓN" />
+                        <TableColumn fx:id="colQuantity" prefWidth="160.0" text="CANTIDAD DISPONIBLE" />
+                        <TableColumn fx:id="colStatus" prefWidth="100.0" text="ESTADO" />
+                        <TableColumn fx:id="colDate" prefWidth="100.0" text="FECHA" />
                     </columns>
-
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
                 </TableView>
 
             </VBox>
-
         </VBox>
-
     </center>
 
 </BorderPane>

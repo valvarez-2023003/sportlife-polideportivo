@@ -1,0 +1,212 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23/09/2026, 00:39:07
+    Author     : HP
+*/
+
+/* ==========================================================================
+   1. FONDO DE LA VENTANA Y TIPOGRAFÍA
+   ========================================================================== */
+.root, #pnlRoot {
+    -fx-background-color: #000000;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ==========================================================================
+   2. MENÚ LATERAL Y BOTONES CON BORDE VERDE (#btnLogout, #btnEdit)
+   ========================================================================== */
+#pnlSidebar, .sidebar {
+    -fx-background-color: #000000;
+}
+
+.button, .menu-button-outline, #btnLogout, #btnEdit {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20px;
+    -fx-border-insets: 0;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+}
+
+.button:hover, .menu-button-outline:hover, #btnLogout:hover, #btnEdit:hover {
+    -fx-background-color: #8CBE23;
+    -fx-text-fill: #000000;
+}
+
+.button:focused, .menu-button-outline:focused, #btnLogout:focused, #btnEdit:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO Y BADGE DE ADMINISTRADOR
+   ========================================================================== */
+#lblHeaderTitle, .header-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+#pnlUserBadge, .user-box {
+    -fx-background-color: #000000;
+    -fx-background-radius: 20px;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20px;
+    -fx-padding: 4px 12px;
+}
+
+#lblUserStatusDot, .user-icon {
+    -fx-text-fill: #8CBE23;
+    -fx-font-size: 12px;
+}
+
+#lblUserRole, .user-text {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   4. PANEL BLANCO CENTRAL Y TEXTOS
+   ========================================================================== */
+#pnlMainCard, .main-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+#lblWelcomeTitle, .welcome-title {
+    -fx-text-fill: #000000;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+/* Contenedor del subtítulo con marco morado */
+#pnlDescriptionContainer, .description-container {
+    -fx-border-color: #9B51E0;
+    -fx-border-width: 1.5px;
+    -fx-background-color: transparent;
+}
+
+#lblDescription, .description {
+    -fx-text-fill: #000000;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   5. TARJETAS / CÁPSULAS DE RESUMEN (Borde verde redondeado)
+   ========================================================================== */
+.summary-badge, #lblSummaryProblems, #lblSummaryTickets, #lblSummaryEmployees {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-padding: 6px 10px;
+    -fx-alignment: center;
+}
+
+/* ==========================================================================
+   6. COMBOBOX Y FILTROS PERSONALIZADOS
+   ========================================================================== */
+.filter-title-badge, #lblFilterTicket {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 3px 8px;
+    -fx-max-width: 160px;
+    -fx-alignment: center;
+}
+
+.combo-box, .custom-combo-box, #cmbFilterTicket {
+    -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0;
+    -fx-background-radius: 15px;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-border-insets: 0;
+}
+
+.combo-box .cell, .custom-combo-box .cell {
+    -fx-text-fill: #000000;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.combo-box .arrow-button, .custom-combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow, .custom-combo-box .arrow {
+    -fx-background-color: #000000;
+}
+
+/* ==========================================================================
+   7. TABLA DE DATOS (TABLEVIEW)
+   ========================================================================== */
+.table-view, .sports-table, #tblTickets {
+    -fx-background-color: transparent;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 0;
+}
+
+/* Remueve el fondo gris por defecto de los encabezados de JavaFX */
+.table-view .column-header-background,
+.sports-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header,
+.sports-table .column-header {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #8CBE23 transparent;
+    -fx-border-width: 1.5px;
+}
+
+.table-view .column-header .label,
+.sports-table .column-header .label {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER;
+}
+
+/* Filas estilo tarjeta/cápsula */
+.table-view .table-row-cell,
+.sports-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-background-insets: 2;
+}
+
+.table-view .table-row-cell:filled:hover,
+.sports-table .table-row-cell:filled:hover {
+    -fx-background-color: #F4FBF0;
+}
