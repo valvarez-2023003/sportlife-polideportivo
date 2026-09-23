@@ -10,167 +10,120 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" stylesheets="@../resource/styles/AdminStyle.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.AdminController">
+<BorderPane fx:id="pnlRoot" prefHeight="600.0" prefWidth="1000.0" styleClass="admin-root" stylesheets="@../resource/styles/AdminStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.AdminController">
 
+    <!-- MENÚ LATERAL IZQUIERDO -->
     <left>
-
-        <VBox prefWidth="125" spacing="12" styleClass="sidebar">
-
+        <VBox fx:id="pnlSidebar" prefWidth="150.0" spacing="12" styleClass="sidebar">
             <padding>
-                <Insets bottom="10" left="10" right="8" top="15" />
+                <Insets bottom="15" left="10" right="10" top="10" />
             </padding>
 
-            <HBox alignment="CENTER_LEFT" spacing="5">
-
-                <ImageView fitHeight="52.0" fitWidth="121.0" preserveRatio="true">
+            <!-- LOGO SUPERIOR -->
+            <HBox fx:id="pnlLogoContainer" alignment="CENTER" styleClass="logo-container">
+                <ImageView fx:id="imgLogo" fitHeight="50.0" fitWidth="120.0" preserveRatio="true">
                     <image>
                         <Image url="@../resource/images/logo.png" />
                     </image>
                 </ImageView>
-
             </HBox>
 
+            <Region prefHeight="10.0" />
+
+            <!-- BOTONES DE NAVEGACIÓN -->
+            <Button fx:id="btnHome" onMouseClicked="onOpenHome" maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
+
+            <Button fx:id="btnEditFields" onMouseClicked="onOpenEditFields" maxWidth="Infinity" styleClass="menu-button" text="EDITAR&#10;CANCHAS" textAlignment="CENTER" wrapText="true" />
+
+            <Button fx:id="btnAvailableFields" onMouseClicked="onOpenAvailableFields" maxWidth="Infinity" styleClass="menu-button" text="CANCHAS&#10;DISPONIBLES" textAlignment="CENTER" wrapText="true" />
+
+            <Button fx:id="btnCalendar" onMouseClicked="onOpenCalendar" maxWidth="Infinity" styleClass="menu-button" text="CALENDARIO" />
+
+            <Button fx:id="btnInventory" onMouseClicked="onOpenInventory" maxWidth="Infinity" styleClass="menu-button" text="INVENTARIO" />
+
+            <Button fx:id="btnItInbox" onMouseClicked="onOpenITInbox" maxWidth="Infinity" styleClass="menu-button" text="BANDEJA DE&#10;SOPORTE&#10;TÉCNICO" textAlignment="CENTER" wrapText="true" />
+
             <Region VBox.vgrow="ALWAYS" />
 
-            <Button fx:id="btnHome" maxWidth="Infinity" styleClass="menu-button-selected" text="INICIO" />
-
-            <Button fx:id="btnEditFields" maxWidth="Infinity" prefHeight="33.0" prefWidth="121.0" styleClass="menu-button" text="EDITAR CANCHAS" />
-
-            <Button fx:id="btnAvailableFields" maxWidth="Infinity" prefHeight="27.0" prefWidth="121.0" styleClass="menu-button" text="CANCHAS DISPONIBLES" />
-
-            <Button fx:id="btnCalendar" maxWidth="Infinity" prefHeight="28.0" prefWidth="121.0" styleClass="menu-button" text="CALENDARIO" />
-         <Button fx:id="btnInventory" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="INVENTARIO" />
-         <Button fx:id="btnITInbox" mnemonicParsing="false" prefHeight="24.0" prefWidth="121.0" text="BANDEJA DE IT" />
-
-            <Region VBox.vgrow="ALWAYS" />
-
-            <Button fx:id="btnEditCourts" maxWidth="Infinity" styleClass="menu-button" text="EDITAR" />
-
-            <Button fx:id="btnLogin" maxWidth="Infinity" onMouseClicked="#returnToLogin" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
-
+            <!-- BOTÓN CERRAR SESIÓN -->
+            <Button fx:id="btnLogout" onMouseClicked="onLogout" maxWidth="Infinity" styleClass="logout-button" text="⇥   CERRAR SESIÓN" />
         </VBox>
-
     </left>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <center>
-
-        <VBox prefHeight="506.0" prefWidth="842.0" spacing="12" styleClass="content" stylesheets="@../resource/styles/AdminStyle.css">
-
+        <VBox fx:id="pnlContent" spacing="10" styleClass="content">
             <padding>
-                <Insets bottom="10" left="15" right="15" top="15" />
+                <Insets bottom="15" left="15" right="15" top="10" />
             </padding>
 
-            <HBox alignment="CENTER_LEFT" spacing="10">
-
-                <Label styleClass="header-title" text="Panel de Administración" />
+            <!-- ENCABEZADO SUPERIOR -->
+            <HBox fx:id="pnlHeader" alignment="CENTER_LEFT" spacing="10" styleClass="top-header">
+                <Label fx:id="lblHeaderTitle" styleClass="header-title" text="Panel de Administración" />
 
                 <Region HBox.hgrow="ALWAYS" />
 
-                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
-
-                    <Label styleClass="user-icon" text="●" />
-
-                    <Label styleClass="user-text" text="ADMINISTRADOR" />
-
+                <!-- BADGE DE USUARIO -->
+                <HBox fx:id="pnlUserBadge" alignment="CENTER" spacing="8" styleClass="user-badge">
+                    <Label fx:id="lblUserIcon" styleClass="user-icon" text="👤" />
+                    <Label fx:id="lblUserRole" styleClass="user-text" text="ADMINISTRADOR" />
                 </HBox>
-
             </HBox>
 
-            <VBox spacing="10" styleClass="main-panel">
-
+            <!-- PANEL BLANCO CONTENEDOR PRINCIPAL -->
+            <VBox fx:id="pnlMainCard" spacing="12" styleClass="main-card" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
+                    <Insets bottom="15" left="20" right="20" top="15" />
                 </padding>
 
-                <HBox alignment="CENTER_LEFT">
+                <!-- TÍTULO PRINCIPAL Y SUBTÍTULO -->
+                <VBox fx:id="pnlWelcomeContainer" spacing="2">
+                    <Label fx:id="lblWelcomeTitle" styleClass="welcome-title" text="Bienvenido, Administrador!" />
+                    <Label fx:id="lblWelcomeSubtitle" styleClass="welcome-subtitle" text="Desde aquí puedes gestionar las canchas y el inventario" />
+                </VBox>
 
-                    <Label styleClass="welcome-title" text="Bienvenido, Administrador!" />
+                <!-- TARJETA DE ESTADÍSTICA / CANCHAS DISPONIBLES -->
+                <HBox fx:id="pnlStatCard" alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="250.0" spacing="12" styleClass="stat-card">
+                    <Label fx:id="lblStatCardTitle" styleClass="stat-card-title" text="CANCHAS DISPONIBLES" wrapText="true" />
+                </HBox>
+
+                <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+                <HBox fx:id="pnlSearchFilterBar" alignment="CENTER_LEFT" spacing="10">
+                    <Label fx:id="lblSectionTitle" styleClass="section-title" text="CANCHAS DISPONIBLES" />
+
+                    <Region prefWidth="10.0" />
+
+                    <Label fx:id="lblSearchInstruction" styleClass="search-instruction" text="INGRESAR CÓDIGO A BUSCAR" />
+
+                    <!-- CAMPO DE BÚSQUEDA CON LUPA -->
+                    <HBox fx:id="pnlSearchBox" alignment="CENTER_LEFT" styleClass="search-box">
+                        <Label fx:id="lblSearchIcon" styleClass="search-icon" text="🔍" />
+                        <TextField fx:id="txtSearch" promptText="" styleClass="search-input" HBox.hgrow="ALWAYS" />
+                    </HBox>
 
                     <Region HBox.hgrow="ALWAYS" />
 
+                    <!-- DESPLEGABLE FILTRO -->
+                    <ComboBox fx:id="cmbFieldFilter" prefWidth="180.0" promptText="TODAS LAS CANCHAS" styleClass="custom-combo" />
                 </HBox>
 
-                <Label styleClass="description" text="Desde aquí puedes gestionar las canchas y reservas del complejo deportivo." />
-
-                <GridPane hgap="40" vgap="5">
-
-                    <columnConstraints>
-
-                        <ColumnConstraints percentWidth="25" />
-
-                        <ColumnConstraints percentWidth="25" />
-
-                        <ColumnConstraints percentWidth="25" />
-
-                        <ColumnConstraints percentWidth="25" />
-
-                    </columnConstraints>
-
-                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="0">
-
-                        <Label styleClass="stat-icon" text="⚽" />
-
-                        <Label text="CANCHAS DISPONIBLES" />
-
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="1">
-
-                        <Label styleClass="stat-icon" text="♙" />
-
-                        <Label styleClass="stat-text" text="CLIENTES REGISTRADOS" />
-
-                    </HBox>
-
-                    <HBox alignment="CENTER_LEFT" spacing="8" styleClass="stat-card" GridPane.columnIndex="3" />
-
-                    <rowConstraints>
-                        <RowConstraints />
-                    </rowConstraints>
-
-                </GridPane>
-
-                <HBox alignment="CENTER_LEFT" spacing="10">
-
-                    <Label prefHeight="17.0" prefWidth="186.0" styleClass="section-title" text="CANCHAS DISPONIBLES" />
-               <Label prefHeight="17.0" prefWidth="194.0" text="Ingresar CÓDIGO a buscar" />
-               <TextField fx:id="txtSearchCode" prefHeight="25.0" prefWidth="198.0" promptText="🔎 BUSCAR..." />
-
-                    <Region prefHeight="25.0" prefWidth="117.0" HBox.hgrow="ALWAYS" />
-
-                    <ComboBox fx:id="cmbFieldFilter" prefHeight="25.0" prefWidth="204.0" promptText="TODAS LAS CANCHAS" styleClass="filter" />
-
-                </HBox>
-
-                <TableView fx:id="tblFields" styleClass="sports-table" VBox.vgrow="ALWAYS">
-
+                <!-- TABLA DE CANCHAS -->
+                <TableView fx:id="tblFields" styleClass="custom-table" VBox.vgrow="ALWAYS">
                     <columns>
-
-                        <TableColumn prefWidth="180" text="CANCHA" />
-
-                        <TableColumn prefWidth="180" text="DISCIPLINA" />
-
-                        <TableColumn fx:id="tblCourts" prefWidth="150" text="UBICACIÓN" />
-
-                        <TableColumn prefWidth="130" text="ESTADO" />
-
-                        <TableColumn prefWidth="150" text="ACCIONES" />
-
+                        <TableColumn fx:id="colCourt" prefWidth="200.0" text="CANCHA" />
+                        <TableColumn fx:id="colDiscipline" prefWidth="200.0" text="DISCIPLINA" />
+                        <TableColumn fx:id="colLocation" prefWidth="200.0" text="UBICACIÓN" />
+                        <TableColumn fx:id="colStatus" prefWidth="180.0" text="ESTADO" />
                     </columns>
-
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
                 </TableView>
-
             </VBox>
-
         </VBox>
-
     </center>
-
 </BorderPane>

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="pnlRoot" prefHeight="500" prefWidth="950" styleClass="admin-root" stylesheets="@../resource/styles/GestionProgramasStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- ===================================================== -->
     <!-- MENU LATERAL -->
@@ -25,7 +25,7 @@
 
     <left>
 
-        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
+        <VBox fx:id="pnlSidebar" prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
 
             <padding>
                 <Insets bottom="10" left="10" right="8" top="15" />
@@ -36,20 +36,20 @@
 
             <HBox alignment="CENTER_LEFT" spacing="5">
 
-                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
+                <ImageView fx:id="imgLogo" fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
                <image>
-                  <Image url="@../../logo.png" />
+                  <Image url="@../resource/images/logo.png" />
                </image></ImageView>
 
                 <VBox spacing="0" />
 
             </HBox>
-         <Region prefHeight="61.0" prefWidth="173.0" />
+         <Region prefHeight="316.0" prefWidth="173.0" />
 
 
             <!-- RESERVAS -->
 
-            <Button maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="EDITAR" />
+            <Button fx:id="btnEdit" onMouseClicked="#onEdit" maxWidth="Infinity" prefHeight="30.0" prefWidth="141.0" styleClass="menu-button" text="EDITAR" />
 
 
             <!-- ESPACIO -->
@@ -59,7 +59,7 @@
 
             <!-- CERRAR SESION -->
 
-            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
+            <Button fx:id="btnLogout" onMouseClicked="#onLogout" maxWidth="Infinity" prefHeight="34.0" prefWidth="173.0" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
 
         </VBox>
 
@@ -72,7 +72,7 @@
 
     <center>
 
-        <VBox spacing="12" styleClass="content">
+        <VBox fx:id="pnlContent" spacing="12" styleClass="content">
 
             <padding>
                 <Insets bottom="10" left="15" right="15" top="15" />
@@ -85,7 +85,7 @@
 
             <HBox alignment="CENTER_LEFT" spacing="10">
 
-                <Label styleClass="header-title" text="Gestión de Programas y Eventos" />
+                <Label fx:id="lblHeaderTitle" styleClass="header-title" text="Gestión de Programas y Eventos" />
 
                 <Region HBox.hgrow="ALWAYS" />
 
@@ -94,9 +94,9 @@
 
                 <HBox alignment="CENTER" spacing="8" styleClass="user-box">
 
-                    <Label styleClass="user-icon" text="●" />
+                    <Label fx:id="lblUserIcon" styleClass="user-icon" text="●" />
 
-                    <Label styleClass="user-text" text="Administrador" />
+                    <Label fx:id="lblUserRole" styleClass="user-text" text="Administrador" />
 
                 </HBox>
 
@@ -107,7 +107,7 @@
             <!-- PANEL BLANCO -->
             <!-- ================================================= -->
 
-            <VBox prefHeight="470.0" prefWidth="729.0" spacing="10" styleClass="main-panel">
+            <VBox fx:id="pnlMain" prefHeight="470.0" prefWidth="729.0" spacing="10" styleClass="main-panel">
 
                 <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />
@@ -120,7 +120,7 @@
 
                 <HBox alignment="CENTER_LEFT">
 
-                    <Label styleClass="welcome-title" text="¡Bienvenido, Administrador!" />
+                    <Label fx:id="lblWelcomeTitle" styleClass="welcome-title" text="¡Bienvenido, Administrador!" />
 
                     <Region HBox.hgrow="ALWAYS" />
 
@@ -131,7 +131,7 @@
                 <!-- DESCRIPCIÓN -->
                 <!-- ================================================= -->
 
-                <Label styleClass="description" text="Gestiona, Inscribe y supervisa torneos y eventos deportivos" />
+                <Label fx:id="lblDescription" styleClass="description" text="Gestiona, Inscribe y supervisa torneos y eventos deportivos" />
             <GridPane prefHeight="63.0" prefWidth="709.0">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
@@ -142,9 +142,9 @@
                 <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="EMPLEADOS ACTIVOS" />
-                  <Label text="EVENTOS DEL MES" GridPane.columnIndex="1" />
-                  <Label text="INSCRIPCIONES" GridPane.columnIndex="2" />
+                  <Label fx:id="lblActiveEmployeesKpi" text="EMPLEADOS ACTIVOS" />
+                  <Label fx:id="lblMonthlyEventsKpi" text="EVENTOS DEL MES" GridPane.columnIndex="1" />
+                  <Label fx:id="lblRegistrationsKpi" text="INSCRIPCIONES" GridPane.columnIndex="2" />
                </children>
             </GridPane>
             <GridPane prefHeight="80.0" prefWidth="703.0">
@@ -159,11 +159,10 @@
                   <RowConstraints maxHeight="27.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Filtrar por disciplina" />
-                  <Label text="Buscar evento" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" text="AGREGAR NUEVO EVENTO" GridPane.columnIndex="3" />
-                  <TextField promptText="🔍 BUSCAR ..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ComboBox prefWidth="150.0" promptText="FILTRAR" GridPane.rowIndex="1" />
+                  <Label fx:id="lblDisciplineFilter" text="Filtrar por disciplina" />
+                  <Label fx:id="lblSearchEvent" text="Buscar evento" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtSearchEvent" promptText="🔍 BUSCAR ..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cmbFilterDiscipline" prefWidth="150.0" promptText="FILTRAR" GridPane.rowIndex="1" />
                </children>
             </GridPane>
 
@@ -179,17 +178,18 @@
                 <!-- TABLA DE CANCHAS -->
                 <!-- ================================================= -->
 
-                <TableView prefHeight="291.0" prefWidth="583.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tblEvents" prefHeight="291.0" prefWidth="583.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
 
                     <columns>
 
-                        <TableColumn prefWidth="180" text="NOMBRE COMPLETO" />
+                        <TableColumn fx:id="colEventName" prefWidth="142.0" text="NOMBRE DEL EVENTO" />
 
-                        <TableColumn prefWidth="180" text="ROL/CARGO" />
+                        <TableColumn fx:id="colDiscipline" prefWidth="128.0" text="DISCIPLINA" />
 
-                        <TableColumn prefWidth="150" text="TURNO ASIGNADO" />
+                        <TableColumn fx:id="colStartDate" prefWidth="150.0" text="FECHA DE INICIO" />
 
-                        <TableColumn prefWidth="130" text="ESTADO" />
+                        <TableColumn fx:id="colStatus" prefWidth="142.0" text="ESTADO" />
+                  <TableColumn fx:id="colRegistered" prefWidth="143.0" text="INSCRITOS" />
 
                     </columns>
 

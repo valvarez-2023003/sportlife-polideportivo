@@ -1,0 +1,184 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22/09/2026, 19:52:08
+    Author     : HP
+*/
+
+/* ===================================================== */
+/* ESTILOS GLOBALES Y CONTENEDORES                       */
+/* ===================================================== */
+
+.root-pane {
+    -fx-background-color: #0b0b0b;
+}
+
+.sidebar {
+    -fx-background-color: #0b0b0b;
+}
+
+.content-area {
+    -fx-background-color: #0b0b0b;
+}
+
+/* ===================================================== */
+/* ENCABEZADO SUPERIOR                                   */
+/* ===================================================== */
+
+.header-title {
+    -fx-font-family: "Courier New", "Monospaced", monospace;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Insignia del Administrador */
+.user-badge {
+    -fx-background-color: #000000;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.user-icon {
+    -fx-text-fill: #82b524;
+    -fx-font-size: 14px;
+}
+
+.user-text {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+/* ===================================================== */
+/* BOTONES DEL MENÚ LATERAL                              */
+/* ===================================================== */
+
+.btn-sidebar {
+    -fx-background-color: #0b0b0b;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.btn-sidebar:hover {
+    -fx-background-color: #1a2608;
+    -fx-cursor: hand;
+}
+
+.btn-sidebar-logout {
+    -fx-background-color: #0b0b0b;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.btn-sidebar-logout:hover {
+    -fx-background-color: #2a0808;
+    -fx-border-color: #ff4d4d;
+    -fx-text-fill: #ff4d4d;
+    -fx-cursor: hand;
+}
+
+/* ===================================================== */
+/* TARJETA BLANCA PRINCIPAL                              */
+/* ===================================================== */
+
+.main-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20px;
+}
+
+.welcome-title {
+    -fx-font-family: "Courier New", "Monospaced", monospace;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+}
+
+/* ===================================================== */
+/* FILTROS Y COMBOBOX                                    */
+/* ===================================================== */
+
+.filter-pill-label {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.green-combo {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.green-combo .list-cell {
+    -fx-text-fill: #000000;
+    -fx-font-size: 11px;
+}
+
+/* ===================================================== */
+/* TABLA DE CANCHAS                                      */
+/* ===================================================== */
+
+.sports-table {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #82b524;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+}
+
+/* Encabezados de la tabla */
+.sports-table .column-header-background {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 12px 12px 0 0;
+}
+
+.sports-table .column-header {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #82b524;
+    -fx-border-width: 0 1px 2px 0;
+}
+
+.sports-table .column-header .label {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER;
+}
+
+/* Filas de la tabla */
+.sports-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #82b524;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.sports-table .table-row-cell:filled:selected {
+    -fx-background-color: #e2f2cc;
+}
+
+.sports-table .table-cell {
+    -fx-text-fill: #000000;
+    -fx-alignment: CENTER;
+}
