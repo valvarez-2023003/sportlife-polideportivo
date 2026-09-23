@@ -25,6 +25,7 @@ import org.sportlife.system.utils.Validations;
  */
 
 public class RegisterController implements Initializable {
+
     @FXML private Button btnCreateAccount;
     @FXML private Button btnLogin;
     @FXML private PasswordField pwdConfirmPassword;
@@ -63,27 +64,36 @@ public class RegisterController implements Initializable {
         String lastName = txtLastName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtNumberPhone.getText().trim();
-        String password = pwdPassword.getText().trim();
-        String confirmPassword = pwdConfirmPassword.getText().trim();
+        String password = pwdPassword.getText(); // Sin trim para respetar espacios intencionales en contraseñas
+        String confirmPassword = pwdConfirmPassword.getText();
 
         if(validations.emptyText(userName) || validations.emptyText(name) || validations.emptyText(lastName) ||
-            validations.emptyText(email) || validations.emptyText(phone) || validations.emptyText(password) || validations.emptyText(confirmPassword)) {
+            validations.emptyText(email) || validations.emptyText(phone) || validations.emptyText(password) || validations.emptyText(confirmPassword)){
             alertInfo.viewAlert("ERROR", "Campos Vacíos", "Error de Validación", "Por favor, complete todos los campos del formulario.");
-            return;
         }
 
         if(!validations.validateLengthText(userName, 25)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre de usuario excedió la cantidad de caracteres (Max.25).");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre de usuario excedió la cantidad máxima de caracteres permitidos (Máx. 25).");
+            return;
+        }
+        
+        if(!validations.validateOnlyLetters(name)){
+            alertInfo.viewAlert("ERROR", "Caracteres Inválidos", "Error de Campo", "El nombre solo puede contener letras (mayúsculas y minúsculas) y espacios. No se permiten números ni símbolos.");
             return;
         }
         
         if(!validations.validateLengthText(name, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre excedió la cantidad de caracteres (Max.50).");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "El nombre excedió la cantidad máxima de caracteres permitidos (Máx. 50).");
+            return;
+        }
+        
+        if(!validations.validateOnlyLetters(lastName)){
+            alertInfo.viewAlert("ERROR", "Caracteres Inválidos", "Error de Campo", "El apellido solo puede contener letras (mayúsculas y minúsculas) y espacios. No se permiten números ni símbolos.");
             return;
         }
         
         if(!validations.validateLengthText(lastName, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Apellido excedió la cantidad de caracteres (Max.50).");
+            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "El apellido excedió la cantidad máxima de caracteres permitidos (Máx. 50).");
             return;
         }
 
@@ -92,12 +102,12 @@ public class RegisterController implements Initializable {
             return;
         }
         
-        if(!validations.validateLengthText(phone, 10)){
-           alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Número de teléfono excedió la cantidad de caracteres (Max.10).");
+        if(!validations.validatePhone(phone)){
+           alertInfo.viewAlert("ERROR", "Teléfono Inválido", "Error de Campo", "El número de teléfono debe contener exactamente 8 dígitos numéricos.");
            return;
         }
         
-        if (!validations.equalsText(password, confirmPassword)){
+        if(!validations.equalsText(password, confirmPassword)){
             alertInfo.viewAlert("ERROR", "Contraseñas No Coinciden", "Error de Validación", "La contraseña ingresada no coincide con la confirmación.");
             pwdPassword.clear();
             pwdConfirmPassword.clear();
@@ -115,9 +125,9 @@ public class RegisterController implements Initializable {
         UserStatus status = userService.registerCustomer(newCustomer);
 
         if(status == UserStatus.USER_CREATED){
-            alertInfo.viewAlert("INFO", "Registro Exitoso", "Éxito", "El usuario ha sido registrado correctamente.");
-            viewFactory.viewLogin(); // Redirige al login
-        } else {
+            alertInfo.viewAlert("INFO", "Registro Exitoso", "Éxito", "El usuario ha sido registrado correctamente. Ahora puede iniciar sesión.");
+            viewFactory.viewLogin(); 
+        }else{
             alertInfo.viewAlert("ERROR", "Error de Registro", "Error de Base de Datos", "No se pudo registrar el usuario. Intente nuevamente o contacte al administrador.");
         }    
     }
