@@ -1,0 +1,75 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 sept 2026, 08:24:19
+    Author     : informatica
+*/
+
+#txtUserName, #txtName, #txtLastName, #txtEmail, #txtNumberPhone, #pwdPassword, #pwdConfirmPassword, .input-field {
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-pref-height: 36px;
+    -fx-padding: 0px 12px 0px 12px;
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #8E8E8E;
+    -fx-text-fill: #222222;
+    -fx-border-color: transparent;
+}
+
+/* Estado enfocado de las cajas de texto */
+.input-field:focused {
+    -fx-background-color: #DDDDDD;
+    -fx-border-color: #8CBE23;
+    -fx-border-radius: 15px;
+    -fx-border-width: 1.5px;
+}
+
+/* Botón Verde Principal (Crear Usuario) */
+#btnCreateAccount, .btn-primary {
+    -fx-background-color: #8CBE23;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-pref-height: 38px;
+    -fx-cursor: hand;
+}
+
+#btnCreateAccount:hover, .btn-primary:hover {
+    -fx-background-color: #7BA81F;
+}
+
+#btnCreateAccount:pressed, .btn-primary:pressed {
+    -fx-background-color: #6A931B;
+}
+
+/* Texto separador "O" */
+.or-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #888888;
+    -fx-padding: 2px 0;
+}
+
+/* Botón Secundario (Ir al Login) */
+#btnLogin, .btn-secondary {
+    -fx-background-color: #E6E6E6;
+    -fx-text-fill: #333333;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+    -fx-pref-height: 38px;
+    -fx-cursor: hand;
+}
+
+#btnLogin:hover, .btn-secondary:hover {
+    -fx-background-color: #D6D6D6;
+}
+
+#btnLogin:pressed, .btn-secondary:pressed {
+    -fx-background-color: #C2C2C2;
+}

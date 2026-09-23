@@ -1,0 +1,296 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 sept 2026, 09:52:42
+    Author     : informatica
+*/
+
+/* ==========================================================================
+   1. ESTILOS GENERALES Y ESTRUCTURA BASE
+   ========================================================================== */
+.admin-root {
+    -fx-background-color: #0f0f0f;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.content {
+    -fx-background-color: #0f0f0f;
+}
+
+/* ==========================================================================
+   2. MENÚ LATERAL (SIDEBAR)
+   ========================================================================== */
+.sidebar {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: transparent #222222 transparent transparent;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.logo-container {
+    -fx-padding: 0 0 5 0;
+}
+
+/* Botones de Navegación */
+.menu-button {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 6px 8px;
+    -fx-alignment: CENTER;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #1e2815;
+}
+
+.menu-button-selected {
+    -fx-background-color: #51b73b;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #51b73b;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 8px;
+    -fx-alignment: CENTER;
+    -fx-cursor: hand;
+}
+
+/* Botón Cerrar Sesión */
+.logout-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 6px 10px;
+    -fx-alignment: CENTER-LEFT;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #220000;
+    -fx-border-color: #ff4d4d;
+    -fx-text-fill: #ff4d4d;
+}
+
+/* ==========================================================================
+   3. ENCABEZADO SUPERIOR Y USUARIO
+   ========================================================================== */
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-text-fill: #ffffff;
+}
+
+/* Badge del Administrador */
+.user-badge {
+    -fx-background-color: #000000;
+    -fx-background-radius: 20px;
+    -fx-border-color: #222222;
+    -fx-border-radius: 20px;
+    -fx-padding: 4px 12px;
+}
+
+.user-icon {
+    -fx-text-fill: #51b73b;
+    -fx-font-size: 13px;
+}
+
+.user-text {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   4. PANEL CONTENEDOR BLANCO Y TARJETAS
+   ========================================================================== */
+.main-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.welcome-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111111;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111111;
+}
+
+/* Tarjeta Estadística (Canchas Disponibles) */
+.stat-card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 6px 12px;
+}
+
+.stat-card-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* ==========================================================================
+   5. FILTROS Y CAMPO DE BÚSQUEDA
+   ========================================================================== */
+.section-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111111;
+}
+
+.search-instruction {
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px;
+    -fx-padding: 2px 8px;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #444444;
+}
+
+.search-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 1px 8px;
+    -fx-pref-width: 130px;
+}
+
+.search-icon {
+    -fx-text-fill: #111111;
+    -fx-font-size: 11px;
+}
+
+.search-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #111111;
+    -fx-padding: 2px;
+    -fx-font-size: 10px;
+}
+
+.search-input:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.custom-combo {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.custom-combo .cell {
+    -fx-text-fill: #333333;
+    -fx-alignment: CENTER;
+}
+
+.custom-combo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.custom-combo .arrow {
+    -fx-background-color: #8cc63f;
+}
+
+/* ==========================================================================
+   6. TABLA PERSONALIZADA
+   ========================================================================== */
+.custom-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.custom-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+/* Cabeceras estilo Cápsula unificada */
+.custom-table .column-header {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8cc63f transparent #8cc63f transparent;
+    -fx-border-width: 1.5px;
+    -fx-padding: 6px 0px;
+}
+
+.custom-table .column-header:first-child {
+    -fx-border-color: #8cc63f transparent #8cc63f #8cc63f;
+    -fx-border-radius: 15px 0px 0px 15px;
+    -fx-background-radius: 15px 0px 0px 15px;
+}
+
+.custom-table .column-header:last-child {
+    -fx-border-color: #8cc63f #8cc63f #8cc63f transparent;
+    -fx-border-radius: 0px 15px 15px 0px;
+    -fx-background-radius: 0px 15px 15px 0px;
+}
+
+.custom-table .column-header .label {
+    -fx-text-fill: #111111;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+/* Filas Flotantes (Cápsulas independientes) */
+.custom-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #8cc63f;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 2px;
+    -fx-background-insets: 4px 0px 4px 0px;
+    -fx-border-insets: 4px 0px 4px 0px;
+}
+
+.custom-table .table-row-cell:hover {
+    -fx-background-color: #f4fbf0;
+}
+
+.custom-table .table-row-cell:filled:selected {
+    -fx-background-color: #e2f5d8;
+    -fx-border-color: #51b73b;
+}
+
+.custom-table .table-cell {
+    -fx-text-fill: #333333;
+    -fx-alignment: CENTER;
+    -fx-border-color: transparent;
+    -fx-font-size: 11px;
+}
+
+/* Ocultar scrollbar si no se requiere */
+.custom-table .scroll-bar:vertical {
+    -fx-opacity: 0;
+}

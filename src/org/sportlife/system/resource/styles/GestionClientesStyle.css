@@ -1,0 +1,137 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22/09/2026, 23:58:19
+    Author     : HP
+*/
+
+/* ==========================================================================
+   1. FONDO GENERAL Y CONTENEDOR BLANCO
+   ========================================================================== */
+.root, #pnlRoot {
+    -fx-background-color: #121212;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Fuerza a que el panel central pnlCard tenga fondo blanco y bordes redondeados */
+#pnlCard, .main-panel {
+    -fx-background-color: #FFFFFF !important;
+    -fx-background-radius: 18px !important;
+    -fx-border-radius: 18px !important;
+}
+
+/* ==========================================================================
+   2. ESTILOS DE BOTONES
+   ========================================================================== */
+
+/* Botón "VER NUEVA RESERVA" / Menú Lateral */
+.button, #btnNewReservation {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #FFFFFF !important;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #8CBE23 !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-radius: 20px !important;
+    -fx-background-radius: 20px !important;
+    -fx-cursor: hand;
+}
+
+.button:hover, #btnNewReservation:hover {
+    -fx-background-color: #8CBE23 !important;
+    -fx-text-fill: #000000 !important;
+}
+
+/* Botón "CERRAR SESIÓN" (Abajo a la izquierda) */
+#btnLogout, .menu-button-logout {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #FFFFFF !important;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #8CBE23 !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-radius: 20px !important;
+    -fx-background-radius: 20px !important;
+    -fx-cursor: hand;
+}
+
+#btnLogout:hover, .menu-button-logout:hover {
+    -fx-background-color: #8CBE23 !important;
+    -fx-text-fill: #000000 !important;
+}
+
+/* Botón Verde Inferior "AGREGAR NUEVO CLIENTE" */
+#btnAddClient, .btn-action-green {
+    -fx-background-color: #8CBE23 !important;
+    -fx-text-fill: #FFFFFF !important;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-radius: 18px !important;
+    -fx-background-radius: 18px !important;
+    -fx-border-color: transparent !important;
+    -fx-cursor: hand;
+}
+
+#btnAddClient:hover, .btn-action-green:hover {
+    -fx-background-color: #7AA61E !important;
+}
+
+/* ==========================================================================
+   3. TEXTOS DEL PANEL DENTRO DE LA TARJETA BLANCA
+   ========================================================================== */
+#lblTitle, .welcome-title {
+    -fx-text-fill: #000000 !important;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+#lblSubtitle, .description-subtitle {
+    -fx-text-fill: #444444 !important;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+#lblHeaderTitle, .header-title {
+    -fx-text-fill: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   4. DESPLEGABLE Y BÚSQUEDA
+   ========================================================================== */
+.combo-box, #cmbFilter, .text-field, #txtSearch {
+    -fx-background-color: #FFFFFF !important;
+    -fx-border-color: #8CBE23 !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-radius: 15px !important;
+    -fx-background-radius: 15px !important;
+}
+
+/* ==========================================================================
+   5. TABLA Y CABECERAS
+   ========================================================================== */
+.table-view, #tblClients {
+    -fx-background-color: transparent !important;
+}
+
+.table-view .column-header {
+    -fx-background-color: #FFFFFF !important;
+    -fx-border-color: #8CBE23 !important;
+    -fx-border-width: 1.5px !important;
+    -fx-border-radius: 10px !important;
+    -fx-background-radius: 10px !important;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #222222 !important;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF !important;
+    -fx-border-color: #8CBE23 !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 8px !important;
+    -fx-background-radius: 8px !important;
+}

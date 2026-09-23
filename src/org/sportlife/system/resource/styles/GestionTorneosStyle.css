@@ -1,0 +1,98 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23/09/2026, 00:17:58
+    Author     : HP
+*/
+
+/* ==========================================================================
+   1. FONDO DE LA VENTANA Y TIPOGRAFÍA
+   ========================================================================== */
+.root, #pnlRoot {
+    -fx-background-color: #121212;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ==========================================================================
+   2. REINICIO GENERAL DE BOTONES (Quita el tema gris Modena)
+   ========================================================================== */
+.button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 20px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-border-color: #8CBE23;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20px;
+    -fx-border-insets: 0;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #8CBE23;
+    -fx-text-fill: #000000;
+}
+
+.button:pressed {
+    -fx-background-color: #7AA61E;
+    -fx-text-fill: #000000;
+}
+
+.button:focused {
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+/* ==========================================================================
+   3. MENÚ LATERAL
+   ========================================================================== */
+#pnlSidebar, .sidebar {
+    -fx-background-color: #121212;
+}
+
+/* ==========================================================================
+   4. ENCABEZADO Y BADGE DE ADMINISTRADOR
+   ========================================================================== */
+#lblHeaderTitle, .header-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+#pnlUserBadge, .user-box {
+    -fx-background-color: #000000;
+    -fx-background-radius: 20px;
+    -fx-border-color: #1A1A1A;
+    -fx-border-radius: 20px;
+}
+
+#lblUserIcon, .user-icon {
+    -fx-text-fill: #8CBE23;
+    -fx-font-size: 14px;
+}
+
+#lblUserRole, .user-text {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   5. PANEL BLANCO CENTRAL Y TEXTO
+   ========================================================================== */
+#pnlCard, .main-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 18px;
+    -fx-border-radius: 18px;
+}
+
+#lblComingSoon, .description {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}

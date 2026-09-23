@@ -2,178 +2,140 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="pnlRoot" prefHeight="600.0" prefWidth="1000.0" styleClass="admin-root" stylesheets="@../resource/styles/CalendarioReservasStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
     <!-- ===================================================== -->
-    <!-- MENU LATERAL -->
+    <!-- BARRA LATERAL IZQUIERDA -->
     <!-- ===================================================== -->
-
     <left>
-
-        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
-
+        <VBox fx:id="pnlSidebar" prefWidth="180.0" spacing="15" styleClass="sidebar" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="10" left="10" right="8" top="15" />
+                <Insets bottom="20" left="15" right="15" top="15" />
             </padding>
+            <children>
+                <!-- LOGO -->
+                <ImageView fx:id="imgLogo" fitHeight="60.0" fitWidth="150.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../resource/images/logo.png" />
+                    </image>
+                </ImageView>
 
+                <Region VBox.vgrow="ALWAYS" />
 
-            <!-- LOGO -->
-
-            <HBox alignment="CENTER_LEFT" spacing="5">
-
-                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../logo.png" />
-               </image></ImageView>
-
-                <VBox spacing="0" />
-
-            </HBox>
-         <Region prefHeight="61.0" prefWidth="173.0" />
-
-
-            <!-- ESPACIO -->
-
-            <Region VBox.vgrow="ALWAYS" />
-         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="172.0" text="EDITAR" />
-
-
-            <!-- CERRAR SESION -->
-
-            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
-
+                <!-- BOTONES INFERIORES -->
+                <Button fx:id="btnEdit" onMouseClicked="onEdit" maxWidth="Infinity" styleClass="btn-outline-green" text="EDITAR" />
+                <Button fx:id="btnLogout" onMouseClicked="onLogout" maxWidth="Infinity" styleClass="btn-outline-green" text="⇥  CERRAR SESIÓN" />
+            </children>
         </VBox>
-
     </left>
 
-
     <!-- ===================================================== -->
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- PANEL CENTRAL -->
     <!-- ===================================================== -->
-
     <center>
-
-        <VBox spacing="12" styleClass="content">
-
+        <VBox fx:id="pnlContent" spacing="10" styleClass="content-area" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="10" left="15" right="15" top="15" />
+                <Insets bottom="15" left="10" right="20" top="15" />
             </padding>
+            <children>
 
-
-            <!-- ================================================= -->
-            <!-- ENCABEZADO -->
-            <!-- ================================================= -->
-
-            <HBox alignment="CENTER_LEFT" spacing="10">
-
-                <Label styleClass="header-title" text="Calendario" />
-
-                <Region HBox.hgrow="ALWAYS" />
-
-
-                <!-- ADMINISTRADOR -->
-
-                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
-
-                    <Label styleClass="user-icon" text="●" />
-
-                    <Label styleClass="user-text" text="Administrador" />
-
+                <!-- ENCABEZADO SUPERIOR -->
+                <HBox fx:id="pnlHeader" alignment="CENTER_LEFT" spacing="10">
+                    <children>
+                        <Label fx:id="lblHeaderTitle" styleClass="header-main-title" text="Calendario" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        
+                        <!-- CHIP DE USUARIO -->
+                        <HBox fx:id="pnlUserBadge" alignment="CENTER" spacing="10" styleClass="user-badge">
+                            <children>
+                                <Label fx:id="lblUserIcon" styleClass="user-avatar" text="👤" />
+                                <Label fx:id="lblUserName" styleClass="user-name" text="USER" />
+                            </children>
+                        </HBox>
+                    </children>
                 </HBox>
 
-            </HBox>
+                <!-- CONTENEDOR BLANCO PRINCIPAL -->
+                <VBox fx:id="pnlMainCard" spacing="15" styleClass="main-card" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="20" left="25" right="25" top="20" />
+                    </padding>
+                    <children>
 
+                        <!-- TÍTULOS -->
+                        <VBox fx:id="pnlTitleContainer" spacing="2">
+                            <children>
+                                <Label fx:id="lblCardTitle" styleClass="card-title" text="Calendario de reservas" />
+                                <Label fx:id="lblCardSubtitle" styleClass="card-subtitle" text="VISUALIZA Y GESTIONA LA AGENDA DE LAS CANCHAS POR SEMANA" />
+                            </children>
+                        </VBox>
 
-            <!-- ================================================= -->
-            <!-- PANEL BLANCO -->
-            <!-- ================================================= -->
+                        <!-- FILTROS Y SELECCIONES -->
+                        <HBox fx:id="pnlFiltersContainer" spacing="20">
+                            <children>
+                                <!-- COLUMNA 1: DISCIPLINAS -->
+                                <VBox fx:id="pnlDisciplinesContainer" prefWidth="200.0" spacing="5">
+                                    <children>
+                                        <Label fx:id="lblDisciplinesHeader" maxWidth="Infinity" styleClass="filter-header" text="DISCIPLINAS" />
+                                        <ListView fx:id="lstDisciplines" prefHeight="110.0" styleClass="green-list-view" />
+                                    </children>
+                                </VBox>
 
-            <VBox spacing="10" styleClass="main-panel">
+                                <!-- COLUMNA 2: CANCHA -->
+                                <VBox fx:id="pnlCourtsContainer" prefWidth="200.0" spacing="5">
+                                    <children>
+                                        <Label fx:id="lblCourtsHeader" maxWidth="Infinity" styleClass="filter-header" text="CANCHA" />
+                                        <ListView fx:id="lstCourts" prefHeight="110.0" styleClass="green-list-view" />
+                                    </children>
+                                </VBox>
 
-                <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
+                                <!-- COLUMNA 3: SEMANA DEL -->
+                                <VBox fx:id="pnlWeekContainer" prefWidth="200.0" spacing="10">
+                                    <children>
+                                        <Label fx:id="lblWeekHeader" maxWidth="Infinity" styleClass="filter-header" text="SEMANA DEL" />
+                                        <ComboBox fx:id="cmbWeek" maxWidth="Infinity" promptText="FECHA:---------" styleClass="green-combo" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
 
+                        <!-- TABLA DE HORARIOS Y DÍAS -->
+                        <TableView fx:id="tblSchedule" prefHeight="333.0" prefWidth="740.0" styleClass="green-table" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colTime" prefWidth="60.0" text="HORA" />
+                                <TableColumn fx:id="colMonday" prefWidth="90.0" text="LUNES" />
+                                <TableColumn fx:id="colTuesday" prefWidth="90.0" text="MARTES" />
+                                <TableColumn fx:id="colWednesday" prefWidth="90.0" text="MIÉRCOLES" />
+                                <TableColumn fx:id="colThursday" prefWidth="90.0" text="JUEVES" />
+                                <TableColumn fx:id="colFriday" prefWidth="90.0" text="VIERNES" />
+                                <TableColumn fx:id="colSaturday" prefWidth="90.0" text="SÁBADO" />
+                                <TableColumn fx:id="colSunday" prefWidth="90.0" text="DOMINGO" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
 
-                <!-- ================================================= -->
-                <!-- BIENVENIDA -->
-                <!-- ================================================= -->
+                        <!-- BOTÓN ACCIÓN INFERIOR -->
+                        <HBox fx:id="pnlBottomActionContainer" alignment="CENTER_RIGHT" />
 
-                <HBox alignment="CENTER_LEFT">
+                    </children>
+                </VBox>
 
-                    <Label styleClass="welcome-title" text="Calendario de reservas" />
-
-                    <Region HBox.hgrow="ALWAYS" />
-
-                </HBox>
-            <Region prefHeight="92.0" prefWidth="709.0" />
-            <GridPane prefHeight="35.0" prefWidth="685.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="BUSCAR POR CLIENTE" />
-                  <Label text="CANCHA" GridPane.columnIndex="2" />
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="3" />
-               </children>
-            </GridPane>
-            <Region prefHeight="118.0" prefWidth="709.0" />
-
-
-                <!-- ================================================= -->
-                <!-- TÍTULO Y FILTROS -->
-                <!-- ================================================= -->
-
-                <HBox alignment="CENTER_LEFT" spacing="10" />
-
-
-                <!-- ================================================= -->
-                <!-- TABLA DE CANCHAS -->
-                <!-- ================================================= -->
-
-                <TableView prefHeight="345.0" prefWidth="709.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
-
-                    <columns>
-
-                        <TableColumn prefWidth="70.0" text="HORA" />
-
-                        <TableColumn prefWidth="132.0" text="LUNES" />
-
-                        <TableColumn prefWidth="118.0" text="MARTES" />
-
-                        <TableColumn prefWidth="114.0" text="MIERCOLES" />
-                  <TableColumn prefWidth="128.0" text="JUEVES" />
-                  <TableColumn prefWidth="146.0" text="VIERNES" />
-
-                    </columns>
-
-                </TableView>
-
-            </VBox>
-
+            </children>
         </VBox>
-
     </center>
 
 </BorderPane>

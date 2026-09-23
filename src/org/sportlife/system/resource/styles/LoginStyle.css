@@ -1,0 +1,68 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 sept 2026, 07:35:25
+    Author     : informatica
+*/
+
+/* Estilo para el botón de Iniciar Sesión */
+ 
+/* Estilo para los dos campos de texto */
+/* Contenedor principal / Ventana redondeada */
+
+.login-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30px 0px 0px 30px;
+}
+
+.login-title {
+    /* Prueba con 'Impact', 'Trebuchet MS', 'Segoe UI' o 'Verdana' */
+    -fx-font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A1A1A;
+    -fx-alignment: center;
+    -fx-padding: 0 0 10px 0;
+}
+
+/* Campos de entrada (Tanto por ID como por clase) */
+#txtUserName, #pwdPassword, .input-field {
+    -fx-background-color: #E6E6E6;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-pref-height: 42px;
+    -fx-padding: 0px 15px 0px 15px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #8E8E8E;
+    -fx-text-fill: #222222;
+    -fx-border-color: transparent;
+}
+
+#txtUserName:focused, #pwdPassword:focused, .input-field:focused {
+    -fx-background-color: #DDDDDD;
+    -fx-border-color: #8CBE23;
+    -fx-border-radius: 20px;
+    -fx-border-width: 1.5px;
+}
+
+/* Botones Verdes */
+#btnLogIn, #btnCreatOnAccount, .btn-primary {
+    -fx-background-color: #8CBE23;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-pref-height: 42px;
+    -fx-cursor: hand;
+}
+
+#btnLogIn:hover, #btnCreatOnAccount:hover, .btn-primary:hover {
+    -fx-background-color: #7BA81F;
+}
+
+#btnLogIn:pressed, #btnCreatOnAccount:pressed, .btn-primary:pressed {
+    -fx-background-color: #6A931B;
+}

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,211 +16,127 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500" prefWidth="950" styleClass="admin-root" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="550.0" prefWidth="950.0" styleClass="root-pane" stylesheets="@../resource/styles/CalendarioStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.PersonalController">
 
     <!-- ===================================================== -->
-    <!-- MENU LATERAL -->
+    <!-- BARRA LATERAL (SIDEBAR) -->
     <!-- ===================================================== -->
-
     <left>
-
-        <VBox prefHeight="500.0" prefWidth="191.0" spacing="12" styleClass="sidebar">
-
+        <VBox prefWidth="200.0" spacing="12.0" styleClass="sidebar" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="10" left="10" right="8" top="15" />
+                <Insets bottom="15.0" left="12.0" right="12.0" top="20.0" />
             </padding>
+            <children>
+                <!-- LOGO -->
+                <HBox alignment="CENTER" styleClass="logo-container">
+                    <children>
+                        <ImageView fx:id="imgLogo" fitHeight="70.0" fitWidth="160.0" preserveRatio="true">
+                            <image>
+                                <Image url="@../resource/images/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
 
+                <Region prefHeight="69.0" prefWidth="176.0" />
 
-            <!-- LOGO -->
+                <!-- ACCIONES / MENÚ -->
+                <Button fx:id="btnAdd" maxWidth="Infinity" onMouseClicked="onAdd" styleClass="btn-sidebar, btn-sidebar-active" text="AGREGAR" />
+                <Button fx:id="btnEdit" maxWidth="Infinity" onMouseClicked="onEdit" styleClass="btn-sidebar" text="EDITAR" />
+                <Button fx:id="btnDelete" maxWidth="Infinity" onMouseClicked="onDelete" styleClass="btn-sidebar" text="ELIMINAR" />
+                <Button fx:id="btnRefreshList" maxWidth="Infinity" onMouseClicked="onRefreshList" styleClass="btn-sidebar" text="ACTUALIZAR LA LISTA" />
+                <Button fx:id="btnCancel" maxWidth="Infinity" onMouseClicked="onCancel" styleClass="btn-sidebar" text="CANCELAR" />
 
-            <HBox alignment="CENTER_LEFT" spacing="5">
+                <Region VBox.vgrow="ALWAYS" />
 
-                <ImageView fitHeight="118.0" fitWidth="136.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../logo.png" />
-               </image></ImageView>
-
-                <VBox spacing="0" />
-
-            </HBox>
-         <Region prefHeight="61.0" prefWidth="173.0" />
-
-
-            <!-- ESPACIO -->
-
-            <Region VBox.vgrow="ALWAYS" />
-
-
-            <!-- CERRAR SESION -->
-
-            <Button maxWidth="Infinity" styleClass="menu-button" text="⇥  CERRAR SESIÓN" />
-
+                <!-- CERRAR SESIÓN -->
+                <Button fx:id="btnLogout" maxWidth="Infinity" onMouseClicked="onLogout" styleClass="btn-logout" text="⇥  CERRAR SESIÓN" />
+            </children>
         </VBox>
-
     </left>
-
 
     <!-- ===================================================== -->
     <!-- CONTENIDO PRINCIPAL -->
     <!-- ===================================================== -->
-
     <center>
-
-        <VBox spacing="12" styleClass="content">
-
+        <VBox spacing="15.0" styleClass="content-area" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="10" left="15" right="15" top="15" />
+                <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
             </padding>
-
-
-            <!-- ================================================= -->
-            <!-- ENCABEZADO -->
-            <!-- ================================================= -->
-
-            <HBox alignment="CENTER_LEFT" spacing="10">
-
-                <Label styleClass="header-title" text="Calendario" />
-
-                <Region HBox.hgrow="ALWAYS" />
-
-
-                <!-- ADMINISTRADOR -->
-
-                <HBox alignment="CENTER" spacing="8" styleClass="user-box">
-
-                    <Label styleClass="user-icon" text="●" />
-
-                    <Label styleClass="user-text" text="Administrador" />
-
+            <children>
+                
+                <!-- CABECERA SUPERIOR -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label styleClass="header-title" text="Panel de Administración" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <HBox alignment="CENTER" spacing="6.0" styleClass="user-badge">
+                            <children>
+                                <Label styleClass="user-badge-dot" text="●" />
+                                <Label styleClass="user-badge-text" text="ADMIN" />
+                            </children>
+                        </HBox>
+                    </children>
                 </HBox>
 
-            </HBox>
+                <!-- TARJETA BLANCA CENTRAL -->
+                <VBox spacing="15.0" styleClass="main-card" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
+                    </padding>
+                    <children>
+                        
+                        <!-- TÍTULOS -->
+                        <VBox spacing="3.0">
+                            <children>
+                                <Label styleClass="card-title" text="Gestión personal" />
+                                <Label styleClass="card-subtitle" text="Gestiona el personal, turnos y ocupaciones" />
+                            </children>
+                        </VBox>
 
+                        <!-- FORMULARIO -->
+                        <GridPane hgap="20.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label styleClass="input-label" text="NOMBRE COMPLETO" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <TextField fx:id="txtFullName" promptText="NOMBRE COMPLETO" styleClass="input-field" GridPane.columnIndex="0" GridPane.rowIndex="1" />
 
-            <!-- ================================================= -->
-            <!-- PANEL BLANCO -->
-            <!-- ================================================= -->
+                                <Label styleClass="input-label" text="TURNO ASIGNADO" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <TextField fx:id="txtAssignedShift" promptText="TURNO ASIGNADO" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <VBox spacing="10" styleClass="main-panel">
+                                <Label styleClass="input-label" text="ROL / CARGO" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <TextField fx:id="txtRole" promptText="ROL/CARGO" styleClass="input-field" GridPane.columnIndex="0" GridPane.rowIndex="3" />
 
-                <padding>
-                    <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
+                                <Label styleClass="input-label" text="ESTADO" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <TextField fx:id="txtStatus" promptText="ESTADO" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            </children>
+                        </GridPane>
 
+                        <!-- TABLA DE DATOS -->
+                        <TableView fx:id="tblStaff" styleClass="custom-table" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colFullName" prefWidth="200.0" text="NOMBRE COMPLETO" />
+                                <TableColumn fx:id="colRole" prefWidth="150.0" text="ROL/CARGO" />
+                                <TableColumn fx:id="colShift" prefWidth="150.0" text="TURNO ASIGNADO" />
+                                <TableColumn fx:id="colStatus" prefWidth="120.0" text="ESTADO" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
 
-                <!-- ================================================= -->
-                <!-- BIENVENIDA -->
-                <!-- ================================================= -->
-
-                <HBox alignment="CENTER_LEFT">
-
-                    <Label styleClass="welcome-title" text="¡Bienvenido, Calendario de reservas" />
-
-                    <Region HBox.hgrow="ALWAYS" />
-
-                </HBox>
-
-
-                <!-- ================================================= -->
-                <!-- DESCRIPCIÓN -->
-                <!-- ================================================= -->
-
-                <Label styleClass="description" text="visualiza y gestiona la agenda de las canchas por semana" />
-            <GridPane prefHeight="155.0" prefWidth="605.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.0" minWidth="10.0" prefWidth="159.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="331.0" minWidth="10.0" prefWidth="172.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="DISCIPLINAS" />
-                  <Label text="CANCHAS" GridPane.columnIndex="1" />
-                  <Label text="SEMANA DEL ..." GridPane.columnIndex="2" />
-                  <GridPane GridPane.rowIndex="1">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Cancha techada" />
-                        <Label text="Cancha sintetica" GridPane.rowIndex="1" />
-                        <Label text="Cancha de cemento" GridPane.rowIndex="2" />
-                        <Label text="Cancha indor fútbol" GridPane.rowIndex="3" />
-                        <Label text="Cancha aire libre tradicional" GridPane.rowIndex="4" />
-                        <Label text="Cancha de baloncesto" GridPane.rowIndex="5" />
-                        <Label text="Pista de tenis" GridPane.rowIndex="6" />
-                     </children>
-                  </GridPane>
-                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="CANCHA 1" />
-                        <Label text="CANCHA 2" GridPane.rowIndex="1" />
-                        <Label text="CANCHA 4" GridPane.rowIndex="3" />
-                        <Label text="CANCHA 3" GridPane.rowIndex="2" />
-                        <Label text="CANCHA 6" GridPane.rowIndex="5" />
-                        <Label text="CANCHA 5" GridPane.rowIndex="4" />
-                     </children>
-                  </GridPane>
-               </children>
-            </GridPane>
-
-
-                <!-- ================================================= -->
-                <!-- TÍTULO Y FILTROS -->
-                <!-- ================================================= -->
-
-                <HBox alignment="CENTER_LEFT" spacing="10" />
-
-
-                <!-- ================================================= -->
-                <!-- TABLA DE CANCHAS -->
-                <!-- ================================================= -->
-
-                <TableView prefHeight="244.0" prefWidth="557.0" styleClass="sports-table" VBox.vgrow="ALWAYS">
-
-                    <columns>
-
-                        <TableColumn prefWidth="70.0" text="HORA" />
-
-                        <TableColumn prefWidth="132.0" text="LUNES" />
-
-                        <TableColumn prefWidth="118.0" text="MARTES" />
-
-                        <TableColumn prefWidth="114.0" text="MIERCOLES" />
-                  <TableColumn prefWidth="128.0" text="JUEVES" />
-                  <TableColumn prefWidth="146.0" text="VIERNES" />
-
-                    </columns>
-
-                </TableView>
-
-            </VBox>
-
+                    </children>
+                </VBox>
+            </children>
         </VBox>
-
     </center>
-
 </BorderPane>

@@ -1,0 +1,148 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22/09/2026, 14:47:45
+    Author     : HP
+*/
+
+/* ========================================================================== */
+/* GENERAL Y VENTANA PRINCIPAL                                                */
+/* ========================================================================== */
+.admin-root, .root {
+    -fx-background-color: #121212;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ========================================================================== */
+/* BARRA LATERAL (SIDEBAR)                                                    */
+/* ========================================================================== */
+.sidebar {
+    -fx-background-color: #181818;
+}
+
+.menu-button {
+    -fx-background-color: #242424;
+    -fx-text-fill: #E5E7EB;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 6px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: #333333;
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu-button-selected {
+    -fx-background-color: #8CC63F; /* Verde corporativo SportLife */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 6px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8px 12px;
+    -fx-cursor: hand;
+}
+
+.btn-logout {
+    -fx-background-color: #242424;
+    -fx-text-fill: #FF6B6B;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 8px 12px;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #FF6B6B;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* ENCABEZADO SUPERIOR                                                        */
+/* ========================================================================== */
+.top-banner-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.user-dot {
+    -fx-text-fill: #2ECC71;
+    -fx-font-size: 10px;
+}
+
+.user-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* TARJETA BLANCA CENTRAL                                                     */
+/* ========================================================================== */
+.main-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.35), 20, 0, 0, 6);
+}
+
+.welcome-heading {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A1A1A;
+}
+
+.field-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #666666;
+}
+
+/* ========================================================================== */
+/* CAMPOS DE TEXTO (TextField)                                                */
+/* ========================================================================== */
+.custom-input {
+    -fx-background-color: #F9FAFB;
+    -fx-background-radius: 6px;
+    -fx-border-color: #D1D5DB;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1F2937;
+    -fx-padding: 6px 10px;
+}
+
+.custom-input:focused {
+    -fx-border-color: #8CC63F;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* TABLAS                                                                     */
+/* ========================================================================== */
+.sports-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.sports-table .column-header-background {
+    -fx-background-color: #F3F4F6;
+    -fx-background-radius: 6px 6px 0px 0px;
+}
+
+.sports-table .column-header {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-text-fill: #374151;
+}

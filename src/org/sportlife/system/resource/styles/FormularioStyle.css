@@ -1,0 +1,144 @@
+
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 sept 2026, 10:41:43
+    Author     : informatica
+*/
+
+/* ========================================================================== */
+/* ESTILOS GENERALES Y VENTANA                                                */
+/* ========================================================================== */
+.root {
+    -fx-background-color: #121212; /* Fondo oscuro elegante */
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ========================================================================== */
+/* PANEL LATERAL (SIDEBAR)                                                    */
+/* ========================================================================== */
+.sidebar {
+    -fx-background-color: #181818;
+}
+
+.btn-logout {
+    -fx-background-color: #242424;
+    -fx-text-fill: #FF6B6B;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-logout:hover {
+    -fx-background-color: #FF6B6B;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* ENCABEZADO SUPERIOR                                                        */
+/* ========================================================================== */
+.top-banner-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #CCCCCC;
+}
+
+.user-dot {
+    -fx-text-fill: #2ECC71;
+    -fx-font-size: 10px;
+}
+
+.user-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* TARJETA BLANCA PRINCIPAL (EL CONTENEDOR CENTRAL)                           */
+/* ========================================================================== */
+.main-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.35), 20, 0, 0, 6);
+}
+
+/* ========================================================================== */
+/* TIPOGRAFÍA DENTRO DE LA TARJETA                                            */
+/* ========================================================================== */
+.welcome-heading {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A1A1A;
+}
+
+.field-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #666666;
+}
+
+/* ========================================================================== */
+/* CONTROLES (ComboBox, DatePicker, Spinner)                                  */
+/* ========================================================================== */
+.custom-combo, .custom-datepicker, .custom-spinner {
+    -fx-background-color: #F9FAFB;
+    -fx-background-radius: 8px;
+    -fx-border-color: #D1D5DB;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1F2937;
+}
+
+.custom-combo:focused, .custom-datepicker:focused, .custom-spinner:focused {
+    -fx-border-color: #8CC63F;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ========================================================================== */
+/* CAJAS DE INFORMACIÓN Y TOTALES                                             */
+/* ========================================================================== */
+.info-box-display {
+    -fx-background-color: #F3F4F6;
+    -fx-background-radius: 8px;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 8px;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.info-box-total {
+    -fx-background-color: #ECFDF5;
+    -fx-background-radius: 8px;
+    -fx-border-color: #A7F3D0;
+    -fx-border-radius: 8px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #065F46;
+}
+
+/* ========================================================================== */
+/* BOTÓN DE ACCIÓN PRINCIPAL (Confirmar Reserva)                              */
+/* ========================================================================== */
+.btn-action-confirm {
+    -fx-background-color: #8CC63F; /* Verde corporativo llamativo */
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.btn-action-confirm:hover {
+    -fx-background-color: #7BB335;
+}
+
+.btn-action-confirm:pressed {
+    -fx-background-color: #699E28;
+}

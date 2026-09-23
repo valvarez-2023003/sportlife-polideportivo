@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RegisterController">
+<BorderPane prefHeight="500.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sportlife.system.controller.RegisterController">
 
     <!-- PARTE IZQUIERDA -->
     <left>
         <StackPane prefWidth="450">
 
-            <ImageView fitHeight="581.0" fitWidth="451.0" preserveRatio="false">
+            <ImageView fitHeight="604.0" fitWidth="451.0" preserveRatio="false">
 
                 <image>
                     <Image url="@../resource/images/fondoregister.jpg" />
@@ -33,7 +33,7 @@
     <!-- PARTE DERECHA -->
     <center>
 
-        <VBox alignment="TOP_LEFT" prefHeight="581.0" prefWidth="543.0" spacing="8">
+        <VBox alignment="TOP_LEFT" prefHeight="581.0" prefWidth="543.0" spacing="8" stylesheets="@../resource/styles/RegisterStyle.css">
 
             <padding>
                 <Insets bottom="25" left="55" right="55" top="25" />
