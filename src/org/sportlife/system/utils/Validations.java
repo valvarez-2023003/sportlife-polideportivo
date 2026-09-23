@@ -28,6 +28,20 @@ public class Validations {
     public Boolean validateLengthText(String text, int lengthMax){
         return text.length() <= lengthMax;
     }
+
+    public Boolean validatePhone(String phone){
+        if(phone == null || phone.trim().isEmpty()){
+            return false;
+        }
+        return phone.trim().matches("^[0-9]{8}$");
+    }
+
+    public Boolean validateOnlyLetters(String text){
+        if(text == null || text.trim().isEmpty()){
+            return false;
+        }
+        return text.trim().matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$");
+    }
     
     public Boolean validateEmail(String email){
         if(email == null || email.trim().isEmpty()){

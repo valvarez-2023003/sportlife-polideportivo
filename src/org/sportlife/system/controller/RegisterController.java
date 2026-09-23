@@ -56,15 +56,15 @@ public class RegisterController implements Initializable {
         viewFactory.viewLogin();
     }
 
-    @FXML
+@FXML
     public void onCreateUser(MouseEvent event){
         String userName = txtUserName.getText().trim();
         String name = txtName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtNumberPhone.getText().trim();
-        String password = pwdPassword.getText().trim();
-        String confirmPassword = pwdConfirmPassword.getText().trim();
+        String password = pwdPassword.getText(); // Sin .trim() para no alterar espacios intencionales
+        String confirmPassword = pwdConfirmPassword.getText();
 
         if(validations.emptyText(userName) || validations.emptyText(name) || validations.emptyText(lastName) ||
             validations.emptyText(email) || validations.emptyText(phone) || validations.emptyText(password) || validations.emptyText(confirmPassword)) {
@@ -77,13 +77,13 @@ public class RegisterController implements Initializable {
             return;
         }
         
-        if(!validations.validateLengthText(name, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre excedió la cantidad de caracteres (Max.50).");
+        if(!validations.validateOnlyLetters(name) || !validations.validateLengthText(name, 50)){
+            alertInfo.viewAlert("ERROR", "Nombre Inválido", "Error de Campo", "El nombre debe contener solo letras y no exceder los 50 caracteres.");
             return;
         }
         
-        if(!validations.validateLengthText(lastName, 50)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Apellido excedió la cantidad de caracteres (Max.50).");
+        if(!validations.validateOnlyLetters(lastName) || !validations.validateLengthText(lastName, 50)){
+            alertInfo.viewAlert("ERROR", "Apellido Inválido", "Error de Campo", "El apellido debe contener solo letras y no exceder los 50 caracteres.");
             return;
         }
 
@@ -92,8 +92,9 @@ public class RegisterController implements Initializable {
             return;
         }
         
-        if(!validations.validateLengthText(phone, 10)){
-           alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Número de teléfono excedió la cantidad de caracteres (Max.10).");
+        // --- AQUÍ CORREGIMOS LA VALIDACIÓN DEL TELÉFONO ---
+        if(!validations.validatePhone(phone)){
+           alertInfo.viewAlert("ERROR", "Teléfono Inválido", "Error de Campo", "El número de teléfono debe contener exactamente 8 dígitos numéricos.");
            return;
         }
         
