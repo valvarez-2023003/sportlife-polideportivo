@@ -70,9 +70,9 @@ public class GestionCanchasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println(">>> GestionCanchasController inicializado.");
 
-        cmbDiscipline.getItems().addAll("Fútbol", "Basket", "Tenis", "Vóley", "Otro");
+        cmbDiscipline.getItems().addAll("Fútbol", "Basquet", "Tenis", "Vóley", "Otro");
         cmbCovered.getItems().addAll("Techada", "Aire libre");
-        cmbStatus.getItems().addAll("Disponible", "En mantenimiento", "Ocupada");
+        cmbStatus.getItems().addAll("Disponible", "En mantenimiento");
 
         txtPricePerHour.setTextFormatter(NumericTextFormatter.createDecimalFormatter(7, 2));
 

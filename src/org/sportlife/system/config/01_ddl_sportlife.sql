@@ -359,7 +359,7 @@ BEGIN
     FROM Reservas r
     INNER JOIN Canchas c ON r.id_cancha=c.id_cancha
     INNER JOIN Users u ON r.id_user=u.id_user
-    ORDER BY r.fecha_reserva ASC, r.hora_inicio ASC;
+    ORDER BY r.fecha_reserva ASC, r.hora_inicio ASC, r.hora_fin ASC;
 END $$
 
 CREATE PROCEDURE sp_get_reservas_pendientes()

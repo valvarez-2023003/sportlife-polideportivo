@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -21,10 +22,15 @@ import org.sportlife.system.utils.SessionManager;
 
 /**
  * Controlador del INICIO del cliente (Mis Reservas).
+ * Muestra todas las reservas del cliente logueado y permite ver el comprobante
+ * de las reservas confirmadas.
  *
  * @author Cristofer Ramos
  */
 public class ClienteInicioController implements Initializable {
+
+    @FXML private Button btnRefresh;
+    @FXML private Button btnViewReceipt;
 
     @FXML private TableView<Reserva> tblMyReservations;
     @FXML private TableColumn<Reserva, Integer> colIdReserva;
@@ -64,7 +70,8 @@ public class ClienteInicioController implements Initializable {
         try {
             String idUser = SessionManager.getInstancia().getIdUsuarioActual();
             if (idUser == null) {
-                AlertInformation.viewAlert("ERROR", "Sesión inválida", "Error", "No hay usuario autenticado.");
+                AlertInformation.viewAlert("ERROR", "Sesión inválida", "Error",
+                    "No hay usuario autenticado.");
                 return;
             }
             List<Reserva> lista = reservaService.listarPorUsuario(idUser);
@@ -81,6 +88,10 @@ public class ClienteInicioController implements Initializable {
         cargarMisReservas();
     }
 
+    /**
+     * Muestra el comprobante de una reserva confirmada.
+     * Solo las reservas con estado "Confirmada" pueden mostrar comprobante.
+     */
     @FXML
     public void onViewReceipt(MouseEvent event) {
         Reserva r = tblMyReservations.getSelectionModel().getSelectedItem();
@@ -94,7 +105,6 @@ public class ClienteInicioController implements Initializable {
                 "Solo puedes ver el comprobante de reservas confirmadas.");
             return;
         }
-        // TODO: abrir vista de comprobante
         AlertInformation.viewAlert("INFO", "Comprobante", "Reserva #" + r.getIdReserva(),
             "Cancha: " + r.getNombreCancha() + "\n" +
             "Cliente: " + r.getCliente() + "\n" +

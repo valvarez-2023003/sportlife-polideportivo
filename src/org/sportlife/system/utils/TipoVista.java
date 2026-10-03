@@ -10,7 +10,7 @@ public enum TipoVista {
 
     LOGIN("LoginView.fxml", 779, 528, "LOGIN - SPORTLIFE", false),
     REGISTRO("RegisterView.fxml", 950, 600, "REGISTRO - SPORTLIFE", false),
-    GERENTE("GerenteView.fxml", 900, 600, "SPORTLIFE - PANEL GERENTE", true),
+    GERENTE("BarraLateralGerente.fxml", 1000, 600, "SPORTLIFE - PANEL GERENTE", true),
     ADMINISTRADOR("BarraLateralAdmin.fxml", 1000, 600, "SPORTLIFE - PANEL ADMINISTRADOR", true),
     RECEPCIONISTA("BarraLateralRecepcionista.fxml", 1000, 600, "SPORTLIFE - PANEL RECEPCIONISTA", true),
     FORMULARIO("BarraLateralCliente.fxml", 1000, 600, "SPORTLIFE - PANEL CLIENTE", true);
@@ -21,13 +21,10 @@ public enum TipoVista {
     private final String titulo;
     private final boolean redimensionable;
 
-     TipoVista(String 
-    archivo,
-    int ancho, int alto, String  titulo,
-    boolean redimensionable
-
-    
-        ) {
+    TipoVista(String archivo,
+            int ancho, int alto, String titulo,
+            boolean redimensionable
+    ) {
         this.archivo = archivo;
         this.ancho = ancho;
         this.alto = alto;

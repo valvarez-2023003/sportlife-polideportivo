@@ -1,8 +1,10 @@
 package org.sportlife.system.service;
 
+import java.util.List;
 import org.sportlife.system.model.User;
 import org.sportlife.system.repository.UserRepository;
 import org.sportlife.system.utils.Validations;
+import java.sql.SQLException;
 
 /**
  *
@@ -49,5 +51,21 @@ public class UserService {
             e.printStackTrace();
             return RegisterStatus.ERROR_USER_CREATE;
         }
+    }
+
+    public List<User> listarStaff() throws SQLException {
+        return userRepository.listarStaff();
+    }
+
+    public void crearStaff(User user, String idGerente) throws SQLException {
+        userRepository.crearStaff(user, idGerente);
+    }
+
+    public void actualizarStaff(User user, String idGerente) throws SQLException {
+        userRepository.actualizarStaff(user, idGerente);
+    }
+
+    public void eliminarStaff(String idUser, String idGerente) throws SQLException {
+        userRepository.eliminarStaff(idUser, idGerente);
     }
 }

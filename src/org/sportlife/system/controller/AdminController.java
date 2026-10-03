@@ -59,7 +59,6 @@ public class AdminController implements Initializable {
     private static final String FILTRO_TODAS = "TODAS";
     private static final String FILTRO_DISPONIBLES = "DISPONIBLES";
     private static final String FILTRO_MANTENIMIENTO = "EN MANTENIMIENTO";
-    private static final String FILTRO_OCUPADAS = "OCUPADAS";
 
     public AdminController() {
     }
@@ -95,12 +94,11 @@ public class AdminController implements Initializable {
         cmbStatusFilter.getItems().addAll(
             FILTRO_TODAS,
             FILTRO_DISPONIBLES,
-            FILTRO_MANTENIMIENTO,
-            FILTRO_OCUPADAS
+            FILTRO_MANTENIMIENTO
         );
         cmbStatusFilter.setValue(FILTRO_TODAS);
 
-        // Envolver la lista en FilteredList
+        // Envolver la lista en FilteredList para aplicar el filtro en la UI
         canchasFiltradas = new FilteredList<>(canchas, c -> true);
 
         // Escuchar cambios en el ComboBox
@@ -111,19 +109,17 @@ public class AdminController implements Initializable {
         tblFields.setItems(canchasFiltradas);
     }
 
-private void aplicarFiltro(String filtro) {
-    if (filtro == null) filtro = FILTRO_TODAS;
+    private void aplicarFiltro(String filtro) {
+        if (filtro == null) filtro = FILTRO_TODAS;
 
-    switch (filtro) {
-        case FILTRO_DISPONIBLES -> canchasFiltradas.setPredicate(
-            c -> "Disponible".equalsIgnoreCase(c.getEstado()));
-        case FILTRO_MANTENIMIENTO -> canchasFiltradas.setPredicate(
-            c -> "En mantenimiento".equalsIgnoreCase(c.getEstado()));
-        case FILTRO_OCUPADAS -> canchasFiltradas.setPredicate(
-            c -> "Ocupada".equalsIgnoreCase(c.getEstado()));
-        default -> canchasFiltradas.setPredicate(c -> true);
+        switch (filtro) {
+            case FILTRO_DISPONIBLES -> canchasFiltradas.setPredicate(
+                c -> "Disponible".equalsIgnoreCase(c.getEstado()));
+            case FILTRO_MANTENIMIENTO -> canchasFiltradas.setPredicate(
+                c -> "En mantenimiento".equalsIgnoreCase(c.getEstado()));
+            default -> canchasFiltradas.setPredicate(c -> true);
+        }
     }
-}
 
     // ==========================================================
     //  CARGA DE DATOS
@@ -131,7 +127,7 @@ private void aplicarFiltro(String filtro) {
 
     private void cargarCanchas() {
         try {
-            // Ahora cargamos TODAS las canchas; el filtro se aplica en la UI
+            // Cargamos TODAS las canchas; el filtro se aplica en la UI
             List<Cancha> lista = canchaService.listarTodas();
             canchas.setAll(lista);
             System.out.println(">>> Canchas cargadas: " + lista.size());

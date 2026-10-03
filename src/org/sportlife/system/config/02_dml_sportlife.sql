@@ -46,9 +46,9 @@ CALL sp_create_cancha('T3', 'Cancha Tenis 3',         'Tenis',   FALSE, 150.00, 
 CALL sp_create_cancha('B1', 'Cancha Basquet 1',       'Basquet', TRUE,  150.00, @id_admin);
 CALL sp_create_cancha('B2', 'Cancha Basquet 2',       'Basquet', FALSE, 150.00, @id_admin);
 CALL sp_create_cancha('B3', 'Cancha Basquet 3',       'Basquet', TRUE,  150.00, @id_admin);
-CALL sp_create_cancha('V1', 'Cancha Voley 1',       'Vóley', TRUE,  150.00, @id_admin);
-CALL sp_create_cancha('V2', 'Cancha Voley 2',       'Vóley', FALSE, 150.00, @id_admin);
-CALL sp_create_cancha('V3', 'Cancha Voley 3',       'Vóley', TRUE,  150.00, @id_admin);
+CALL sp_create_cancha('V1', 'Cancha Vóley 1', 'Vóley', TRUE,  150.00, @id_admin);
+CALL sp_create_cancha('V2', 'Cancha Vóley 2', 'Vóley', FALSE, 150.00, @id_admin);
+CALL sp_create_cancha('V3', 'Cancha Vóley 3', 'Vóley', TRUE,  150.00, @id_admin);
 
 -- ============================================================
 --  RESERVAS DE PRUEBA
@@ -60,13 +60,3 @@ CALL sp_test_crear_reserva_usuario('JGabriel', @id_f1, CURDATE(), '08:00:00', '1
 CALL sp_test_crear_reserva_usuario('KVBryan',  @id_f2, CURDATE(), '14:00:00', '16:00:00');
 CALL sp_test_crear_reserva_usuario('JGabriel', @id_f1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:00:00', '12:00:00');
 CALL sp_test_crear_reserva_usuario('KVBryan',  @id_f2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '16:00:00', '18:00:00');
-
-USE renta_de_canchas_sportlife_in4am;
-
-SELECT COUNT(*) FROM Users;      -- Debe ser 5 (1 gerente + 1 admin + 1 recep + 2 clientes)
-SELECT COUNT(*) FROM Canchas;    -- Debe ser 9
-SELECT COUNT(*) FROM Reservas;   -- Debe ser 4 (todas Pendientes)
-SELECT id_reserva, estado_reserva FROM Reservas;
-
-USE renta_de_canchas_sportlife_in4am;
-CALL sp_get_available_canchas();

@@ -7,13 +7,13 @@ package org.sportlife.system.model;
  */
 public class Cancha {
 
-    private int idCancha;           // id_cancha (auto)
-    private String codigo;          // código que el admin ingresa
-    private String nombre;          // descripción
-    private String tipoDeporte;     // Fútbol, Basket, Tenis, etc.
+    private int idCancha;           // id_cancha (auto-incremental en BD)
+    private String codigo;          // código que el admin ingresa (ej: "F1", "T2")
+    private String nombre;          // descripción de la cancha
+    private String tipoDeporte;     // Fútbol, Basquet, Tenis, Vóley
     private boolean techada;        // true = techada, false = aire libre
-    private double precioPorHora;
-    private String estado;          // Disponible, En mantenimiento, Ocupada
+    private double precioPorHora;   // precio en quetzales por hora
+    private String estado;          // Disponible / En mantenimiento
 
     public Cancha() {
     }
@@ -51,7 +51,9 @@ public class Cancha {
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
 
-    // Para mostrar en la tabla (por si usas PropertyValueFactory)
+    /**
+     * Devuelve el texto del techo para mostrar en la UI.
+     */
     public String getTechadaTexto() {
         return techada ? "Techada" : "Aire libre";
     }
