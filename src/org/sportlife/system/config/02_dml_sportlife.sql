@@ -59,4 +59,5 @@ CALL sp_create_inventario('Conos de Entrenamiento', 'Entrenamiento', 30, 25.00, 
 -- ============================================================
 --  RESERVAS DE PRUEBA
 -- ============================================================
-CALL sp_test_crear_reserva_usuario('JGabriel', 1, CURDATE(), '08:00:
+CALL sp_test_crear_reserva_usuario('JGabriel', 1, CURDATE(), '08:00');
+

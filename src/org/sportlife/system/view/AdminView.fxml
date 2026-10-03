@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -19,9 +20,7 @@
     <!-- ENCABEZADO SUPERIOR -->
     <HBox fx:id="pnlHeader" alignment="CENTER_LEFT" spacing="10" styleClass="top-header">
         <Label fx:id="lblHeaderTitle" styleClass="header-title" text="Panel de Administración" />
-
         <Region HBox.hgrow="ALWAYS" />
-
         <HBox fx:id="pnlUserBadge" alignment="CENTER" spacing="8" styleClass="user-badge">
             <Label fx:id="lblUserIcon" styleClass="user-icon" text="👤" />
             <Label fx:id="lblUserRole" styleClass="user-text" text="ADMINISTRADOR" />
@@ -42,7 +41,13 @@
 
         <!-- TARJETA DE ESTADÍSTICA -->
         <HBox fx:id="pnlStatCard" alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="250.0" spacing="12" styleClass="stat-card">
-            <Label fx:id="lblStatCardTitle" styleClass="stat-card-title" text="CANCHAS DISPONIBLES" wrapText="true" />
+            <Label fx:id="lblStatCardTitle" styleClass="stat-card-title" text="CANCHAS DEL POLIDEPORTIVO" wrapText="true" />
+        </HBox>
+
+        <!-- BARRA DE FILTRO -->
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Filtrar por estado:" styleClass="form-label"/>
+            <ComboBox fx:id="cmbStatusFilter" prefWidth="200" styleClass="green-combo"/>
         </HBox>
 
         <!-- TABLA DE CANCHAS -->

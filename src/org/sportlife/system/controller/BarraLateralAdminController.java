@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import org.sportlife.system.utils.SessionManager;
 import org.sportlife.system.utils.ViewFactory;
 
 /**
@@ -69,11 +70,12 @@ public void onOpenCalendar(MouseEvent event) {
     updateSelectedButton(btnCalendar);
 }
 
-    @FXML
-    public void onLogout(MouseEvent event) {
-        System.out.println("Cerrando sesión...");
-        viewFactory.viewLogin();
-    }
+@FXML
+public void onLogout(MouseEvent event) {
+    System.out.println("Cerrando sesión...");
+    SessionManager.getInstancia().cerrarSesion();  // ← limpiar sesión
+    viewFactory.viewLogin();
+}
 
     // ==========================================================
     //  UTILIDADES

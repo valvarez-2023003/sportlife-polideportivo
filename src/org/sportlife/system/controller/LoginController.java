@@ -10,11 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.sportlife.system.model.User;
 import org.sportlife.system.service.LoginResponse;
-import org.sportlife.system.service.LoginStatus;
 import org.sportlife.system.service.UserService;
 import org.sportlife.system.utils.AlertInformation;
+import org.sportlife.system.utils.SessionManager;
 import org.sportlife.system.utils.Validations;
 import org.sportlife.system.utils.ViewFactory;
+
 
 /**
  *
@@ -74,17 +75,20 @@ public class LoginController implements Initializable {
                     "Ocurrió un error inesperado al intentar conectar con el servidor.");
                 break;
 
-            case SUCCESS:
-                User authenticatedUser = response.getUser();
-                if (authenticatedUser != null && authenticatedUser.getRole() != null) {
-                    String role = authenticatedUser.getRole().trim().toLowerCase();
-                    viewFactory.loadView(role);
-                } else {
-                    AlertInformation.viewAlert("ERROR", "Rol Inválido",
-                        "Error de Autenticación",
-                        "El usuario no tiene rol asignado.");
-                }
-                break;
+case SUCCESS:
+    User authenticatedUser = response.getUser();
+    if (authenticatedUser != null && authenticatedUser.getRole() != null) {
+        // Guardar el usuario en la sesión global
+        SessionManager.getInstancia().setUsuarioActual(authenticatedUser);
+        
+        String role = authenticatedUser.getRole().trim().toLowerCase();
+        viewFactory.loadView(role);
+    } else {
+        AlertInformation.viewAlert("ERROR", "Rol Inválido",
+            "Error de Autenticación",
+            "El usuario no tiene rol asignado.");
+    }
+    break;
 
             case CREDENTIALS_EMPTY:
                 AlertInformation.viewAlert("ERROR", "Campos Vacíos",
