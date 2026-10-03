@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.sportlife.system.controller;
 
 import java.net.URL;
@@ -12,19 +8,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.sportlife.system.utils.ViewFactory;
 import org.sportlife.system.model.User;
+import org.sportlife.system.service.RegisterStatus;
 import org.sportlife.system.service.UserService;
-import org.sportlife.system.service.UserStatus;
 import org.sportlife.system.utils.AlertInformation;
 import org.sportlife.system.utils.Validations;
+import org.sportlife.system.utils.ViewFactory;
 
 /**
  *
  * @author Cristofer Ramos
  */
-
 public class RegisterController implements Initializable {
+
     @FXML private Button btnCreateAccount;
     @FXML private Button btnLogin;
     @FXML private PasswordField pwdConfirmPassword;
@@ -37,74 +33,80 @@ public class RegisterController implements Initializable {
 
     private final UserService userService;
     private final ViewFactory viewFactory;
-    private final AlertInformation alertInfo;
-    private final Validations validations;
 
-    public RegisterController(){
+    public RegisterController() {
         this.userService = new UserService();
         this.viewFactory = new ViewFactory();
-        this.alertInfo = new AlertInformation();
-        this.validations = new Validations();
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){
+    public void initialize(URL url, ResourceBundle rb) {
     }
 
     @FXML
-    public void onCancel(MouseEvent event){
+    public void onCancel(MouseEvent event) {
         viewFactory.viewLogin();
     }
 
-@FXML
-    public void onCreateUser(MouseEvent event){
+    @FXML
+    public void onCreateUser(MouseEvent event) {
         String userName = txtUserName.getText().trim();
         String name = txtName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String email = txtEmail.getText().trim();
         String phone = txtNumberPhone.getText().trim();
-        String password = pwdPassword.getText(); // Sin .trim() para no alterar espacios intencionales
+        String password = pwdPassword.getText();
         String confirmPassword = pwdConfirmPassword.getText();
 
-        if(validations.emptyText(userName) || validations.emptyText(name) || validations.emptyText(lastName) ||
-            validations.emptyText(email) || validations.emptyText(phone) || validations.emptyText(password) || validations.emptyText(confirmPassword)) {
-            alertInfo.viewAlert("ERROR", "Campos Vacíos", "Error de Validación", "Por favor, complete todos los campos del formulario.");
+        // Validación de campos vacíos
+        if (Validations.emptyText(userName) || Validations.emptyText(name)
+                || Validations.emptyText(lastName) || Validations.emptyText(email)
+                || Validations.emptyText(phone) || Validations.emptyText(password)
+                || Validations.emptyText(confirmPassword)) {
+            AlertInformation.viewAlert("ERROR", "Campos Vacíos", "Error de Validación",
+                "Por favor, complete todos los campos del formulario.");
             return;
         }
 
-        if(!validations.validateLengthText(userName, 25)){
-            alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", "Nombre de usuario excedió la cantidad de caracteres (Max.25).");
-            return;
-        }
-        
-        if(!validations.validateOnlyLetters(name) || !validations.validateLengthText(name, 50)){
-            alertInfo.viewAlert("ERROR", "Nombre Inválido", "Error de Campo", "El nombre debe contener solo letras y no exceder los 50 caracteres.");
-            return;
-        }
-        
-        if(!validations.validateOnlyLetters(lastName) || !validations.validateLengthText(lastName, 50)){
-            alertInfo.viewAlert("ERROR", "Apellido Inválido", "Error de Campo", "El apellido debe contener solo letras y no exceder los 50 caracteres.");
+        if (!Validations.validateLengthText(userName, 25)) {
+            AlertInformation.viewAlert("ERROR", "Longitud Inválida", "Error de Campo",
+                "Nombre de usuario excedió la cantidad de caracteres (Max.25).");
             return;
         }
 
-        if(!validations.validateEmail(email)){
-            alertInfo.viewAlert("ERROR", "Formato Inválido", "Error de Campo", "Correo electrónico no válido. Por favor, ingrese un formato correcto (ej: usuario@dominio.com).");
+        if (!Validations.validateOnlyLetters(name) || !Validations.validateLengthText(name, 50)) {
+            AlertInformation.viewAlert("ERROR", "Nombre Inválido", "Error de Campo",
+                "El nombre debe contener solo letras y no exceder los 50 caracteres.");
             return;
         }
-        
-        // --- AQUÍ CORREGIMOS LA VALIDACIÓN DEL TELÉFONO ---
-        if(!validations.validatePhone(phone)){
-           alertInfo.viewAlert("ERROR", "Teléfono Inválido", "Error de Campo", "El número de teléfono debe contener exactamente 8 dígitos numéricos.");
-           return;
+
+        if (!Validations.validateOnlyLetters(lastName) || !Validations.validateLengthText(lastName, 50)) {
+            AlertInformation.viewAlert("ERROR", "Apellido Inválido", "Error de Campo",
+                "El apellido debe contener solo letras y no exceder los 50 caracteres.");
+            return;
         }
-        
-        if (!validations.equalsText(password, confirmPassword)){
-            alertInfo.viewAlert("ERROR", "Contraseñas No Coinciden", "Error de Validación", "La contraseña ingresada no coincide con la confirmación.");
+
+        if (!Validations.validateEmail(email)) {
+            AlertInformation.viewAlert("ERROR", "Formato Inválido", "Error de Campo",
+                "Correo electrónico no válido. Por favor, ingrese un formato correcto (ej: usuario@dominio.com).");
+            return;
+        }
+
+        if (!Validations.validatePhone(phone)) {
+            AlertInformation.viewAlert("ERROR", "Teléfono Inválido", "Error de Campo",
+                "El número de teléfono debe contener exactamente 8 dígitos numéricos.");
+            return;
+        }
+
+        if (!Validations.equalsText(password, confirmPassword)) {
+            AlertInformation.viewAlert("ERROR", "Contraseñas No Coinciden", "Error de Validación",
+                "La contraseña ingresada no coincide con la confirmación.");
             pwdPassword.clear();
             pwdConfirmPassword.clear();
             return;
         }
 
+        // Crear usuario
         User newCustomer = new User();
         newCustomer.setUser(userName);
         newCustomer.setName(name);
@@ -113,13 +115,15 @@ public class RegisterController implements Initializable {
         newCustomer.setPhone(phone);
         newCustomer.setPassword(password);
 
-        UserStatus status = userService.registerCustomer(newCustomer);
+        RegisterStatus status = userService.registerCustomer(newCustomer);
 
-        if(status == UserStatus.USER_CREATED){
-            alertInfo.viewAlert("INFO", "Registro Exitoso", "Éxito", "El usuario ha sido registrado correctamente.");
-            viewFactory.viewLogin(); // Redirige al login
+        if (status == RegisterStatus.USER_CREATED) {
+            AlertInformation.viewAlert("INFO", "Registro Exitoso", "Éxito",
+                "El usuario ha sido registrado correctamente.");
+            viewFactory.viewLogin();
         } else {
-            alertInfo.viewAlert("ERROR", "Error de Registro", "Error de Base de Datos", "No se pudo registrar el usuario. Intente nuevamente o contacte al administrador.");
-        }    
+            AlertInformation.viewAlert("ERROR", "Error de Registro", "Error de Base de Datos",
+                "No se pudo registrar el usuario. Intente nuevamente o contacte al administrador.");
+        }
     }
 }

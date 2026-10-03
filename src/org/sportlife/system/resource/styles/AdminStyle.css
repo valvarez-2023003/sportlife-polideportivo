@@ -29,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .logo-container {
-    -fx-padding: 0 0 5 0;
+    -fx-padding: 0px 0px 5px 0px
 }
 
 /* Botones de Navegación */
@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 12px;
     -fx-font-size: 10px;
     -fx-font-weight: bold;
-    -fx-padding: 6px 8px;
+    -fx-padding: 6px 8px 6px 8px;
     -fx-alignment: CENTER;
     -fx-cursor: hand;
 }
@@ -60,7 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 12px;
     -fx-font-size: 10px;
     -fx-font-weight: bold;
-    -fx-padding: 8px 8px;
+    -fx-padding: 8px 8px 8px 8px;
     -fx-alignment: CENTER;
     -fx-cursor: hand;
 }
@@ -75,7 +75,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 15px;
     -fx-font-size: 10px;
     -fx-font-weight: bold;
-    -fx-padding: 6px 10px;
+    -fx-padding: 6px 10px 6px 10px;
     -fx-alignment: CENTER-LEFT;
     -fx-cursor: hand;
 }
@@ -102,7 +102,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 20px;
     -fx-border-color: #222222;
     -fx-border-radius: 20px;
-    -fx-padding: 4px 12px;
+    -fx-padding: 4px 12px 4px 12px;
 }
 
 .user-icon {
@@ -144,7 +144,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 1.5px;
     -fx-border-radius: 12px;
     -fx-background-radius: 12px;
-    -fx-padding: 6px 12px;
+    -fx-padding: 6px 12px 6px 12px;
 }
 
 .stat-card-title {
@@ -166,7 +166,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #8cc63f;
     -fx-border-width: 1px;
     -fx-border-radius: 12px;
-    -fx-padding: 2px 8px;
+    -fx-padding: 2px 8px 2px 8px;
     -fx-font-size: 9px;
     -fx-font-weight: bold;
     -fx-text-fill: #444444;
@@ -178,7 +178,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 1.5px;
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
-    -fx-padding: 1px 8px;
+    -fx-padding: 1px 8px 1px 8px;
     -fx-pref-width: 130px;
 }
 
@@ -240,7 +240,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #ffffff;
     -fx-border-color: #8cc63f transparent #8cc63f transparent;
     -fx-border-width: 1.5px;
-    -fx-padding: 6px 0px;
+    -fx-padding: 6px 0px 6px 0px;
 }
 
 .custom-table .column-header:first-child {

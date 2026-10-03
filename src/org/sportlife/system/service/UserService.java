@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package org.sportlife.system.service;
 
 import org.sportlife.system.model.User;
@@ -12,48 +8,46 @@ import org.sportlife.system.utils.Validations;
  *
  * @author Cristofer Ramos
  */
-
 public class UserService {
-    private final UserRepository userRepository;
-    private final Validations validations;
 
-    public UserService(){
+    private final UserRepository userRepository;
+
+    public UserService() {
         this.userRepository = new UserRepository();
-        this.validations = new Validations();
     }
 
-    public AuthResponse authenticate(String usernameOrEmail, String password){
-        if(validations.emptyText(usernameOrEmail) || validations.emptyText(password)){
-            return new AuthResponse(UserStatus.CREDENTIALS_EMPTY, null);
+    public LoginResponse authenticate(String usernameOrEmail, String password) {
+        if (Validations.emptyText(usernameOrEmail) || Validations.emptyText(password)) {
+            return new LoginResponse(LoginStatus.CREDENTIALS_EMPTY, null);
         }
 
-        try{
+        try {
             User foundUser = userRepository.checkUserExistsStrict(usernameOrEmail.trim());
-            
-            if(foundUser == null){
-                return new AuthResponse(UserStatus.USER_NOT_FOUND, null);
+
+            if (foundUser == null) {
+                return new LoginResponse(LoginStatus.USER_NOT_FOUND, null);
             }
 
             User authenticatedUser = userRepository.verifyUserPassword(usernameOrEmail.trim(), password.trim());
-            
-            if(authenticatedUser != null){
-                return new AuthResponse(UserStatus.LOGIN_SUCCESS, authenticatedUser);
-            }else{
-                return new AuthResponse(UserStatus.INVALID_PASSWORD, null);
+
+            if (authenticatedUser != null) {
+                return new LoginResponse(LoginStatus.SUCCESS, authenticatedUser);
+            } else {
+                return new LoginResponse(LoginStatus.INVALID_PASSWORD, null);
             }
-            
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            return new AuthResponse(UserStatus.ERROR_LOGIN, null);
+            return new LoginResponse(LoginStatus.ERROR, null);
         }
     }
-    public UserStatus registerCustomer(User user){
-        try{
+
+    public RegisterStatus registerCustomer(User user) {
+        try {
             boolean success = userRepository.registerCustomer(user);
-            return success ? UserStatus.USER_CREATED : UserStatus.ERROR_USER_CREATE;
-        }catch (Exception e){
+            return success ? RegisterStatus.USER_CREATED : RegisterStatus.ERROR_USER_CREATE;
+        } catch (Exception e) {
             e.printStackTrace();
-            return UserStatus.ERROR_USER_CREATE;
+            return RegisterStatus.ERROR_USER_CREATE;
         }
     }
 }
