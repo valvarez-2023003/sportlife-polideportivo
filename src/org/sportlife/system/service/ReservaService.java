@@ -47,4 +47,11 @@ public class ReservaService {
     public void eliminar(int idReserva) throws SQLException {
         reservaRepository.eliminar(idReserva);
     }
+    public List<Reserva> listarPorUsuario(String idUser) throws SQLException {
+    return reservaRepository.listarPorUsuario(idUser);
+}
+
+public void crear(Reserva reserva, String idUser) throws SQLException {
+    reservaRepository.crear(reserva, idUser);
+}
 }

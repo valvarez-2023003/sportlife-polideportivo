@@ -46,16 +46,6 @@ CREATE TABLE Reservas(
     CONSTRAINT fk_reserva_user FOREIGN KEY (id_user) REFERENCES Users(id_user)
 );
 
-CREATE TABLE Inventario(
-    id_inventario INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_producto VARCHAR(100) NOT NULL,
-    categoria VARCHAR(50) NOT NULL,
-    cantidad INT NOT NULL,
-    precio_unitario DECIMAL(10,2) NOT NULL,
-    proveedor VARCHAR(100) NULL,
-    estado VARCHAR(20) DEFAULT 'Disponible'
-);
-
 -- ============================================================
 --  PROCEDIMIENTOS ALMACENADOS
 -- ============================================================
@@ -396,6 +386,30 @@ BEGIN
     ORDER BY r.fecha_reserva ASC, r.hora_inicio ASC;
 END $$
 
+CREATE PROCEDURE sp_get_reservas_por_usuario(IN id_user_p VARCHAR(36))
+BEGIN
+    SELECT
+        r.id_reserva,
+        c.codigo AS codigo_cancha,
+        c.nombre AS nombre_cancha,
+        c.tipo_deporte,
+        c.techada,
+        c.precio_por_hora,
+        CONCAT(u.name,' ',u.lastname) AS cliente,
+        u.email AS email_cliente,
+        r.fecha_reserva,
+        r.hora_inicio,
+        r.hora_fin,
+        TIMESTAMPDIFF(HOUR, r.hora_inicio, r.hora_fin) AS total_horas,
+        r.costo_total,
+        r.estado_reserva
+    FROM Reservas r
+    INNER JOIN Canchas c ON r.id_cancha=c.id_cancha
+    INNER JOIN Users u ON r.id_user=u.id_user
+    WHERE r.id_user=id_user_p
+    ORDER BY r.fecha_reserva DESC, r.hora_inicio DESC;
+END $$
+
 CREATE PROCEDURE sp_confirmar_reserva(IN id_reserva_p INT)
 BEGIN
     UPDATE Reservas
@@ -439,82 +453,6 @@ END $$
 CREATE PROCEDURE sp_delete_reserva(IN id_reserva_p INT)
 BEGIN
     DELETE FROM Reservas WHERE id_reserva=id_reserva_p;
-END $$
-
--- ---------- INVENTARIO ----------
-CREATE PROCEDURE sp_get_inventario()
-BEGIN
-    SELECT id_inventario, nombre_producto, categoria, cantidad, precio_unitario, proveedor, estado
-    FROM Inventario
-    ORDER BY nombre_producto ASC;
-END $$
-
-CREATE PROCEDURE sp_create_inventario(
-    IN nombre_producto_p VARCHAR(100),
-    IN categoria_p VARCHAR(50),
-    IN cantidad_p INT,
-    IN precio_unitario_p DECIMAL(10,2),
-    IN proveedor_p VARCHAR(100),
-    IN id_gerente_p VARCHAR(36)
-)
-BEGIN
-    DECLARE rol_gerente VARCHAR(20);
-
-    SELECT role INTO rol_gerente FROM Users WHERE id_user=id_gerente_p LIMIT 1;
-
-    IF rol_gerente IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_gerente<>'Gerente' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Gerente puede agregar productos al inventario.';
-    ELSE
-        INSERT INTO Inventario(nombre_producto, categoria, cantidad, precio_unitario, proveedor, estado)
-        VALUES(nombre_producto_p, categoria_p, cantidad_p, precio_unitario_p, proveedor_p, 'Disponible');
-    END IF;
-END $$
-
-CREATE PROCEDURE sp_update_inventario(
-    IN id_inventario_p INT,
-    IN nombre_producto_p VARCHAR(100),
-    IN categoria_p VARCHAR(50),
-    IN cantidad_p INT,
-    IN precio_unitario_p DECIMAL(10,2),
-    IN proveedor_p VARCHAR(100),
-    IN estado_p VARCHAR(20),
-    IN id_gerente_p VARCHAR(36)
-)
-BEGIN
-    DECLARE rol_gerente VARCHAR(20);
-
-    SELECT role INTO rol_gerente FROM Users WHERE id_user=id_gerente_p LIMIT 1;
-
-    IF rol_gerente IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_gerente<>'Gerente' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Gerente puede editar el inventario.';
-    ELSE
-        UPDATE Inventario
-        SET nombre_producto=nombre_producto_p, categoria=categoria_p, cantidad=cantidad_p,
-            precio_unitario=precio_unitario_p, proveedor=proveedor_p, estado=estado_p
-        WHERE id_inventario=id_inventario_p;
-    END IF;
-END $$
-
-CREATE PROCEDURE sp_delete_inventario(
-    IN id_inventario_p INT,
-    IN id_gerente_p VARCHAR(36)
-)
-BEGIN
-    DECLARE rol_gerente VARCHAR(20);
-
-    SELECT role INTO rol_gerente FROM Users WHERE id_user=id_gerente_p LIMIT 1;
-
-    IF rol_gerente IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_gerente<>'Gerente' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Gerente puede eliminar productos del inventario.';
-    ELSE
-        DELETE FROM Inventario WHERE id_inventario=id_inventario_p;
-    END IF;
 END $$
 
 DELIMITER ;

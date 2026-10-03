@@ -114,4 +114,58 @@ public void cancelar(int idReserva) throws SQLException {
         }
         return lista;
     }
+    
+    /**
+ * Lista las reservas de un usuario específico.
+ */
+public List<Reserva> listarPorUsuario(String idUser) throws SQLException {
+    List<Reserva> lista = new ArrayList<>();
+    String sql = "{CALL sp_get_reservas_por_usuario(?)}";
+    
+    try (Connection conn = conexionDB.getConnection();
+         CallableStatement cs = conn.prepareCall(sql)) {
+        
+        cs.setString(1, idUser);
+        
+        try (ResultSet rs = cs.executeQuery()) {
+            while (rs.next()) {
+                Reserva r = new Reserva();
+                r.setIdReserva(rs.getInt("id_reserva"));
+                r.setCodigoCancha(rs.getString("codigo_cancha"));
+                r.setNombreCancha(rs.getString("nombre_cancha"));
+                r.setTipoDeporte(rs.getString("tipo_deporte"));
+                r.setTechada(rs.getBoolean("techada"));
+                r.setCliente(rs.getString("cliente"));
+                r.setEmailCliente(rs.getString("email_cliente"));
+                r.setFechaReserva(rs.getDate("fecha_reserva").toLocalDate());
+                r.setHoraInicio(rs.getTime("hora_inicio").toLocalTime());
+                r.setHoraFin(rs.getTime("hora_fin").toLocalTime());
+                r.setTotalHoras(rs.getInt("total_horas"));
+                r.setCostoTotal(rs.getDouble("costo_total"));
+                r.setEstadoReserva(rs.getString("estado_reserva"));
+                lista.add(r);
+            }
+        }
+    }
+    return lista;
+}
+
+/**
+ * Crea una nueva reserva (estado inicial: Pendiente).
+ */
+public void crear(Reserva reserva, String idUser) throws SQLException {
+    String sql = "{CALL sp_create_reserva(?, ?, ?, ?, ?)}";
+    
+    try (Connection conn = conexionDB.getConnection();
+         CallableStatement cs = conn.prepareCall(sql)) {
+        
+        cs.setInt(1, reserva.getIdCancha());
+        cs.setString(2, idUser);
+        cs.setDate(3, Date.valueOf(reserva.getFechaReserva()));
+        cs.setTime(4, Time.valueOf(reserva.getHoraInicio()));
+        cs.setTime(5, Time.valueOf(reserva.getHoraFin()));
+        
+        cs.execute();
+    }
+}
 }
