@@ -59,5 +59,17 @@ CALL sp_create_inventario('Conos de Entrenamiento', 'Entrenamiento', 30, 25.00, 
 -- ============================================================
 --  RESERVAS DE PRUEBA
 -- ============================================================
-CALL sp_test_crear_reserva_usuario('JGabriel', 1, CURDATE(), '08:00');
+CALL sp_test_crear_reserva_usuario('JGabriel', 1, CURDATE(), '08:00:00', '10:00:00');
+CALL sp_test_crear_reserva_usuario('KVBryan',  2, CURDATE(), '14:00:00', '16:00:00');
+CALL sp_test_crear_reserva_usuario('JGabriel', 1, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:00:00', '12:00:00');
+CALL sp_test_crear_reserva_usuario('KVBryan',  2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '16:00:00', '18:00:00');
 
+
+USE renta_de_canchas_sportlife_in4am;
+SELECT id_reserva, id_cancha, fecha_reserva, hora_inicio, hora_fin, estado_reserva 
+FROM Reservas ORDER BY id_reserva;
+
+USE renta_de_canchas_sportlife_in4am;
+SELECT COUNT(*) AS total_pendientes FROM Reservas WHERE estado_reserva='Pendiente';
+
+SHOW CREATE PROCEDURE sp_rechazar_reserva;

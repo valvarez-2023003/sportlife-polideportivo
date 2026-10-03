@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" styleClass="content"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.sportlife.system.controller.CalendarioRecepcionistaController">
+
+    <padding>
+        <Insets bottom="20.0" left="10.0" right="20.0" top="20.0" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label styleClass="header-title" text="Calendario de Reservas" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <VBox spacing="20.0" styleClass="main-card" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+        </padding>
+
+        <Label styleClass="welcome-title" text="Agenda de Reservas" />
+        <Label styleClass="welcome-subtitle" text="Reservas ordenadas por fecha. Solo se muestran las confirmadas." />
+
+        <TableView fx:id="tblCalendar" styleClass="custom-table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colDate" prefWidth="110.0" text="FECHA" />
+                <TableColumn fx:id="colCourt" prefWidth="180.0" text="CANCHA" />
+                <TableColumn fx:id="colClient" prefWidth="160.0" text="CLIENTE" />
+                <TableColumn fx:id="colTimeRange" prefWidth="140.0" text="HORARIO" />
+                <TableColumn fx:id="colTotalHours" prefWidth="80.0" text="HORAS" />
+                <TableColumn fx:id="colCost" prefWidth="100.0" text="COSTO" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+</VBox>

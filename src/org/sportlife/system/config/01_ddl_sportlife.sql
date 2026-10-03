@@ -16,7 +16,7 @@ CREATE TABLE Users(
     lastname VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     `user` VARCHAR(25) NOT NULL,
-    password VARCHAR(100) NOT NULL,   -- ampliado de 35 a 100 (para futuros hashes)
+    password VARCHAR(100) NOT NULL,
     role VARCHAR(20) NOT NULL DEFAULT 'User',
     phone VARCHAR(10) NULL,
     id_user VARCHAR(36) NOT NULL,
@@ -25,10 +25,10 @@ CREATE TABLE Users(
 
 CREATE TABLE Canchas(
     id_cancha INT AUTO_INCREMENT PRIMARY KEY,
-    codigo VARCHAR(20) NOT NULL UNIQUE,        -- NUEVO: código que el admin ingresa
-    nombre VARCHAR(50) NOT NULL,               -- descripción
-    tipo_deporte VARCHAR(50) NOT NULL,         -- Fútbol, Basket, Tenis, etc.
-    techada BOOLEAN NOT NULL DEFAULT FALSE,    -- NUEVO: techada / aire libre
+    codigo VARCHAR(20) NOT NULL UNIQUE,
+    nombre VARCHAR(50) NOT NULL,
+    tipo_deporte VARCHAR(50) NOT NULL,
+    techada BOOLEAN NOT NULL DEFAULT FALSE,
     precio_por_hora DECIMAL(10,2) NOT NULL,
     estado VARCHAR(20) DEFAULT 'Disponible'
 );
@@ -41,7 +41,7 @@ CREATE TABLE Reservas(
     hora_inicio TIME NOT NULL,
     hora_fin TIME NOT NULL,
     costo_total DECIMAL(10,2) NOT NULL,
-    estado_reserva VARCHAR(20) DEFAULT 'Confirmada',
+    estado_reserva VARCHAR(20) DEFAULT 'Pendiente',
     CONSTRAINT fk_reserva_cancha FOREIGN KEY (id_cancha) REFERENCES Canchas(id_cancha),
     CONSTRAINT fk_reserva_user FOREIGN KEY (id_user) REFERENCES Users(id_user)
 );
@@ -54,19 +54,6 @@ CREATE TABLE Inventario(
     precio_unitario DECIMAL(10,2) NOT NULL,
     proveedor VARCHAR(100) NULL,
     estado VARCHAR(20) DEFAULT 'Disponible'
-);
-
-CREATE TABLE SoporteTecnico(
-    id_soporte INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario_reporta VARCHAR(36) NOT NULL,
-    tipo_problema VARCHAR(50) NOT NULL,
-    asunto VARCHAR(100) NOT NULL,
-    descripcion TEXT NOT NULL,
-    fecha_reporte DATETIME DEFAULT CURRENT_TIMESTAMP,
-    estado VARCHAR(20) DEFAULT 'Pendiente',
-    respuesta_gerente TEXT NULL,
-    fecha_respuesta DATETIME NULL,
-    CONSTRAINT fk_soporte_usuario FOREIGN KEY (id_usuario_reporta) REFERENCES Users(id_user)
 );
 
 -- ============================================================
@@ -322,7 +309,7 @@ BEGIN
     FROM Reservas
     WHERE id_cancha=id_cancha_p
       AND fecha_reserva=fecha_reserva_p
-      AND estado_reserva<>'Cancelada'
+      AND estado_reserva NOT IN ('Cancelada','Rechazada')
       AND hora_inicio_p<hora_fin
       AND hora_fin_p>hora_inicio;
 
@@ -334,7 +321,7 @@ BEGIN
         SET costo_calculado = precio * horas;
 
         INSERT INTO Reservas(id_cancha, id_user, fecha_reserva, hora_inicio, hora_fin, costo_total, estado_reserva)
-        VALUES(id_cancha_p, id_user_p, fecha_reserva_p, hora_inicio_p, hora_fin_p, costo_calculado, 'Confirmada');
+        VALUES(id_cancha_p, id_user_p, fecha_reserva_p, hora_inicio_p, hora_fin_p, costo_calculado, 'Pendiente');
     END IF;
 END $$
 
@@ -364,13 +351,94 @@ END $$
 
 CREATE PROCEDURE sp_get_all_reservas()
 BEGIN
-    SELECT r.id_reserva, c.codigo AS codigo_cancha, c.nombre AS cancha, c.tipo_deporte,
-           CONCAT(u.name,' ',u.lastname) AS cliente,
-           r.fecha_reserva, r.hora_inicio, r.hora_fin, r.costo_total, r.estado_reserva
+    SELECT
+        r.id_reserva,
+        c.codigo AS codigo_cancha,
+        c.nombre AS nombre_cancha,
+        c.tipo_deporte,
+        c.techada,
+        c.precio_por_hora,
+        CONCAT(u.name,' ',u.lastname) AS cliente,
+        u.email AS email_cliente,
+        r.fecha_reserva,
+        r.hora_inicio,
+        r.hora_fin,
+        TIMESTAMPDIFF(HOUR, r.hora_inicio, r.hora_fin) AS total_horas,
+        r.costo_total,
+        r.estado_reserva
     FROM Reservas r
     INNER JOIN Canchas c ON r.id_cancha=c.id_cancha
     INNER JOIN Users u ON r.id_user=u.id_user
     ORDER BY r.fecha_reserva ASC, r.hora_inicio ASC;
+END $$
+
+CREATE PROCEDURE sp_get_reservas_pendientes()
+BEGIN
+    SELECT
+        r.id_reserva,
+        c.codigo AS codigo_cancha,
+        c.nombre AS nombre_cancha,
+        c.tipo_deporte,
+        c.techada,
+        c.precio_por_hora,
+        CONCAT(u.name,' ',u.lastname) AS cliente,
+        u.email AS email_cliente,
+        r.fecha_reserva,
+        r.hora_inicio,
+        r.hora_fin,
+        TIMESTAMPDIFF(HOUR, r.hora_inicio, r.hora_fin) AS total_horas,
+        r.costo_total,
+        r.estado_reserva
+    FROM Reservas r
+    INNER JOIN Canchas c ON r.id_cancha=c.id_cancha
+    INNER JOIN Users u ON r.id_user=u.id_user
+    WHERE r.estado_reserva='Pendiente'
+    ORDER BY r.fecha_reserva ASC, r.hora_inicio ASC;
+END $$
+
+CREATE PROCEDURE sp_confirmar_reserva(IN id_reserva_p INT)
+BEGIN
+    UPDATE Reservas
+    SET estado_reserva='Confirmada'
+    WHERE id_reserva=id_reserva_p
+      AND estado_reserva<>'Confirmada';
+END $$
+
+CREATE PROCEDURE sp_rechazar_reserva(IN id_reserva_p INT)
+BEGIN
+    UPDATE Reservas
+    SET estado_reserva='Rechazada'
+    WHERE id_reserva=id_reserva_p
+      AND estado_reserva<>'Rechazada';
+END $$
+
+CREATE PROCEDURE sp_cancelar_reserva(IN id_reserva_p INT)
+BEGIN
+    UPDATE Reservas
+    SET estado_reserva='Cancelada'
+    WHERE id_reserva=id_reserva_p
+      AND estado_reserva='Confirmada';
+END $$
+
+CREATE PROCEDURE sp_update_reserva(
+    IN id_reserva_p INT,
+    IN fecha_reserva_p DATE,
+    IN hora_inicio_p TIME,
+    IN hora_fin_p TIME,
+    IN estado_reserva_p VARCHAR(20)
+)
+BEGIN
+    UPDATE Reservas
+    SET fecha_reserva=fecha_reserva_p,
+        hora_inicio=hora_inicio_p,
+        hora_fin=hora_fin_p,
+        estado_reserva=estado_reserva_p
+    WHERE id_reserva=id_reserva_p;
+END $$
+
+CREATE PROCEDURE sp_delete_reserva(IN id_reserva_p INT)
+BEGIN
+    DELETE FROM Reservas WHERE id_reserva=id_reserva_p;
 END $$
 
 -- ---------- INVENTARIO ----------
@@ -447,94 +515,6 @@ BEGIN
     ELSE
         DELETE FROM Inventario WHERE id_inventario=id_inventario_p;
     END IF;
-END $$
-
--- ---------- SOPORTE TÉCNICO ----------
-CREATE PROCEDURE sp_crear_soporte(
-    IN id_usuario_p VARCHAR(36),
-    IN tipo_problema_p VARCHAR(50),
-    IN asunto_p VARCHAR(100),
-    IN descripcion_p TEXT
-)
-BEGIN
-    DECLARE rol_usuario VARCHAR(20);
-
-    SELECT role INTO rol_usuario FROM Users WHERE id_user=id_usuario_p LIMIT 1;
-
-    IF rol_usuario IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_usuario NOT IN('Administrador','Recepcionista') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Administrador o Recepcionista puede crear reportes.';
-    ELSE
-        INSERT INTO SoporteTecnico(id_usuario_reporta, tipo_problema, asunto, descripcion, estado)
-        VALUES(id_usuario_p, tipo_problema_p, asunto_p, descripcion_p, 'Pendiente');
-    END IF;
-END $$
-
-CREATE PROCEDURE sp_get_soporte_gerente(
-    IN id_gerente_p VARCHAR(36)
-)
-BEGIN
-    DECLARE rol_gerente VARCHAR(20);
-
-    SELECT role INTO rol_gerente FROM Users WHERE id_user=id_gerente_p LIMIT 1;
-
-    IF rol_gerente IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_gerente<>'Gerente' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Gerente puede consultar la bandeja de soporte.';
-    ELSE
-        SELECT s.id_soporte,
-               CONCAT(u.name,' ',u.lastname) AS reportado_por,
-               u.role AS rol_reportante,
-               s.tipo_problema, s.asunto, s.descripcion,
-               s.fecha_reporte, s.estado, s.respuesta_gerente, s.fecha_respuesta
-        FROM SoporteTecnico s
-        INNER JOIN Users u ON s.id_usuario_reporta=u.id_user
-        ORDER BY
-            CASE
-                WHEN s.estado='Pendiente' THEN 1
-                WHEN s.estado='En revisión' THEN 2
-                WHEN s.estado='Resuelto' THEN 3
-                ELSE 4
-            END,
-            s.fecha_reporte DESC;
-    END IF;
-END $$
-
-CREATE PROCEDURE sp_responder_soporte(
-    IN id_soporte_p INT,
-    IN respuesta_p TEXT,
-    IN estado_p VARCHAR(20),
-    IN id_gerente_p VARCHAR(36)
-)
-BEGIN
-    DECLARE rol_gerente VARCHAR(20);
-
-    SELECT role INTO rol_gerente FROM Users WHERE id_user=id_gerente_p LIMIT 1;
-
-    IF rol_gerente IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El usuario no existe.';
-    ELSEIF rol_gerente<>'Gerente' THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: Solo un Gerente puede responder reportes.';
-    ELSEIF estado_p NOT IN('Pendiente','En revisión','Resuelto','Cerrado') THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Error: El estado indicado no es valido.';
-    ELSE
-        UPDATE SoporteTecnico
-        SET respuesta_gerente=respuesta_p, estado=estado_p, fecha_respuesta=CURRENT_TIMESTAMP
-        WHERE id_soporte=id_soporte_p;
-    END IF;
-END $$
-
-CREATE PROCEDURE sp_get_mis_reportes_soporte(
-    IN id_usuario_p VARCHAR(36)
-)
-BEGIN
-    SELECT id_soporte, tipo_problema, asunto, descripcion,
-           fecha_reporte, estado, respuesta_gerente, fecha_respuesta
-    FROM SoporteTecnico
-    WHERE id_usuario_reporta=id_usuario_p
-    ORDER BY fecha_reporte DESC;
 END $$
 
 DELIMITER ;
