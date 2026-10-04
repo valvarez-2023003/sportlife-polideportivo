@@ -36,8 +36,36 @@ public class Validations {
         return text.trim().matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$");
     }
 
-    public static boolean validateEmail(String email) {
-        if (email == null || email.trim().isEmpty()) return false;
-        return email.trim().matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*@[a-zA-Z]+(\\.[a-zA-Z]+)+$");
+    public static boolean validateEmail(String email){
+        if(email == null || email.trim().isEmpty()) return false;
+        
+        String emailLimpio = email.trim();
+        
+        if(emailLimpio.contains(" ") || emailLimpio.contains("..")){
+            return false;
+        }
+        
+        int indiceArroba = emailLimpio.indexOf('@');
+        if(indiceArroba <= 0 || indiceArroba != emailLimpio.lastIndexOf('@')){
+            return false;
+        }
+        
+        String usuario = emailLimpio.substring(0, indiceArroba);
+        String dominio = emailLimpio.substring(indiceArroba + 1);
+        
+        if(dominio.startsWith(".") || !dominio.contains(".")){
+            return false;
+        }
+        
+        String[] partesDominio = dominio.split("\\.");
+        String extension = partesDominio[partesDominio.length - 1];
+        if(extension.length() < 2 || !extension.matches("[a-zA-Z]+")){
+            return false;
+        }
+        
+        if(!usuario.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$")){
+            return false;
+        }
+        return true;
     }
 }

@@ -35,6 +35,14 @@ CALL sp_register_customer('Joaquin', 'Garcia', 'joaquin_8@gmail.com',
                           'JGabriel', '@usuario#2', '44332211');
 
 -- ============================================================
+--  GERENTE, ADMINISTRADOR, RECEPCIONISTA Y CLIENTES
+-- ============================================================
+SELECT * FROM Users WHERE role = 'Gerente';
+SELECT * FROM Users WHERE role = 'Administrador';
+SELECT * FROM Users WHERE role = 'Recepcionista';
+SELECT * FROM Users WHERE role = 'User';
+
+-- ============================================================
 --  CANCHAS
 -- ============================================================
 CALL sp_create_cancha('F1', 'Cancha Fútbol 1 Norte',  'Fútbol',  TRUE,  200.00, @id_admin);

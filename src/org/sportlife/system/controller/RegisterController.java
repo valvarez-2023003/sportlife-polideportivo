@@ -74,31 +74,43 @@ public class RegisterController implements Initializable {
             return;
         }
 
-        if (!Validations.validateOnlyLetters(name) || !Validations.validateLengthText(name, 50)) {
-            AlertInformation.viewAlert("ERROR", "Nombre Inválido", "Error de Campo",
-                "El nombre debe contener solo letras y no exceder los 50 caracteres.");
+        if(!Validations.validateOnlyLetters(name)){
+            AlertInformation.viewAlert("ERROR", "Caracteres Inválidos", "Error de Campo",
+                "El nombre únicamente puede contener letras (mayúsculas y minúsculas). No puede contener ningún otro símbolo.");
             return;
         }
 
-        if (!Validations.validateOnlyLetters(lastName) || !Validations.validateLengthText(lastName, 50)) {
-            AlertInformation.viewAlert("ERROR", "Apellido Inválido", "Error de Campo",
-                "El apellido debe contener solo letras y no exceder los 50 caracteres.");
+        if(!Validations.validateLengthText(name, 50)){
+            AlertInformation.viewAlert("ERROR", "Longitud Inválida", "Error de Campo",
+                "El nombre excedió la cantidad máxima de caracteres permitidos (Máx. 50).");
+            return;
+        }
+        
+        if(!Validations.validateOnlyLetters(lastName)){
+            AlertInformation.viewAlert("ERROR", "Caracteres Inválidos", "Error de Campo",
+                "El apellido únicamente puede contener letras (mayúsculas y minúsculas). No puede contener ningún otro símbolo.");
             return;
         }
 
-        if (!Validations.validateEmail(email)) {
+        if(!Validations.validateLengthText(lastName, 50)){
+            AlertInformation.viewAlert("ERROR", "Longitud Inválida", "Error de Campo",
+                "El apellido excedió la cantidad máxima de caracteres permitidos (Máx. 50).");
+            return;
+        }
+
+        if(!Validations.validateEmail(email)){
             AlertInformation.viewAlert("ERROR", "Formato Inválido", "Error de Campo",
                 "Correo electrónico no válido. Por favor, ingrese un formato correcto (ej: usuario@dominio.com).");
             return;
         }
 
-        if (!Validations.validatePhone(phone)) {
+        if(!Validations.validatePhone(phone)){
             AlertInformation.viewAlert("ERROR", "Teléfono Inválido", "Error de Campo",
                 "El número de teléfono debe contener exactamente 8 dígitos numéricos.");
             return;
         }
 
-        if (!Validations.equalsText(password, confirmPassword)) {
+        if(!Validations.equalsText(password, confirmPassword)){
             AlertInformation.viewAlert("ERROR", "Contraseñas No Coinciden", "Error de Validación",
                 "La contraseña ingresada no coincide con la confirmación.");
             pwdPassword.clear();
